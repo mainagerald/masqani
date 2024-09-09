@@ -10,3 +10,14 @@ client/idea/
 client/*.js
 client/*.map
 client/*.angular/
+
+masqani/.idea/
+masqani/HELP.md
+masqani/target/
+masqani/!.mvn/wrapper/maven-wrapper.jar
+masqani/!**/src/main/**/target/
+masqani/!**/src/test/**/target/
+masqani/.idea
+masqani/*.iws
+masqani/*.iml
+masqani/*.ipr
