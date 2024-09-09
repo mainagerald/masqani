@@ -10,6 +10,7 @@ import { NavbarComponent } from "./layout/navbar/navbar.component";
 import { FooterComponent } from "./layout/footer/footer.component";
 import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
+import { ToastService } from './layout/toast.service';
 
 @Component({
   selector: 'app-root',
@@ -23,11 +24,25 @@ export class AppComponent implements OnInit {
   faIconLibrary = inject(FaIconLibrary);
   isListingView: boolean = true;
 
+  toastService: ToastService = inject(ToastService);
+  messageService: MessageService = inject(MessageService);
+
   ngOnInit(): void {
     this.initFontAwesome();
+    this.listenToastService();
   }
 
   initFontAwesome() {
     this.faIconLibrary.addIcons(...fontAwesomeIcons);
+  }
+
+  private listenToastService() {
+    this.toastService.sendSub.subscribe({
+      next:newMessage =>{
+        if(newMessage && newMessage.summary!== this.toastService.INIT_STATE){
+          this.messageService.add(newMessage);
+        }
+      }
+    })
   }
 }

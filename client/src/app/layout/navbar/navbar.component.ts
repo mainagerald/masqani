@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ButtonModule } from 'primeng/button';
 import {ToolbarModule} from 'primeng/toolbar';
@@ -7,6 +7,7 @@ import { CategoryComponent } from './category/category.component';
 import { AvatarComponent } from './avatar/avatar.component';
 import{DialogService} from 'primeng/dynamicdialog';
 import { MenuItem } from 'primeng/api';
+import { ToastService } from '../toast.service';
 
 
 @Component({
@@ -30,8 +31,11 @@ export class NavbarComponent implements OnInit {
   dates: string="Any week"
   currentMenuItems: MenuItem[] | undefined = []
 
+  toastService: ToastService = inject(ToastService);
+
   ngOnInit(): void {
-    this.currentMenuItems=this.fetchMenu(); ;
+    this.currentMenuItems=this.fetchMenu();
+    this.toastService.send({severity: "info", summary:"Welcome to ng!"})
   }
 
   private fetchMenu(): MenuItem[] {

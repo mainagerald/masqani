@@ -1,4 +1,5 @@
 import {
+  faAnchor,
   faBan,
   faBars,
   faBox,
@@ -19,6 +20,7 @@ import {
 import {faAirbnb} from "@fortawesome/free-brands-svg-icons";
 
 export const fontAwesomeIcons: IconDefinition[] = [
+  faAnchor,
   faBan,
   faBars,
   faBox,

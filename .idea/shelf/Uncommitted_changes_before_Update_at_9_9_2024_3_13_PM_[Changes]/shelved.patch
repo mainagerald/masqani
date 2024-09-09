@@ -1,0 +1,41 @@
+Index: client/README.md
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+># Airbnb clone (fullstack project) Spring boot 3, Angular 17, PrimeNG, PostgreSQL, Auth0 (2024) (Frontend)\r\n\r\nAngular frontend of the airbnb clone\r\n\r\n[Video tutorial](https://youtu.be/XriUV06Hkow)\r\n\r\n[Spring boot Backend](https://github.com/C0de-cake/airbnb-clone-backend)\r\n\r\n### Key Features:\r\n- \uD83D\uDCC5 Booking management for travelers\r\n- \uD83C\uDFE0 Landlord reservation management\r\n- \uD83D\uDD0D Search for houses by criteria (location, date, guests, beds, etc)\r\n- \uD83D\uDD10 Authentication and Authorization (Role management) with Auth0 (OAuth2)\r\n- \uD83C\uDFE2 Domain-driven design\r\n\r\n## Usage\r\n### Prerequisites\r\n- [NodeJS 20.11 LTS](https://nodejs.org/dist/v20.11.1/node-v20.11.1.pkg)\r\n- [Angular CLI v17](https://www.npmjs.com/package/@angular/cli)\r\n- IDE ([VSCode](https://code.visualstudio.com/download), [IntelliJ](https://www.jetbrains.com/idea/download/))\r\n\r\n### Fetch dependencies\r\n``npm install``\r\n\r\n### Launch dev server\r\nRun `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.\r\n\r\n### Build\r\nRun `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/client/README.md b/client/README.md
+--- a/client/README.md	(revision 773474247cfc77a7236d0d48745be6136e50e2bc)
++++ b/client/README.md	(date 1725883694568)
+@@ -1,23 +1,17 @@
+-# Airbnb clone (fullstack project) Spring boot 3, Angular 17, PrimeNG, PostgreSQL, Auth0 (2024) (Frontend)
+-
+-Angular frontend of the airbnb clone
+-
+-[Video tutorial](https://youtu.be/XriUV06Hkow)
+-
+-[Spring boot Backend](https://github.com/C0de-cake/airbnb-clone-backend)
++An app for landlords to intercat with tenants on matters payment. 
++Marketplace for househunting tenants.
+ 
+ ### Key Features:
+-- 📅 Booking management for travelers
+-- 🏠 Landlord reservation management
+-- 🔍 Search for houses by criteria (location, date, guests, beds, etc)
++- 📅 Booking management
++- 🏠 Landlord reservation
++- 🔍 Search for houses by criteria (location, size, type, etc)
+ - 🔐 Authentication and Authorization (Role management) with Auth0 (OAuth2)
+ - 🏢 Domain-driven design
+ 
+ ## Usage
+ ### Prerequisites
+-- [NodeJS 20.11 LTS](https://nodejs.org/dist/v20.11.1/node-v20.11.1.pkg)
+-- [Angular CLI v17](https://www.npmjs.com/package/@angular/cli)
+-- IDE ([VSCode](https://code.visualstudio.com/download), [IntelliJ](https://www.jetbrains.com/idea/download/))
++- [NodeJS 18+)
++- [Angular CLI v17]
+ 
+ ### Fetch dependencies
+ ``npm install``
