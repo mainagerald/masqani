@@ -6,10 +6,12 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
-@EnableJpaRepositories({"com.masqani.masqani.repository"})
+@EnableJpaRepositories({"com.masqani.masqani.repository.userRepository",
+        "com.masqani.masqani.repository.listingRepository",
+        "com.masqani.masqani.repository.rentingRepository"})
 @EnableTransactionManagement
 @EnableJpaAuditing
 public class DatabaseConfig {
 }
 
-//for creation dates and modifications
+//for creation dates and modifications tracking

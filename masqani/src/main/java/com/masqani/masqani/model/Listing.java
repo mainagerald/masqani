@@ -49,11 +49,11 @@ public class Listing extends AuditingEntity<Long> {
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
         Listing listing = (Listing) o;
-        return size == listing.size && bedrooms == listing.bedrooms && bathrooms == listing.bathrooms && viewingReservationFee == listing.viewingReservationFee && Objects.equals(publicId, listing.publicId) && Objects.equals(description, listing.description) && Objects.equals(price, listing.price) && category == listing.category && Objects.equals(location, listing.location) && Objects.equals(landlordPublicId, listing.landlordPublicId) && Objects.equals(listingPictures, listing.listingPictures);
+        return size == listing.size && bedrooms == listing.bedrooms && bathrooms == listing.bathrooms && viewingReservationFee == listing.viewingReservationFee && Objects.equals(description, listing.description) && Objects.equals(price, listing.price) && category == listing.category && Objects.equals(location, listing.location) && Objects.equals(landlordPublicId, listing.landlordPublicId) && Objects.equals(listingPictures, listing.listingPictures);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), publicId, description, size, bedrooms, bathrooms, price, viewingReservationFee, category, location, landlordPublicId, listingPictures);
+        return Objects.hash(super.hashCode(), description, size, bedrooms, bathrooms, price, viewingReservationFee, category, location, landlordPublicId, listingPictures);
     }
 }

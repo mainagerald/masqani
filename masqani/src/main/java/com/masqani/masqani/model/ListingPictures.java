@@ -3,8 +3,6 @@ package com.masqani.masqani.model;
 import com.masqani.masqani.resource.AuditingEntity;
 import jakarta.persistence.*;
 import lombok.Data;
-import org.hibernate.annotations.ManyToAny;
-
 import java.util.Arrays;
 import java.util.Objects;
 
@@ -24,7 +22,7 @@ public class ListingPictures extends AuditingEntity<Long> {
     private byte[] file;
     @Column(name = "file_content_type")
     private String fileContentType;
-    @Column(name = "cover")
+    @Column(name = "is_cover")
     private boolean isCover;
 
     @Override
