@@ -58,7 +58,13 @@ public class SecurityUtilities {
         return user;
     }
 
-    public static List<SimpleGrantedAuthority>  extractAuthorityFromClaims(Map<String, Object> claims){}
+    public static List<SimpleGrantedAuthority>  extractAuthorityFromClaims(Map<String, Object> claims){
+        return mapRolesToGrantedAuthorities(getRolesFromClaims(claims));
+    }
+
+    private static List<SimpleGrantedAuthority> mapRolesToGrantedAuthorities(Collection<String> rolesFromClaims) {
+        return rolesFromClaims.stream().filter(role->role.startsWith("ROLE_")).map(SimpleGrantedAuthority::new).collect(Collectors.toList());
+    }
 
     public static Collection<String> getRolesFromClaims(Map<String, Object> claims){
         return (List<String>) claims.get(CLAIMS_NAMESPACE);
