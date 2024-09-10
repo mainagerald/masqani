@@ -6,9 +6,11 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
-@EnableJpaRepositories({"com.masqani.masqani.repository.userRepository",
+@EnableJpaRepositories({
+        "com.masqani.masqani.repository.userRepository",
         "com.masqani.masqani.repository.listingRepository",
-        "com.masqani.masqani.repository.rentingRepository"})
+        "com.masqani.masqani.repository.rentingRepository"
+})
 @EnableTransactionManagement
 @EnableJpaAuditing
 public class DatabaseConfig {
