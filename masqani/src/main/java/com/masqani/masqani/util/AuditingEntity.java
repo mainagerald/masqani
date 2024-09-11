@@ -1,4 +1,4 @@
-package com.masqani.masqani.resource;
+package com.masqani.masqani.util;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.EntityListeners;

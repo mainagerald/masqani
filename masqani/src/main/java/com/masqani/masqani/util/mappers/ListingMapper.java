@@ -1,4 +1,4 @@
-package com.masqani.masqani.resource;
+package com.masqani.masqani.util.mappers;
 
 import org.mapstruct.Mapper;
 

@@ -1,4 +1,4 @@
-package com.masqani.masqani.util.utilities;
+package com.masqani.masqani.util.config;
 
 import com.masqani.masqani.model.Authority;
 import com.masqani.masqani.model.User;

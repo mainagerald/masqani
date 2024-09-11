@@ -1,7 +1,7 @@
 package com.masqani.masqani.model;
 
 import com.masqani.masqani.enums.RentalCategory;
-import com.masqani.masqani.resource.AuditingEntity;
+import com.masqani.masqani.util.AuditingEntity;
 import jakarta.persistence.*;
 import lombok.Data;
 import org.hibernate.annotations.UuidGenerator;

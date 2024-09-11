@@ -1,6 +1,6 @@
 package com.masqani.masqani.model;
 
-import com.masqani.masqani.resource.AuditingEntity;
+import com.masqani.masqani.util.AuditingEntity;
 import jakarta.persistence.*;
 import lombok.Data;
 import java.util.Arrays;
