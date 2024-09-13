@@ -48,7 +48,7 @@ public class SecurityUtilities {
             user.setEmail(sub);
         }
         if (attributes.get("picture")!= null){
-            user.setImageUrl(String.valueOf(attributes.get("family_name")).toLowerCase());
+            user.setImageUrl(String.valueOf(attributes.get("picture")).toLowerCase());
         }
 
         if(attributes.get(CLAIMS_NAMESPACE)!=null){

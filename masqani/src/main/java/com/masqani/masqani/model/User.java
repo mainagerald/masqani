@@ -3,6 +3,7 @@ package com.masqani.masqani.model;
 import com.masqani.masqani.util.AuditingEntity;
 import jakarta.persistence.*;
 import lombok.Data;
+import org.hibernate.annotations.UuidGenerator;
 
 import java.io.Serializable;
 import java.util.HashSet;
@@ -24,7 +25,8 @@ public class User extends AuditingEntity<Long> implements Serializable {
     private String lastName;
     private String email;
     private String imageUrl;
-    @Column(name = "public_id")
+    @UuidGenerator
+    @Column(name = "public_id", nullable = false)
     private UUID publicId;
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "user_authorities",
