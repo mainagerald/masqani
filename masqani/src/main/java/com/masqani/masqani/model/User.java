@@ -24,9 +24,9 @@ public class User extends AuditingEntity<Long> implements Serializable {
     private String lastName;
     private String email;
     private String imageUrl;
-    @Column(name = "public_id", nullable = false)
+    @Column(name = "public_id")
     private UUID publicId;
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "user_authorities",
     joinColumns = {@JoinColumn(name = "user_id", referencedColumnName = "id")},
     inverseJoinColumns = {@JoinColumn(name = "authority_name", referencedColumnName = "name")})

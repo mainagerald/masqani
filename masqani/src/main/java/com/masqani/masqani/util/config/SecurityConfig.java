@@ -1,5 +1,7 @@
 package com.masqani.masqani.util.config;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.Customizer;
@@ -7,6 +9,7 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.mapping.GrantedAuthoritiesMapper;
+import org.springframework.security.oauth2.core.oidc.OidcIdToken;
 import org.springframework.security.oauth2.core.oidc.user.OidcUserAuthority;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
@@ -18,6 +21,8 @@ import java.util.Set;
 @Configuration
 @EnableMethodSecurity
 public class SecurityConfig {
+    private static final Logger log = LoggerFactory.getLogger(SecurityConfig.class);
+
     @Bean
     public SecurityFilterChain configure(HttpSecurity http) throws Exception {
         CsrfTokenRequestAttributeHandler requestAttributeHandler = new CsrfTokenRequestAttributeHandler();
@@ -39,6 +44,8 @@ public class SecurityConfig {
             Set<GrantedAuthority> grantedAuthorities = new HashSet<>();
             authorities.forEach(grantedAuthority -> {
                 if(grantedAuthority instanceof OidcUserAuthority oidcUserAuthority){
+                    OidcIdToken token = oidcUserAuthority.getIdToken();
+                    log.info("oidcIdToken claims----> {}", token.getClaims());
                     grantedAuthorities.addAll(SecurityUtilities.extractAuthorityFromClaims(oidcUserAuthority.getUserInfo().getClaims())) ;
                 }
             });

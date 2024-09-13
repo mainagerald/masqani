@@ -7,6 +7,8 @@ import com.masqani.masqani.util.mappers.UserMapper;
 import com.masqani.masqani.util.config.SecurityUtilities;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Service;
@@ -20,6 +22,7 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class UserService {
     private static final String UPDATED_AT_KEY="update_at";
+    private static final Logger log = LoggerFactory.getLogger(UserService.class);
     private final UserRepository userRepository;
     private final UserMapper userMapper;
 
@@ -37,9 +40,12 @@ public class UserService {
     }
 
     public void syncWithIdp(OAuth2User oAuth2User, boolean forceRsync){
+        log.info("inside sync with idp and user------------> {}", oAuth2User);
         Map<String, Object> attributes = oAuth2User.getAttributes();
         User user = SecurityUtilities.mapOauth2AttributesToUser(attributes);
+        log.info("util mapped user----> {}", user);
         Optional<User> existingUser = userRepository.findOneByEmail(user.getEmail());
+        log.info("existing user ? {}", existingUser);
         if(existingUser.isPresent()){
             if(attributes.get(UPDATED_AT_KEY)!=null){
                 Instant lastModifiedDate = existingUser.orElseThrow().getLastModifiedAt();
@@ -52,9 +58,9 @@ public class UserService {
                 if(idpModifiedDate.isAfter(lastModifiedDate)|| forceRsync){
                     updateUser(user);
                 }
-            }else {
-                userRepository.saveAndFlush(user);
             }
+        }else {
+            userRepository.saveAndFlush(user);
         }
     }
 

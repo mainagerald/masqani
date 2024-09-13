@@ -2,6 +2,8 @@ package com.masqani.masqani.util.config;
 
 import com.masqani.masqani.model.Authority;
 import com.masqani.masqani.model.User;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -17,12 +19,15 @@ public class SecurityUtilities {
     public static final String ROLE_LANDLORD = "ROLE_LANDLORD";
     public static final String ROLE_TENANT = "ROLE_TENANT";
 
-    public static final String CLAIMS_NAMESPACE = "https://masqani.com/roles";
+    public static final String CLAIMS_NAMESPACE = "www.masqani.com/roles";
+    private static final Logger log = LoggerFactory.getLogger(SecurityUtilities.class);
 
     public static User mapOauth2AttributesToUser(Map<String, Object> attributes){
         User user = new User();
         String sub = String.valueOf(attributes.get("sub"));
         String username = null;
+
+        SecurityUtilities.log.info("OAuth2 Attributes: {}", attributes);
 
         if (attributes.get("preferred_name")!= null){
             username = String.valueOf(attributes.get("preferred_name"));
@@ -58,16 +63,36 @@ public class SecurityUtilities {
         return user;
     }
 
-    public static List<SimpleGrantedAuthority>  extractAuthorityFromClaims(Map<String, Object> claims){
-        return mapRolesToGrantedAuthorities(getRolesFromClaims(claims));
+    public static List<SimpleGrantedAuthority> extractAuthorityFromClaims(Map<String, Object> claims) {
+        try {
+            Collection<String> roles = getRolesFromClaims(claims);
+            return mapRolesToGrantedAuthorities(roles);
+        } catch (Exception e) {
+            log.error("Error extracting authorities from claims", e);
+            return Collections.emptyList();
+        }
     }
 
     private static List<SimpleGrantedAuthority> mapRolesToGrantedAuthorities(Collection<String> rolesFromClaims) {
-        return rolesFromClaims.stream().filter(role->role.startsWith("ROLE_")).map(SimpleGrantedAuthority::new).collect(Collectors.toList());
+        if (rolesFromClaims == null) {
+            return Collections.emptyList();
+        }
+        return rolesFromClaims.stream()
+                .filter(role -> role.startsWith("ROLE_"))
+                .map(SimpleGrantedAuthority::new)
+                .collect(Collectors.toList());
     }
 
-    public static Collection<String> getRolesFromClaims(Map<String, Object> claims){
-        return (List<String>) claims.get(CLAIMS_NAMESPACE);
+    public static Collection<String> getRolesFromClaims(Map<String, Object> claims) {
+        Object rolesObj = claims.get(CLAIMS_NAMESPACE);
+        log.info("all claims----------------> {}", claims);
+        log.info("roles object------------------> {}", rolesObj);
+        if (rolesObj instanceof Collection) {
+            return (Collection<String>) rolesObj;
+        } else if (rolesObj instanceof String[]) {
+            return Arrays.asList((String[]) rolesObj);
+        }
+        return Collections.emptyList();
     }
 
     public static boolean hasCurrentUserAnyOfAuthorities(String ...authorities){
