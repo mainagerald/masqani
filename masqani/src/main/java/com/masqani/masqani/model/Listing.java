@@ -22,6 +22,8 @@ public class Listing extends AuditingEntity<Long> {
     @UuidGenerator
     @Column(name = "public_id")
     private UUID publicId;
+    @Column(name = "title")
+    private String title;
     @Column(name = "description")
     private String description;
     @Column(name = "size")
@@ -41,7 +43,7 @@ public class Listing extends AuditingEntity<Long> {
     @Column(name = "landlord_public_id")
     private UUID landlordPublicId;
     @OneToMany(mappedBy = "listing", cascade = CascadeType.REMOVE)
-    private Set<ListingPictures> listingPictures = new HashSet<>();
+    private Set<ListingPicture> listingPictures = new HashSet<>();
 
     @Override
     public boolean equals(Object o) {

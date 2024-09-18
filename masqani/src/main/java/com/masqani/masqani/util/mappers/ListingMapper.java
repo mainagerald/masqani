@@ -11,7 +11,7 @@ public interface ListingMapper {
     @Mapping(target = "landlordPublicId", ignore = true)
     @Mapping(target = "id", ignore = true)
     @Mapping(target = "publicId", ignore = true)
-    @Mapping(target = "createdDate", ignore = true)
+    @Mapping(target = "createdAt", ignore = true)
     @Mapping(target = "listingPictures", ignore = true)
     @Mapping(target = "title", source = "description.title.value")
     @Mapping(target = "description", source = "description.description.value")

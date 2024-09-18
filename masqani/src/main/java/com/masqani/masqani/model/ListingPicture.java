@@ -8,7 +8,7 @@ import java.util.Objects;
 
 @Entity
 @Data
-public class ListingPictures extends AuditingEntity<Long> {
+public class ListingPicture extends AuditingEntity<Long> {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "listingSequenceGenerator")
@@ -29,13 +29,12 @@ public class ListingPictures extends AuditingEntity<Long> {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        if (!super.equals(o)) return false;
-        ListingPictures that = (ListingPictures) o;
-        return isCover == that.isCover && Objects.deepEquals(file, that.file) && Objects.equals(fileContentType, that.fileContentType);
+        ListingPicture that = (ListingPicture) o;
+        return isCover == that.isCover && Objects.equals(id, that.id) && Objects.equals(listing, that.listing) && Objects.deepEquals(file, that.file) && Objects.equals(fileContentType, that.fileContentType);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), Arrays.hashCode(file), fileContentType, isCover);
+        return Objects.hash(id, listing, Arrays.hashCode(file), fileContentType, isCover);
     }
 }
