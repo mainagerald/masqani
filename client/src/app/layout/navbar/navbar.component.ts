@@ -1,13 +1,16 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, effect, inject, OnInit } from '@angular/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ButtonModule } from 'primeng/button';
 import {ToolbarModule} from 'primeng/toolbar';
 import {MenuModule} from 'primeng/menu';
 import { CategoryComponent } from './category/category.component';
 import { AvatarComponent } from './avatar/avatar.component';
-import{DialogService} from 'primeng/dynamicdialog';
+import{DialogService, DynamicDialogRef} from 'primeng/dynamicdialog';
 import { MenuItem } from 'primeng/api';
 import { ToastService } from '../toast.service';
+import { AuthService } from '../../core/auth/auth.service';
+import { UserModel } from '../../core/model/user.model';
+import { CreatePropertyComponent } from '../../components/landlord/create-property/create-property.component';
 
 
 @Component({
@@ -26,31 +29,87 @@ import { ToastService } from '../toast.service';
   styleUrl: './navbar.component.scss'
 })
 export class NavbarComponent implements OnInit {
+  authService: AuthService = inject(AuthService);
+  toastService: ToastService = inject(ToastService);
+  dialogService: DialogService = inject(DialogService);
+  ref: DynamicDialogRef | undefined;
+
+
   location: string = "Anywhere"
   guests:string = "Add guests"
   dates: string="Any week"
   currentMenuItems: MenuItem[] | undefined = []
+  public connectedUser: UserModel = {email: this.authService.notConnected}
+  
+  login=()=>this.authService.login();
+  logout=()=>this.authService.logout();
 
-  toastService: ToastService = inject(ToastService);
 
+  constructor(){
+    effect(()=>{
+      if(this.authService.fetchUser().status==="OK"){
+        this.connectedUser = this.authService.fetchUser().value!;
+        this.currentMenuItems = this.fetchMenu();
+      }
+    })
+  }
+  
   ngOnInit(): void {
-    this.currentMenuItems=this.fetchMenu();
-    this.toastService.send({severity: "info", summary:"Welcome to ng!"})
+    this.authService.fetch(false);
+    // this.toastService.send({severity: "info", summary:"Welcome to masQani!"})    
+  }
+
+  hasToBeLandlord(): boolean{
+    return this.authService.hasAnyAuthority("ROLE_LANDLORD");
   }
 
   private fetchMenu(): MenuItem[] {
+    if(this.authService.isAuthenticated()){
     return [
       {
-      label: "Sign up",
-      styleClass: "font-bold"
-    },
-    {
-      label: "Log in",
-    }
+        label: "My properties",
+        routerLink: "landlord/properties",
+        visible: this.hasToBeLandlord(),
+      },
+      {
+        label: "My rental",
+        routerLink: "renting",
+      },
+      {
+        label: "My reservations",
+        routerLink: "landlord/reservation",
+        visible: this.hasToBeLandlord(),
+      }, 
+      {
+        label: "Log out",
+        command: this.logout
+      }
   ]
+  }else{
+    return [
+      {
+        label: "Sign up",
+        styleClass: "font-bold",
+        command: this.login
+      },
+      {
+        label: "Log in",
+        command: this.login
+      }
+    ]
   }
-  
-  // login()=>this.authService.login()
-  // logout()=>this.authService.logout()
+}
 
+openNewListing(): void{
+  this.ref = this.dialogService.open(CreatePropertyComponent,
+    {
+      width: "60%",
+      height: "70%",
+      header: "List your property",
+      closable: true,
+      focusOnShow: true,
+      modal: true,
+      showHeader: true
+  })
+}
 }

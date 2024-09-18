@@ -1,0 +1,10 @@
+<div>
+    @switch (this.currentStep.id) {
+        @case (CATEGORY) {
+            <app-category-step
+            [categoryName]="newListing.category"
+            (categoryChange)="onCategoryChange($event)"
+            (stepValidityChange)="onValidityChange($event)"></app-category-step>
+        }
+    }
+</div>

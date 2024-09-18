@@ -1,6 +1,7 @@
-import {Injectable} from '@angular/core';
-import {Category, CategoryName} from "./category.model";
-import {BehaviorSubject} from "rxjs";
+import { Injectable } from '@angular/core';
+import { Category, CategoryName } from "./category.model";
+import { BehaviorSubject } from "rxjs";
+import { IconName } from '@fortawesome/free-regular-svg-icons';
 
 @Injectable({
   providedIn: 'root'
@@ -9,135 +10,123 @@ export class CategoryService {
 
   private categories: Category[] = [
     {
-      icon: "eye",
+      icon: "circle" as IconName,
       displayName: "All",
       technicalName: "ALL",
       activated: false
     },
     {
-      icon: "eye",
-      displayName: "Amazing views",
-      technicalName: "AMAZING_VIEWS",
+      icon: "building" as IconName,
+      displayName: "Apartments",
+      technicalName: "APARTMENTS",
       activated: false
     },
     {
-      icon: "exclamation",
-      displayName: "OMG!",
-      technicalName: "OMG",
+      icon: "square" as IconName,
+      displayName: "Studios",
+      technicalName: "STUDIOS",
       activated: false
     },
     {
-      icon: "tree",
-      displayName: "Treehouses",
-      technicalName: "TREEHOUSES",
+      icon: "bed" as IconName,
+      displayName: "Bedsitters",
+      technicalName: "BEDSITTERS",
       activated: false
     },
     {
-      icon: "umbrella-beach",
-      displayName: "Beach",
-      technicalName: "BEACH",
+      icon: "home" as IconName,
+      displayName: "Farmhouses",
+      technicalName: "FARMHOUSES",
       activated: false
     },
     {
-      icon: "tractor",
-      displayName: "Farms",
-      technicalName: "FARMS",
+      icon: "hotel" as IconName,
+      displayName: "Hostels",
+      technicalName: "HOSTELS",
       activated: false
     },
     {
-      icon: "house",
-      displayName: "Tiny homes",
-      technicalName: "TINY_HOMES",
+      icon: "house-user" as IconName,
+      displayName: "Mansionettes",
+      technicalName: "MANSIONETTES",
       activated: false
     },
     {
-      icon: "water",
-      displayName: "Lake",
-      technicalName: "LAKE",
+      icon: "city" as IconName,
+      displayName: "Townhouses",
+      technicalName: "TOWNHOUSES",
       activated: false
     },
     {
-      icon: "box",
-      displayName: "Containers",
-      technicalName: "CONTAINERS",
+      icon: "building" as IconName,
+      displayName: "Duplexes",
+      technicalName: "DUPLEXES",
       activated: false
     },
     {
-      icon: "tent",
-      displayName: "Camping",
-      technicalName: "CAMPING",
+      icon: "home" as IconName,
+      displayName: "Villas",
+      technicalName: "VILLAS",
       activated: false
     },
     {
-      icon: "chess-rook",
-      displayName: "Castle",
-      technicalName: "CASTLE",
+      icon: "house" as IconName,
+      displayName: "Bungalows",
+      technicalName: "BUNGALOWS",
       activated: false
     },
     {
-      icon: "person-skiing",
-      displayName: "Skiing",
-      technicalName: "SKIING",
+      icon: "warehouse" as IconName,
+      displayName: "Lofts",
+      technicalName: "LOFTS",
       activated: false
     },
     {
-      icon: "fire",
-      displayName: "Campers",
-      technicalName: "CAMPERS",
+      icon: "building" as IconName,
+      displayName: "Penthouses",
+      technicalName: "PENTHOUSES",
       activated: false
     },
     {
-      icon: "snowflake",
-      displayName: "Artic",
-      technicalName: "ARTIC",
+      icon: "building" as IconName,
+      displayName: "Condos",
+      technicalName: "CONDOS",
       activated: false
     },
     {
-      icon: "sailboat",
-      displayName: "Boat",
-      technicalName: "BOAT",
+      icon: "users" as IconName,
+      displayName: "Shared Housing",
+      technicalName: "SHARED_HOUSING",
       activated: false
     },
     {
-      icon: "mug-saucer",
-      displayName: "Bed & breakfasts",
-      technicalName: "BED_AND_BREAKFASTS",
+      icon: "home" as IconName,
+      displayName: "Executive Homes",
+      technicalName: "EXECUTIVE_HOMES",
       activated: false
     },
     {
-      icon: "lightbulb",
-      displayName: "Rooms",
-      technicalName: "ROOMS",
+      icon: "house" as IconName,
+      displayName: "Single Family Homes",
+      technicalName: "SINGLE_FAMILY_HOMES",
       activated: false
     },
     {
-      icon: "earth-europe",
-      displayName: "Earth homes",
-      technicalName: "EARTH_HOMES",
+      icon: "people-roof" as IconName,
+      displayName: "Co-Housing",
+      technicalName: "CO-HOUSING",
       activated: false
     },
     {
-      icon: "tower-observation",
-      displayName: "Tower",
-      technicalName: "TOWER",
+      icon: "hospital-user" as IconName,
+      displayName: "Retirement Communities",
+      technicalName: "RETIREMENT_COMMUNITIES",
       activated: false
     },
     {
-      icon: "hill-rockslide",
-      displayName: "Caves",
-      technicalName: "CAVES",
-      activated: false
-    },
-    {
-      icon: "champagne-glasses",
-      displayName: "Luxes",
-      technicalName: "LUXES",
-      activated: false
-    },
-    {
-      icon: "kitchen-set",
-      displayName: "Chef's kitchen",
-      technicalName: "CHEFS_KITCHEN",
+      icon: "house" as IconName,
+      displayName: "Modular Homes",
+      technicalName: "MODULAR_HOMES",
       activated: false
     },
   ];

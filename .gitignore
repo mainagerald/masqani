@@ -10,6 +10,7 @@ client/idea/
 client/*.js
 client/*.map
 client/*.angular/
+client/.env
 
 masqani/.idea/
 masqani/HELP.md
@@ -21,3 +22,4 @@ masqani/.idea
 masqani/*.iws
 masqani/*.iml
 masqani/*.ipr
+masqani/.env

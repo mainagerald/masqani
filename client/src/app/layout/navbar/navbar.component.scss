@@ -25,3 +25,16 @@
 .search {
   width: 380px;
 }
+
+.my-button {
+  background-color: #d0f7ea;
+  // color: #fff;
+  border: none; 
+  padding: 0.5rem 1rem;
+  border-radius: 1rem; 
+  font-size: 1rem;
+}
+
+.my-button:hover {
+  background-color: #72b39f;
+}
