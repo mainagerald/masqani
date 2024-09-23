@@ -1,0 +1,322 @@
+[
+  {
+    "name": {
+      "common": "Nairobi",
+      "official": "Nairobi City County",
+      "native": {
+        "swa": {
+          "official": "Kaunti ya Jiji la Nairobi",
+          "common": "Nairobi"
+        },
+        "eng": {
+          "official": "Nairobi City County",
+          "common": "Nairobi"
+        }
+      }
+    },
+    "tld": [".ke"],
+    "cca2": "KE",
+    "ccn3": "404",
+    "code": "047",
+    "cioc": "KEN",
+    "status": "officially-assigned",
+    "currencies": {
+      "KES": {
+        "name": "Kenyan shilling",
+        "symbol": "Ksh"
+      }
+    },
+    "idd": {
+      "root": "+2",
+      "suffixes": ["54"]
+    },
+    "capital": ["Nairobi City"],
+    "altSpellings": ["Nairobi County", "Nairobi City County"],
+    "region": "Africa",
+    "subregion": "Eastern Africa",
+    "languages": {
+      "eng": "English",
+      "swa": "Swahili"
+    },
+    "translations": {
+      "fra": {
+        "official": "Comté de Nairobi",
+        "common": "Nairobi"
+      },
+      "swa": {
+        "official": "Kaunti ya Jiji la Nairobi",
+        "common": "Nairobi"
+      }
+    },
+    "latlng": [-1.2833, 36.8167],
+    "demonyms": {
+      "eng": {
+        "f": "Nairobian",
+        "m": "Nairobian"
+      },
+      "swa": {
+        "f": "Mnairobi",
+        "m": "Mnairobi"
+      }
+    },
+    "borders": ["022", "023", "024", "028"],
+    "area": 696,
+    "flag": "🇰🇪"
+  },
+  {
+    "name": {
+      "common": "Mombasa",
+      "official": "Mombasa County",
+      "native": {
+        "swa": {
+          "official": "Kaunti ya Mombasa",
+          "common": "Mombasa"
+        },
+        "eng": {
+          "official": "Mombasa County",
+          "common": "Mombasa"
+        }
+      }
+    },
+    "tld": [".ke"],
+    "cca2": "KE",
+    "ccn3": "404",
+    "code": "001",
+    "cioc": "KEN",
+    "status": "officially-assigned",
+    "currencies": {
+      "KES": {
+        "name": "Kenyan shilling",
+        "symbol": "Ksh"
+      }
+    },
+    "idd": {
+      "root": "+2",
+      "suffixes": ["54"]
+    },
+    "capital": ["Mombasa City"],
+    "altSpellings": ["Mombasa County"],
+    "region": "Africa",
+    "subregion": "Eastern Africa",
+    "languages": {
+      "eng": "English",
+      "swa": "Swahili"
+    },
+    "translations": {
+      "fra": {
+        "official": "Comté de Mombasa",
+        "common": "Mombasa"
+      },
+      "swa": {
+        "official": "Kaunti ya Mombasa",
+        "common": "Mombasa"
+      }
+    },
+    "latlng": [-4.0500, 39.6667],
+    "demonyms": {
+      "eng": {
+        "f": "Mombasian",
+        "m": "Mombasian"
+      },
+      "swa": {
+        "f": "Mmombasa",
+        "m": "Mmombasa"
+      }
+    },
+    "borders": ["002", "006"],
+    "area": 229.9,
+    "flag": "🇰🇪"
+  },
+  {
+    "name": {
+      "common": "Kisumu",
+      "official": "Kisumu County",
+      "native": {
+        "swa": {
+          "official": "Kaunti ya Kisumu",
+          "common": "Kisumu"
+        },
+        "eng": {
+          "official": "Kisumu County",
+          "common": "Kisumu"
+        }
+      }
+    },
+    "tld": [".ke"],
+    "cca2": "KE",
+    "ccn3": "404",
+    "code": "042",
+    "cioc": "KEN",
+    "status": "officially-assigned",
+    "currencies": {
+      "KES": {
+        "name": "Kenyan shilling",
+        "symbol": "Ksh"
+      }
+    },
+    "idd": {
+      "root": "+2",
+      "suffixes": ["54"]
+    },
+    "capital": ["Kisumu City"],
+    "altSpellings": ["Kisumu County"],
+    "region": "Africa",
+    "subregion": "Eastern Africa",
+    "languages": {
+      "eng": "English",
+      "swa": "Swahili"
+    },
+    "translations": {
+      "fra": {
+        "official": "Comté de Kisumu",
+        "common": "Kisumu"
+      },
+      "swa": {
+        "official": "Kaunti ya Kisumu",
+        "common": "Kisumu"
+      }
+    },
+    "latlng": [-0.1000, 34.7500],
+    "demonyms": {
+      "eng": {
+        "f": "Kisumuan",
+        "m": "Kisumuan"
+      },
+      "swa": {
+        "f": "Mkisumu",
+        "m": "Mkisumu"
+      }
+    },
+    "borders": ["038", "039", "040", "046"],
+    "area": 2085.9,
+    "flag": "🇰🇪"
+  },
+  {
+    "name": {
+      "common": "Nakuru",
+      "official": "Nakuru County",
+      "native": {
+        "swa": {
+          "official": "Kaunti ya Nakuru",
+          "common": "Nakuru"
+        },
+        "eng": {
+          "official": "Nakuru County",
+          "common": "Nakuru"
+        }
+      }
+    },
+    "tld": [".ke"],
+    "cca2": "KE",
+    "ccn3": "404",
+    "code": "032",
+    "cioc": "KEN",
+    "status": "officially-assigned",
+    "currencies": {
+      "KES": {
+        "name": "Kenyan shilling",
+        "symbol": "Ksh"
+      }
+    },
+    "idd": {
+      "root": "+2",
+      "suffixes": ["54"]
+    },
+    "capital": ["Nakuru City"],
+    "altSpellings": ["Nakuru County"],
+    "region": "Africa",
+    "subregion": "Eastern Africa",
+    "languages": {
+      "eng": "English",
+      "swa": "Swahili"
+    },
+    "translations": {
+      "fra": {
+        "official": "Comté de Nakuru",
+        "common": "Nakuru"
+      },
+      "swa": {
+        "official": "Kaunti ya Nakuru",
+        "common": "Nakuru"
+      }
+    },
+    "latlng": [-0.3000, 36.0667],
+    "demonyms": {
+      "eng": {
+        "f": "Nakuruan",
+        "m": "Nakuruan"
+      },
+      "swa": {
+        "f": "Mnakuru",
+        "m": "Mnakuru"
+      }
+    },
+    "borders": ["018", "022", "030", "031", "034", "036"],
+    "area": 7495.1,
+    "flag": "🇰🇪"
+  },
+  {
+    "name": {
+      "common": "Kiambu",
+      "official": "Kiambu County",
+      "native": {
+        "swa": {
+          "official": "Kaunti ya Kiambu",
+          "common": "Kiambu"
+        },
+        "eng": {
+          "official": "Kiambu County",
+          "common": "Kiambu"
+        }
+      }
+    },
+    "tld": [".ke"],
+    "cca2": "KE",
+    "ccn3": "404",
+    "code": "022",
+    "cioc": "KEN",
+    "status": "officially-assigned",
+    "currencies": {
+      "KES": {
+        "name": "Kenyan shilling",
+        "symbol": "Ksh"
+      }
+    },
+    "idd": {
+      "root": "+2",
+      "suffixes": ["54"]
+    },
+    "capital": ["Kiambu"],
+    "altSpellings": ["Kiambu County"],
+    "region": "Africa",
+    "subregion": "Eastern Africa",
+    "languages": {
+      "eng": "English",
+      "swa": "Swahili"
+    },
+    "translations": {
+      "fra": {
+        "official": "Comté de Kiambu",
+        "common": "Kiambu"
+      },
+      "swa": {
+        "official": "Kaunti ya Kiambu",
+        "common": "Kiambu"
+      }
+    },
+    "latlng": [-1.0000, 36.7500],
+    "demonyms": {
+      "eng": {
+        "f": "Kiambuan",
+        "m": "Kiambuan"
+      },
+      "swa": {
+        "f": "Mkiambu",
+        "m": "Mkiambu"
+      }
+    },
+    "borders": ["019", "021", "023", "032", "047"],
+    "area": 2543.5,
+    "flag": "🇰🇪"
+  }
+]

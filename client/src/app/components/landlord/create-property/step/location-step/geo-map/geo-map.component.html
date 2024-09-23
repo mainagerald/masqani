@@ -1,1 +1,19 @@
-<p>geo-map works!</p>
+<div class="my-4 flex justify-content-center align-items-center">
+  <p-autoComplete
+    [styleClass]="'autoComplete-masqani'"
+    [panelStyleClass]="'country-panel'"
+    [ngModel]="currentLocation"
+    (onSelect)="onLocationChangeEvent($event)"
+    [suggestions]="filteredCounties"
+    (completeMethod)="search($event)"
+    [dropdown]="true"
+    [optionLabel]="formatLabel"
+    placeholder="placeholder()"
+  ></p-autoComplete>
+</div>
+<div
+  leaflet
+  [leafletOptions]="options"
+  [leafletLayersControl]="layersControl"
+  (leafletMapReady)="onMapReady($event)"
+></div>
