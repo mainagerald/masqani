@@ -122,13 +122,7 @@ export class CategoryService {
       displayName: "Retirement Communities",
       technicalName: "RETIREMENT_COMMUNITIES",
       activated: false
-    },
-    {
-      icon: "house" as IconName,
-      displayName: "Modular Homes",
-      technicalName: "MODULAR_HOMES",
-      activated: false
-    },
+    }
   ];
 
   private changeCategory$ = new BehaviorSubject<Category>(this.getCategoryByDefault());

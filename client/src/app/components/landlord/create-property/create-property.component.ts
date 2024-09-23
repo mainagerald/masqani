@@ -9,11 +9,14 @@ import { NewListingPictures } from '../model/listing-picture.model';
 import { LandlordListingService } from '../landlord-listing.service';
 import { State } from '../../../core/model/state.model';
 import { Category, CategoryName } from '../../../layout/navbar/category/category.model';
+import { FooterStepComponent } from "../../../shared/footer-step/footer-step.component";
+import { CategoryComponent } from '../../../layout/navbar/category/category.component';
+import { CategoryStepComponent } from './step/category-step/category-step.component';
 
 @Component({
   selector: 'app-create-property',
   standalone: true,
-  imports: [],
+  imports: [CategoryComponent, FooterStepComponent, CategoryStepComponent],
   templateUrl: './create-property.component.html',
   styleUrl: './create-property.component.scss',
 })

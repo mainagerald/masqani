@@ -19,8 +19,7 @@ export type CategoryName =
   | 'EXECUTIVE_HOMES'
   | 'SINGLE_FAMILY_HOMES'
   | 'CO-HOUSING'
-  | 'RETIREMENT_COMMUNITIES'
-  | 'MODULAR_HOMES';
+  | 'RETIREMENT_COMMUNITIES';
 
 export interface Category {
   icon: IconName;
