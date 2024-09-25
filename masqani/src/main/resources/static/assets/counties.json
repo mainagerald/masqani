@@ -32,8 +32,8 @@
     },
     "capital": ["Nairobi City"],
     "altSpellings": ["Nairobi County", "Nairobi City County"],
-    "region": "Africa",
-    "subregion": "Eastern Africa",
+    "region": "Central Kenya",
+    "subregion": "Nairobi",
     "languages": {
       "eng": "English",
       "swa": "Swahili"
@@ -96,8 +96,8 @@
     },
     "capital": ["Mombasa City"],
     "altSpellings": ["Mombasa County"],
-    "region": "Africa",
-    "subregion": "Eastern Africa",
+    "region": "Coastal Kenya",
+    "subregion": "Mombasa",
     "languages": {
       "eng": "English",
       "swa": "Swahili"
@@ -160,8 +160,8 @@
     },
     "capital": ["Kisumu City"],
     "altSpellings": ["Kisumu County"],
-    "region": "Africa",
-    "subregion": "Eastern Africa",
+    "region": "Lakeside Kenya",
+    "subregion": "Kisumu",
     "languages": {
       "eng": "English",
       "swa": "Swahili"
@@ -224,8 +224,8 @@
     },
     "capital": ["Nakuru City"],
     "altSpellings": ["Nakuru County"],
-    "region": "Africa",
-    "subregion": "Eastern Africa",
+    "region": "Rift Valley Kenya",
+    "subregion": "Nakuru",
     "languages": {
       "eng": "English",
       "swa": "Swahili"
@@ -288,8 +288,8 @@
     },
     "capital": ["Kiambu"],
     "altSpellings": ["Kiambu County"],
-    "region": "Africa",
-    "subregion": "Eastern Africa",
+    "region": "Central Kenya",
+    "subregion": "Kiambu",
     "languages": {
       "eng": "English",
       "swa": "Swahili"
@@ -317,6 +317,2630 @@
     },
     "borders": ["019", "021", "023", "032", "047"],
     "area": 2543.5,
+    "flag": "🇰🇪"
+  },
+  {
+    "name": {
+      "common": "Uasin Gishu",
+      "official": "Uasin Gishu County",
+      "native": {
+        "swa": {
+          "official": "Kaunti ya Uasin Gishu",
+          "common": "Uasin Gishu"
+        },
+        "eng": {
+          "official": "Uasin Gishu County",
+          "common": "Uasin Gishu"
+        }
+      }
+    },
+    "tld": [".ke"],
+    "cca2": "KE",
+    "ccn3": "404",
+    "code": "027",
+    "cioc": "KEN",
+    "status": "officially-assigned",
+    "currencies": {
+      "KES": {
+        "name": "Kenyan shilling",
+        "symbol": "Ksh"
+      }
+    },
+    "idd": {
+      "root": "+2",
+      "suffixes": ["54"]
+    },
+    "capital": ["Eldoret"],
+    "altSpellings": ["Uasin Gishu County"],
+    "region": "Rift Valley",
+    "subregion": "North Rift",
+    "languages": {
+      "eng": "English",
+      "swa": "Swahili"
+    },
+    "translations": {
+      "fra": {
+        "official": "Comté d'Uasin Gishu",
+        "common": "Uasin Gishu"
+      },
+      "swa": {
+        "official": "Kaunti ya Uasin Gishu",
+        "common": "Uasin Gishu"
+      }
+    },
+    "latlng": [0.5167, 35.2833],
+    "demonyms": {
+      "eng": {
+        "f": "Uasin Gishuan",
+        "m": "Uasin Gishuan"
+      },
+      "swa": {
+        "f": "Mwenyeji wa Uasin Gishu",
+        "m": "Mwenyeji wa Uasin Gishu"
+      }
+    },
+    "borders": ["037", "028", "020", "031", "026"],
+    "area": 3345,
+    "flag": "🇰🇪"
+  },
+  {
+    "name": {
+      "common": "Nyeri",
+      "official": "Nyeri County",
+      "native": {
+        "swa": {
+          "official": "Kaunti ya Nyeri",
+          "common": "Nyeri"
+        },
+        "eng": {
+          "official": "Nyeri County",
+          "common": "Nyeri"
+        }
+      }
+    },
+    "tld": [".ke"],
+    "cca2": "KE",
+    "ccn3": "404",
+    "code": "019",
+    "cioc": "KEN",
+    "status": "officially-assigned",
+    "currencies": {
+      "KES": {
+        "name": "Kenyan shilling",
+        "symbol": "Ksh"
+      }
+    },
+    "idd": {
+      "root": "+2",
+      "suffixes": ["54"]
+    },
+    "capital": ["Nyeri"],
+    "altSpellings": ["Nyeri County"],
+    "region": "Central Kenya",
+    "subregion": "Mount Kenya",
+    "languages": {
+      "eng": "English",
+      "swa": "Swahili"
+    },
+    "translations": {
+      "fra": {
+        "official": "Comté de Nyeri",
+        "common": "Nyeri"
+      },
+      "swa": {
+        "official": "Kaunti ya Nyeri",
+        "common": "Nyeri"
+      }
+    },
+    "latlng": [-0.4167, 36.9500],
+    "demonyms": {
+      "eng": {
+        "f": "Nyerian",
+        "m": "Nyerian"
+      },
+      "swa": {
+        "f": "Mnyeri",
+        "m": "Mnyeri"
+      }
+    },
+    "borders": ["012", "020", "018", "022", "010"],
+    "area": 3337,
+    "flag": "🇰🇪"
+  },
+  {
+    "name": {
+      "common": "Murang'a",
+      "official": "Murang'a County",
+      "native": {
+        "swa": {
+          "official": "Kaunti ya Murang'a",
+          "common": "Murang'a"
+        },
+        "eng": {
+          "official": "Murang'a County",
+          "common": "Murang'a"
+        }
+      }
+    },
+    "tld": [".ke"],
+    "cca2": "KE",
+    "ccn3": "404",
+    "code": "021",
+    "cioc": "KEN",
+    "status": "officially-assigned",
+    "currencies": {
+      "KES": {
+        "name": "Kenyan shilling",
+        "symbol": "Ksh"
+      }
+    },
+    "idd": {
+      "root": "+2",
+      "suffixes": ["54"]
+    },
+    "capital": ["Murang'a"],
+    "altSpellings": ["Murang'a County"],
+    "region": "Central Kenya",
+    "subregion": "Mount Kenya",
+    "languages": {
+      "eng": "English",
+      "swa": "Swahili"
+    },
+    "translations": {
+      "fra": {
+        "official": "Comté de Murang'a",
+        "common": "Murang'a"
+      },
+      "swa": {
+        "official": "Kaunti ya Murang'a",
+        "common": "Murang'a"
+      }
+    },
+    "latlng": [-0.7167, 37.1500],
+    "demonyms": {
+      "eng": {
+        "f": "Murang'an",
+        "m": "Murang'an"
+      },
+      "swa": {
+        "f": "Mmurang'a",
+        "m": "Mmurang'a"
+      }
+    },
+    "borders": ["022", "010", "018", "011"],
+    "area": 2558,
+    "flag": "🇰🇪"
+  },
+  {
+    "name": {
+      "common": "Machakos",
+      "official": "Machakos County",
+      "native": {
+        "swa": {
+          "official": "Kaunti ya Machakos",
+          "common": "Machakos"
+        },
+        "eng": {
+          "official": "Machakos County",
+          "common": "Machakos"
+        }
+      }
+    },
+    "tld": [".ke"],
+    "cca2": "KE",
+    "ccn3": "404",
+    "code": "016",
+    "cioc": "KEN",
+    "status": "officially-assigned",
+    "currencies": {
+      "KES": {
+        "name": "Kenyan shilling",
+        "symbol": "Ksh"
+      }
+    },
+    "idd": {
+      "root": "+2",
+      "suffixes": ["54"]
+    },
+    "capital": ["Machakos"],
+    "altSpellings": ["Machakos County"],
+    "region": "Eastern Kenya",
+    "subregion": "Lower Eastern",
+    "languages": {
+      "eng": "English",
+      "swa": "Swahili"
+    },
+    "translations": {
+      "fra": {
+        "official": "Comté de Machakos",
+        "common": "Machakos"
+      },
+      "swa": {
+        "official": "Kaunti ya Machakos",
+        "common": "Machakos"
+      }
+    },
+    "latlng": [-1.5167, 37.2667],
+    "demonyms": {
+      "eng": {
+        "f": "Machakosian",
+        "m": "Machakosian"
+      },
+      "swa": {
+        "f": "Mmachakos",
+        "m": "Mmachakos"
+      }
+    },
+    "borders": ["047", "022", "034", "017", "015", "035"],
+    "area": 6208,
+    "flag": "🇰🇪"
+  },
+  {
+    "name": {
+      "common": "Kwale",
+      "official": "Kwale County",
+      "native": {
+        "swa": {
+          "official": "Kaunti ya Kwale",
+          "common": "Kwale"
+        },
+        "eng": {
+          "official": "Kwale County",
+          "common": "Kwale"
+        }
+      }
+    },
+    "tld": [".ke"],
+    "cca2": "KE",
+    "ccn3": "404",
+    "code": "002",
+    "cioc": "KEN",
+    "status": "officially-assigned",
+    "currencies": {
+      "KES": {
+        "name": "Kenyan shilling",
+        "symbol": "Ksh"
+      }
+    },
+    "idd": {
+      "root": "+2",
+      "suffixes": ["54"]
+    },
+    "capital": ["Kwale"],
+    "altSpellings": ["Kwale County"],
+    "region": "Coast",
+    "subregion": "Coast",
+    "languages": {
+      "eng": "English",
+      "swa": "Swahili"
+    },
+    "translations": {
+      "fra": {
+        "official": "Comté de Kwale",
+        "common": "Kwale"
+      },
+      "swa": {
+        "official": "Kaunti ya Kwale",
+        "common": "Kwale"
+      }
+    },
+    "latlng": [-4.1833, 39.4500],
+    "demonyms": {
+      "eng": {
+        "f": "Kwalean",
+        "m": "Kwalean"
+      },
+      "swa": {
+        "f": "Mkwale",
+        "m": "Mkwale"
+      }
+    },
+    "borders": ["001", "003"],
+    "area": 8270,
+    "flag": "🇰🇪"
+  },
+  {
+    "name": {
+      "common": "Kilifi",
+      "official": "Kilifi County",
+      "native": {
+        "swa": {
+          "official": "Kaunti ya Kilifi",
+          "common": "Kilifi"
+        },
+        "eng": {
+          "official": "Kilifi County",
+          "common": "Kilifi"
+        }
+      }
+    },
+    "tld": [".ke"],
+    "cca2": "KE",
+    "ccn3": "404",
+    "code": "003",
+    "cioc": "KEN",
+    "status": "officially-assigned",
+    "currencies": {
+      "KES": {
+        "name": "Kenyan shilling",
+        "symbol": "Ksh"
+      }
+    },
+    "idd": {
+      "root": "+2",
+      "suffixes": ["54"]
+    },
+    "capital": ["Kilifi"],
+    "altSpellings": ["Kilifi County"],
+    "region": "Coast",
+    "subregion": "Coast",
+    "languages": {
+      "eng": "English",
+      "swa": "Swahili"
+    },
+    "translations": {
+      "fra": {
+        "official": "Comté de Kilifi",
+        "common": "Kilifi"
+      },
+      "swa": {
+        "official": "Kaunti ya Kilifi",
+        "common": "Kilifi"
+      }
+    },
+    "latlng": [-3.6333, 39.8500],
+    "demonyms": {
+      "eng": {
+        "f": "Kilifian",
+        "m": "Kilifian"
+      },
+      "swa": {
+        "f": "Mkilifi",
+        "m": "Mkilifi"
+      }
+    },
+    "borders": ["002", "004", "006"],
+    "area": 12609,
+    "flag": "🇰🇪"
+  },
+  {
+    "name": {
+      "common": "Tana River",
+      "official": "Tana River County",
+      "native": {
+        "swa": {
+          "official": "Kaunti ya Tana River",
+          "common": "Tana River"
+        },
+        "eng": {
+          "official": "Tana River County",
+          "common": "Tana River"
+        }
+      }
+    },
+    "tld": [".ke"],
+    "cca2": "KE",
+    "ccn3": "404",
+    "code": "004",
+    "cioc": "KEN",
+    "status": "officially-assigned",
+    "currencies": {
+      "KES": {
+        "name": "Kenyan shilling",
+        "symbol": "Ksh"
+      }
+    },
+    "idd": {
+      "root": "+2",
+      "suffixes": ["54"]
+    },
+    "capital": ["Hola"],
+    "altSpellings": ["Tana River County"],
+    "region": "Coast",
+    "subregion": "Coast",
+    "languages": {
+      "eng": "English",
+      "swa": "Swahili"
+    },
+    "translations": {
+      "fra": {
+        "official": "Comté de Tana River",
+        "common": "Tana River"
+      },
+      "swa": {
+        "official": "Kaunti ya Tana River",
+        "common": "Tana River"
+      }
+    },
+    "latlng": [-1.5000, 39.5000],
+    "demonyms": {
+      "eng": {
+        "f": "Tana Riverian",
+        "m": "Tana Riverian"
+      },
+      "swa": {
+        "f": "Mtana River",
+        "m": "Mtana River"
+      }
+    },
+    "borders": ["003", "005", "006", "007", "011"],
+    "area": 38437,
+    "flag": "🇰🇪"
+  },
+  {
+    "name": {
+      "common": "Lamu",
+      "official": "Lamu County",
+      "native": {
+        "swa": {
+          "official": "Kaunti ya Lamu",
+          "common": "Lamu"
+        },
+        "eng": {
+          "official": "Lamu County",
+          "common": "Lamu"
+        }
+      }
+    },
+    "tld": [".ke"],
+    "cca2": "KE",
+    "ccn3": "404",
+    "code": "005",
+    "cioc": "KEN",
+    "status": "officially-assigned",
+    "currencies": {
+      "KES": {
+        "name": "Kenyan shilling",
+        "symbol": "Ksh"
+      }
+    },
+    "idd": {
+      "root": "+2",
+      "suffixes": ["54"]
+    },
+    "capital": ["Lamu"],
+    "altSpellings": ["Lamu County"],
+    "region": "Coast",
+    "subregion": "Coast",
+    "languages": {
+      "eng": "English",
+      "swa": "Swahili"
+    },
+    "translations": {
+      "fra": {
+        "official": "Comté de Lamu",
+        "common": "Lamu"
+      },
+      "swa": {
+        "official": "Kaunti ya Lamu",
+        "common": "Lamu"
+      }
+    },
+    "latlng": [-2.2333, 40.9000],
+    "demonyms": {
+      "eng": {
+        "f": "Lamuan",
+        "m": "Lamuan"
+      },
+      "swa": {
+        "f": "Mlamu",
+        "m": "Mlamu"
+      }
+    },
+    "borders": ["004", "006"],
+    "area": 6273,
+    "flag": "🇰🇪"
+  },
+  {
+    "name": {
+      "common": "Taita-Taveta",
+      "official": "Taita-Taveta County",
+      "native": {
+        "swa": {
+          "official": "Kaunti ya Taita-Taveta",
+          "common": "Taita-Taveta"
+        },
+        "eng": {
+          "official": "Taita-Taveta County",
+          "common": "Taita-Taveta"
+        }
+      }
+    },
+    "tld": [".ke"],
+    "cca2": "KE",
+    "ccn3": "404",
+    "code": "006",
+    "cioc": "KEN",
+    "status": "officially-assigned",
+    "currencies": {
+      "KES": {
+        "name": "Kenyan shilling",
+        "symbol": "Ksh"
+      }
+    },
+    "idd": {
+      "root": "+2",
+      "suffixes": ["54"]
+    },
+    "capital": ["Voi"],
+    "altSpellings": ["Taita-Taveta County"],
+    "region": "Coast",
+    "subregion": "Coast",
+    "languages": {
+      "eng": "English",
+      "swa": "Swahili"
+    },
+    "translations": {
+      "fra": {
+        "official": "Comté de Taita-Taveta",
+        "common": "Taita-Taveta"
+      },
+      "swa": {
+        "official": "Kaunti ya Taita-Taveta",
+        "common": "Taita-Taveta"
+      }
+    },
+    "latlng": [-3.4000, 38.3667],
+    "demonyms": {
+      "eng": {
+        "f": "Taita-Tavetan",
+        "m": "Taita-Tavetan"
+      },
+      "swa": {
+        "f": "Mtaita-Taveta",
+        "m": "Mtaita-Taveta"
+      }
+    },
+    "borders": ["003", "004", "007", "015"],
+    "area": 17083,
+    "flag": "🇰🇪"
+  },
+  {
+    "name": {
+      "common": "Garissa",
+      "official": "Garissa County",
+      "native": {
+        "swa": {
+          "official": "Kaunti ya Garissa",
+          "common": "Garissa"
+        },
+        "eng": {
+          "official": "Garissa County",
+          "common": "Garissa"
+        }
+      }
+    },
+    "tld": [".ke"],
+    "cca2": "KE",
+    "ccn3": "404",
+    "code": "007",
+    "cioc": "KEN",
+    "status": "officially-assigned",
+    "currencies": {
+      "KES": {
+        "name": "Kenyan shilling",
+        "symbol": "Ksh"
+      }
+    },
+    "idd": {
+      "root": "+2",
+      "suffixes": ["54"]
+    },
+    "capital": ["Garissa"],
+    "altSpellings": ["Garissa County"],
+    "region": "North Eastern",
+    "subregion": "North Eastern",
+    "languages": {
+      "eng": "English",
+      "swa": "Swahili"
+    },
+    "translations": {
+      "fra": {
+        "official": "Comté de Garissa",
+        "common": "Garissa"
+      },
+      "swa": {
+        "official": "Kaunti ya Garissa",
+        "common": "Garissa"
+      }
+    },
+    "latlng": [-0.4500, 39.6500],
+    "demonyms": {
+      "eng": {
+        "f": "Garissan",
+        "m": "Garissan"
+      },
+      "swa": {
+        "f": "Mgarissa",
+        "m": "Mgarissa"
+      }
+    },
+    "borders": ["004", "005", "006", "008", "009", "011"],
+    "area": 44175,
+    "flag": "🇰🇪"
+  },
+  {
+    "name": {
+      "common": "Wajir",
+      "official": "Wajir County",
+      "native": {
+        "swa": {
+          "official": "Kaunti ya Wajir",
+          "common": "Wajir"
+        },
+        "eng": {
+          "official": "Wajir County",
+          "common": "Wajir"
+        }
+      }
+    },
+    "tld": [".ke"],
+    "cca2": "KE",
+    "ccn3": "404",
+    "code": "008",
+    "cioc": "KEN",
+    "status": "officially-assigned",
+    "currencies": {
+      "KES": {
+        "name": "Kenyan shilling",
+        "symbol": "Ksh"
+      }
+    },
+    "idd": {
+      "root": "+2",
+      "suffixes": ["54"]
+    },
+    "capital": ["Wajir"],
+    "altSpellings": ["Wajir County"],
+    "region": "North Eastern",
+    "subregion": "North Eastern",
+    "languages": {
+      "eng": "English",
+      "swa": "Swahili"
+    },
+    "translations": {
+      "fra": {
+        "official": "Comté de Wajir",
+        "common": "Wajir"
+      },
+      "swa": {
+        "official": "Kaunti ya Wajir",
+        "common": "Wajir"
+      }
+    },
+    "latlng": [1.7500, 40.0667],
+    "demonyms": {
+      "eng": {
+        "f": "Wajirian",
+        "m": "Wajirian"
+      },
+      "swa": {
+        "f": "Mwajir",
+        "m": "Mwajir"
+      }
+    },
+    "borders": ["007", "009", "010"],
+    "area": 56685,
+    "flag": "🇰🇪"
+  },
+  {
+    "name": {
+      "common": "Mandera",
+      "official": "Mandera County",
+      "native": {
+        "swa": {
+          "official": "Kaunti ya Mandera",
+          "common": "Mandera"
+        },
+        "eng": {
+          "official": "Mandera County",
+          "common": "Mandera"
+        }
+      }
+    },
+    "tld": [".ke"],
+    "cca2": "KE",
+    "ccn3": "042",
+    "code": "027",
+    "cioc": "KEN",
+    "status": "officially-assigned",
+    "currencies": {
+      "KES": {
+        "name": "Kenyan shilling",
+        "symbol": "Ksh"
+      }
+    },
+    "idd": {
+      "root": "+2",
+      "suffixes": ["54"]
+    },
+    "capital": ["Mandera"],
+    "altSpellings": ["Mandera County"],
+    "region": "Northeastern Kenya",
+    "subregion": "",
+    "languages": {
+      "eng": "English",
+      "swa": "Swahili"
+    },
+    "translations": {
+      "fra": {
+        "official": "",
+        "common": ""
+      },
+      "swa": {
+        "official": "",
+        "common": ""
+      }
+    },
+    "latlng": [4.0, 40.0],
+    "demonyms": {
+      "eng": {
+        "f": "",
+        "m": ""
+      },
+      "swa": {
+        "f": "",
+        "m": ""
+      }
+    },
+    "borders": ["043", "", "", ""],
+    "area": 2535,
+    "flag": "🇰🇪"
+  },
+  {
+    "Marsabit": {
+      "common": "Marsabit",
+      "official": "Marsabit County",
+      "native": {
+        "swa": {
+          "official": "Kaunti ya Marsabit",
+          "common": "Marsabit"
+        },
+        "eng": {
+          "official": "Marsabit County",
+          "common": "Marsabit"
+        }
+      }
+    },
+    "tld": [".ke"],
+    "cca2": "KE",
+    "ccn3": "030",
+    "code": "001",
+    "cioc": "KEN",
+    "status": "officially-assigned",
+    "currencies": {
+      "KES": {
+        "name": "Kenyan shilling",
+        "symbol": "Ksh"
+      }
+    },
+    "idd": {
+      "root": "+2",
+      "suffixes": ["54"]
+    },
+    "capital": ["Marsabit"],
+    "altSpellings": ["Marsabit County"],
+    "region": "Northern Kenya",
+    "subregion": "Marsabit",
+    "languages": {
+      "eng": "English",
+      "swa": "Swahili"
+    },
+    "translations": {
+      "fra": {
+        "official": "Comté de Marsabit",
+        "common": "Marsabit"
+      },
+      "swa": {
+        "official": "Kaunti ya Marsabit",
+        "common": "Marsabit"
+      }
+    },
+    "latlng": [2.3375, 37.9783],
+    "demonyms": {
+      "eng": {
+        "f": "Marsabitian",
+        "m": "Marsabitian"
+      },
+      "swa": {
+        "f": "Mmarsabit",
+        "m": "Mmarsabit"
+      }
+    },
+    "borders": ["002", "003", "004"],
+    "area": 65913,
+    "flag": "🇰🇪"
+  },
+  {
+    "Isiolo": {
+      "common": "Isiolo",
+      "official": "Isiolo County",
+      "native": {
+        "swa": {
+          "official": "Kaunti ya Isiolo",
+          "common": "Isiolo"
+        },
+        "eng": {
+          "official": "Isiolo County",
+          "common": "Isiolo"
+        }
+      }
+    },
+    "tld": [".ke"],
+    "cca2": "KE",
+    "ccn3": "042",
+    "code": "002",
+    "cioc": "KEN",
+    "status": "officially-assigned",
+    "currencies": {
+      "KES": {
+        "name": "Kenyan shilling",
+        "symbol": "Ksh"
+      }
+    },
+    "idd": {
+      "root": "+2",
+      "suffixes": ["54"]
+    },
+    "capital": ["Isiolo"],
+    "altSpellings": ["Isiolo County"],
+    "region": "Eastern Kenya",
+    "subregion": "Isiolo",
+    "languages": {
+      "eng": "English",
+      "swa": "Swahili"
+    },
+    "translations": {
+      "fra": {
+        "official": "Comté d'Isiolo",
+        "common": "Isiolo"
+      },
+      "swa": {
+        "official": "Kaunti ya Isiolo",
+        "common": "Isiolo"
+      }
+    },
+    "latlng": [0.3500, 37.5833],
+    "demonyms": {
+      "eng": {
+        "f": "Isiolian",
+        "m": "Isiolian"
+      },
+      "swa": {
+        "f": "Misiolo",
+        "m": "Misiolo"
+      }
+    },
+    "borders": ["003", "004", "005"],
+    "area": 25136,
+    "flag": "🇰🇪"
+  },
+  {
+    "Meru": {
+      "common": "Meru",
+      "official": "Meru County",
+      "native": {
+        "swa": {
+          "official": "Kaunti ya Meru",
+          "common": "Meru"
+        },
+        "eng": {
+          "official": "Meru County",
+          "common": "Meru"
+        }
+      }
+    },
+    "tld": [".ke"],
+    "cca2": "KE",
+    "ccn3": "042",
+    "code": "021",
+    "cioc": "KEN",
+    "status": "officially-assigned",
+    "currencies": {
+      "KES": {
+        "name": "Kenyan shilling",
+        "symbol": "Ksh"
+      }
+    },
+    "idd": {
+      "root": "+2",
+      "suffixes": ["54"]
+    },
+    "capital": ["Meru"],
+    "altSpellings": ["Meru County"],
+    "region": "Eastern Kenya",
+    "subregion": "Meru",
+    "languages": {
+      "eng": "English",
+      "swa": "Swahili"
+    },
+    "translations": {
+      "fra": {
+        "official": "Comté de Meru",
+        "common": "Meru"
+      },
+      "swa": {
+        "official": "Kaunti ya Meru",
+        "common": "Meru"
+      }
+    },
+    "latlng": [-0.0474, 37.6409],
+    "demonyms": {
+      "eng": {
+        "f": "Meruan",
+        "m": "Meruan"
+      },
+      "swa": {
+        "f": "Mmeru",
+        "m": "Mmeru"
+      }
+    },
+    "borders": ["040", "041", "042"],
+    "area": 6957,
+    "flag": "🇰🇪"
+  },
+  {
+    "Tharaka-Nithi": {
+      "common": "Tharaka-Nithi",
+      "official": "Tharaka-Nithi County",
+      "native": {
+        "swa": {
+          "official": "Kaunti ya Tharaka-Nithi",
+          "common": "Tharaka-Nithi"
+        },
+        "eng": {
+          "official": "Tharaka-Nithi County",
+          "common": "Tharaka-Nithi"
+        }
+      }
+    },
+    "tld": [".ke"],
+    "cca2": "KE",
+    "ccn3": "043",
+    "code": "031",
+    "cioc": "KEN",
+    "status": "officially-assigned",
+    "currencies": {
+      "KES": {
+        "name": "Kenyan shilling",
+        "symbol": "Ksh"
+      }
+    },
+    "idd": {
+      "root": "+2",
+      "suffixes": ["54"]
+    },
+    "capital": ["Chuka"],
+    "altSpellings": ["Tharaka-Nithi County"],
+    "region": "Eastern Kenya",
+    "subregion": "Tharaka-Nithi",
+    "languages": {
+      "eng": "English",
+      "swa": "Swahili"
+    },
+    "translations": {
+      "fra": {
+        "official": "Comté de Tharaka-Nithi",
+        "common": "Tharaka-Nithi"
+      },
+      "swa": {
+        "official": "Kaunti ya Tharaka-Nithi",
+        "common": "Tharaka-Nithi"
+      }
+    },
+    "latlng": [-0.3333, 37.5833],
+    "demonyms": {
+      "eng": {
+        "f": "Tharaka-Nithian",
+        "m": "Tharaka-Nithian"
+      },
+      "swa": {
+        "f": "Mtharaka-Nithi",
+        "m": "Mtharaka-Nithi"
+      }
+    },
+    "borders": ["042", "043", "044"],
+    "area": 2600,
+    "flag": "🇰🇪"
+  },
+  {
+    "Embu": {
+      "common": "Embu",
+      "official": "Embu County",
+      "native": {
+        "swa": {
+          "official": "Kaunti ya Embu",
+          "common": "Embu"
+        },
+        "eng": {
+          "official": "Embu County",
+          "common": "Embu"
+        }
+      }
+    },
+    "tld": [".ke"],
+    "cca2": "KE",
+    "ccn3": "044",
+    "code": "027",
+    "cioc": "KEN",
+    "status": "officially-assigned",
+    "currencies": {
+      "KES": {
+        "name": "Kenyan shilling",
+        "symbol": "Ksh"
+      }
+    },
+    "idd": {
+      "root": "+2",
+      "suffixes": ["54"]
+    },
+    "capital": ["Embu"],
+    "altSpellings": ["Embu County"],
+    "region": "Central Kenya",
+    "subregion": "Embu",
+    "languages": {
+      "eng": "English",
+      "swa": "Swahili"
+    },
+    "translations": {
+      "fra": {
+        "official": "Comté d'Embu",
+        "common": "Embu"
+      },
+      "swa": {
+        "official": "Kaunti ya Embu",
+        "common": "Embu"
+      }
+    },
+    "latlng": [-0.4167, 37.4500],
+    "demonyms": {
+      "eng": {
+        "f": "Embuian",
+        "m": "Embuian"
+      },
+      "swa": {
+        "f": "Membu",
+        "m": "Membu"
+      }
+    },
+    "borders": ["040", "041", "042"],
+    "area": 2985,
+    "flag": "🇰🇪"
+  },
+  {
+    "name": {
+      "common": "Kitui",
+      "official": "Kitui County",
+      "native": {
+        "swa": {
+          "official": "Kaunti ya Kitui",
+          "common": "Kitui"
+        },
+        "eng": {
+          "official": "Kitui County",
+          "common": "Kitui"
+        }
+      }
+    },
+    "tld": [".ke"],
+    "cca2": "KE",
+    "ccn3": "041",
+    "code": "024",
+    "cioc": "KEN",
+    "status": "officially-assigned",
+    "currencies": {
+      "KES": {
+        "name": "Kenyan shilling",
+        "symbol": "Ksh"
+      }
+    },
+    "idd": {
+      "root": "+2",
+      "suffixes": ["54"]
+    },
+    "capital": ["Kitui"],
+    "altSpellings": ["Kitui County"],
+    "region": "Eastern Kenya",
+    "subregion": "Kitui",
+    "languages": {
+      "eng": "English",
+      "swa": "Swahili"
+    },
+    "translations": {
+      "fra": {
+        "official": "Comté de Kitui",
+        "common": "Kitui"
+      },
+      "swa": {
+        "official": "Kaunti ya Kitui",
+        "common": "Kitui"
+      }
+    },
+    "latlng": [-1.4833, 38.0833],
+    "demonyms": {
+      "eng": {
+        "f": "Kituiian",
+        "m": "Kituiian"
+      },
+      "swa": {
+        "f": "Mkitui",
+        "m": "Mkitui"
+      }
+    },
+    "borders": ["040", "041", "042"],
+    "area": 24088,
+    "flag": "🇰🇪"
+  },
+  {
+    "name": {
+      "common": "Makueni",
+      "official": "Makueni County",
+      "native": {
+        "swa": {
+          "official": "Kaunti ya Makueni",
+          "common": "Makueni"
+        },
+        "eng": {
+          "official": "Makueni County",
+          "common": "Makueni"
+        }
+      }
+    },
+    "tld": [".ke"],
+    "cca2": "KE",
+    "ccn3": "046",
+    "code": "026",
+    "cioc": "KEN",
+    "status": "officially-assigned",
+    "currencies": {
+      "KES": {
+        "name": "Kenyan shilling",
+        "symbol": "Ksh"
+      }
+    },
+    "idd": {
+      "root": "+2",
+      "suffixes": ["54"]
+    },
+    "capital": ["Wote"],
+    "altSpellings": ["Makueni County"],
+    "region": "Eastern Kenya",
+    "subregion": "Makueni",
+    "languages": {
+      "eng": "English",
+      "swa": "Swahili"
+    },
+    "translations": {
+      "fra": {
+        "official": "Comté de Makueni",
+        "common": "Makueni"
+      },
+      "swa": {
+        "official": "Kaunti ya Makueni",
+        "common": "Makueni"
+      }
+    },
+    "latlng": [-1.8833, 37.6500],
+    "demonyms": {
+      "eng": {
+        "f": "Makueniian",
+        "m": "Makueniian"
+      },
+      "swa": {
+        "f": "Mmakueni",
+        "m": "Mmakueni"
+      }
+    },
+    "borders": ["040", "041", "042"],
+    "area": 8290,
+    "flag": "🇰🇪"
+  },
+  {
+    "name": {
+      "common": "Nyandarua",
+      "official": "Nyandarua County",
+      "native": {
+        "swa": {
+          "official": "Kaunti ya Nyandarua",
+          "common": "Nyandarua"
+        },
+        "eng": {
+          "official": "Nyandarua County",
+          "common": "Nyandarua"
+        }
+      }
+    },
+    "tld": [".ke"],
+    "cca2": "KE",
+    "ccn3": "404",
+    "code": "018",
+    "cioc": "KEN",
+    "status": "officially-assigned",
+    "currencies": {
+      "KES": {
+        "name": "Kenyan shilling",
+        "symbol": "Ksh"
+      }
+    },
+    "idd": {
+      "root": "+2",
+      "suffixes": ["54"]
+    },
+    "capital": ["Ol Kalou"],
+    "altSpellings": ["Nyandarua County"],
+    "region": "Central",
+    "subregion": "Central",
+    "languages": {
+      "eng": "English",
+      "swa": "Swahili"
+    },
+    "translations": {
+      "fra": {
+        "official": "Comté de Nyandarua",
+        "common": "Nyandarua"
+      },
+      "swa": {
+        "official": "Kaunti ya Nyandarua",
+        "common": "Nyandarua"
+      }
+    },
+    "latlng": [-0.1833, 36.3667],
+    "demonyms": {
+      "eng": {
+        "f": "Nyandaruan",
+        "m": "Nyandaruan"
+      },
+      "swa": {
+        "f": "Mnyandarua",
+        "m": "Mnyandarua"
+      }
+    },
+    "borders": ["019", "022", "036", "030"],
+    "area": 3245,
+    "flag": "🇰🇪"
+  },
+  {
+    "name": {
+      "common": "Turkana",
+      "official": "Turkana County",
+      "native": {
+        "swa": {
+          "official": "Kaunti ya Turkana",
+          "common": "Turkana"
+        },
+        "eng": {
+          "official": "Turkana County",
+          "common": "Turkana"
+        }
+      }
+    },
+    "tld": [".ke"],
+    "cca2": "KE",
+    "ccn3": "404",
+    "code": "023",
+    "cioc": "KEN",
+    "status": "officially-assigned",
+    "currencies": {
+      "KES": {
+        "name": "Kenyan shilling",
+        "symbol": "Ksh"
+      }
+    },
+    "idd": {
+      "root": "+2",
+      "suffixes": ["54"]
+    },
+    "capital": ["Lodwar"],
+    "altSpellings": ["Turkana County"],
+    "region": "Rift Valley",
+    "subregion": "North Rift",
+    "languages": {
+      "eng": "English",
+      "swa": "Swahili"
+    },
+    "translations": {
+      "fra": {
+        "official": "Comté de Turkana",
+        "common": "Turkana"
+      },
+      "swa": {
+        "official": "Kaunti ya Turkana",
+        "common": "Turkana"
+      }
+    },
+    "latlng": [3.1167, 35.6000],
+    "demonyms": {
+      "eng": {
+        "f": "Turkanan",
+        "m": "Turkanan"
+      },
+      "swa": {
+        "f": "Mturkana",
+        "m": "Mturkana"
+      }
+    },
+    "borders": ["024", "025", "028", "013"],
+    "area": 68680,
+    "flag": "🇰🇪"
+  },
+  {
+    "name": {
+      "common": "West Pokot",
+      "official": "West Pokot County",
+      "native": {
+        "swa": {
+          "official": "Kaunti ya West Pokot",
+          "common": "West Pokot"
+        },
+        "eng": {
+          "official": "West Pokot County",
+          "common": "West Pokot"
+        }
+      }
+    },
+    "tld": [".ke"],
+    "cca2": "KE",
+    "ccn3": "404",
+    "code": "024",
+    "cioc": "KEN",
+    "status": "officially-assigned",
+    "currencies": {
+      "KES": {
+        "name": "Kenyan shilling",
+        "symbol": "Ksh"
+      }
+    },
+    "idd": {
+      "root": "+2",
+      "suffixes": ["54"]
+    },
+    "capital": ["Kapenguria"],
+    "altSpellings": ["West Pokot County"],
+    "region": "Rift Valley",
+    "subregion": "North Rift",
+    "languages": {
+      "eng": "English",
+      "swa": "Swahili"
+    },
+    "translations": {
+      "fra": {
+        "official": "Comté de West Pokot",
+        "common": "West Pokot"
+      },
+      "swa": {
+        "official": "Kaunti ya West Pokot",
+        "common": "West Pokot"
+      }
+    },
+    "latlng": [1.7333, 35.1167],
+    "demonyms": {
+      "eng": {
+        "f": "West Pokotian",
+        "m": "West Pokotian"
+      },
+      "swa": {
+        "f": "Mwesti Pokot",
+        "m": "Mwesti Pokot"
+      }
+    },
+    "borders": ["023", "025", "026", "028"],
+    "area": 9169,
+    "flag": "🇰🇪"
+  },
+  {
+    "name": {
+      "common": "Samburu",
+      "official": "Samburu County",
+      "native": {
+        "swa": {
+          "official": "Kaunti ya Samburu",
+          "common": "Samburu"
+        },
+        "eng": {
+          "official": "Samburu County",
+          "common": "Samburu"
+        }
+      }
+    },
+    "tld": [".ke"],
+    "cca2": "KE",
+    "ccn3": "404",
+    "code": "025",
+    "cioc": "KEN",
+    "status": "officially-assigned",
+    "currencies": {
+      "KES": {
+        "name": "Kenyan shilling",
+        "symbol": "Ksh"
+      }
+    },
+    "idd": {
+      "root": "+2",
+      "suffixes": ["54"]
+    },
+    "capital": ["Maralal"],
+    "altSpellings": ["Samburu County"],
+    "region": "Rift Valley",
+    "subregion": "North Rift",
+    "languages": {
+      "eng": "English",
+      "swa": "Swahili"
+    },
+    "translations": {
+      "fra": {
+        "official": "Comté de Samburu",
+        "common": "Samburu"
+      },
+      "swa": {
+        "official": "Kaunti ya Samburu",
+        "common": "Samburu"
+      }
+    },
+    "latlng": [1.2167, 37.2667],
+    "demonyms": {
+      "eng": {
+        "f": "Samburian",
+        "m": "Samburian"
+      },
+      "swa": {
+        "f": "Msamburu",
+        "m": "Msamburu"
+      }
+    },
+    "borders": ["023", "024", "026", "028", "013", "014"],
+    "area": 21022,
+    "flag": "🇰🇪"
+  },
+  {
+    "name": {
+      "common": "Trans Nzoia",
+      "official": "Trans Nzoia County",
+      "native": {
+        "swa": {
+          "official": "Kaunti ya Trans Nzoia",
+          "common": "Trans Nzoia"
+        },
+        "eng": {
+          "official": "Trans Nzoia County",
+          "common": "Trans Nzoia"
+        }
+      }
+    },
+    "tld": [".ke"],
+    "cca2": "KE",
+    "ccn3": "404",
+    "code": "026",
+    "cioc": "KEN",
+    "status": "officially-assigned",
+    "currencies": {
+      "KES": {
+        "name": "Kenyan shilling",
+        "symbol": "Ksh"
+      }
+    },
+    "idd": {
+      "root": "+2",
+      "suffixes": ["54"]
+    },
+    "capital": ["Kitale"],
+    "altSpellings": ["Trans Nzoia County"],
+    "region": "Rift Valley",
+    "subregion": "North Rift",
+    "languages": {
+      "eng": "English",
+      "swa": "Swahili"
+    },
+    "translations": {
+      "fra": {
+        "official": "Comté de Trans Nzoia",
+        "common": "Trans Nzoia"
+      },
+      "swa": {
+        "official": "Kaunti ya Trans Nzoia",
+        "common": "Trans Nzoia"
+      }
+    },
+    "latlng": [1.0167, 34.9500],
+    "demonyms": {
+      "eng": {
+        "f": "Trans Nzoian",
+        "m": "Trans Nzoian"
+      },
+      "swa": {
+        "f": "Mtrans Nzoia",
+        "m": "Mtrans Nzoia"
+      }
+    },
+    "borders": ["024", "027", "028", "037"],
+    "area": 2495,
+    "flag": "🇰🇪"
+  },
+  {
+    "name": {
+      "common": "Elgeyo Marakwet",
+      "official": "Elgeyo Marakwet County",
+      "native": {
+        "swa": {
+          "official": "Kaunti ya Elgeyo Marakwet",
+          "common": "Elgeyo Marakwet"
+        },
+        "eng": {
+          "official": "Elgeyo Marakwet County",
+          "common": "Elgeyo Marakwet"
+        }
+      }
+    },
+    "tld": [".ke"],
+    "cca2": "KE",
+    "ccn3": "404",
+    "code": "028",
+    "cioc": "KEN",
+    "status": "officially-assigned",
+    "currencies": {
+      "KES": {
+        "name": "Kenyan shilling",
+        "symbol": "Ksh"
+      }
+    },
+    "idd": {
+      "root": "+2",
+      "suffixes": ["54"]
+    },
+    "capital": ["Iten"],
+    "altSpellings": ["Elgeyo Marakwet County"],
+    "region": "Rift Valley",
+    "subregion": "North Rift",
+    "languages": {
+      "eng": "English",
+      "swa": "Swahili"
+    },
+    "translations": {
+      "fra": {
+        "official": "Comté d'Elgeyo Marakwet",
+        "common": "Elgeyo Marakwet"
+      },
+      "swa": {
+        "official": "Kaunti ya Elgeyo Marakwet",
+        "common": "Elgeyo Marakwet"
+      }
+    },
+    "latlng": [0.8000, 35.5000],
+    "demonyms": {
+      "eng": {
+        "f": "Elgeyo Marakwetian",
+        "m": "Elgeyo Marakwetian"
+      },
+      "swa": {
+        "f": "Melgeyo Marakwet",
+        "m": "Melgeyo Marakwet"
+      }
+    },
+    "borders": ["023", "024", "025", "026", "027", "020"],
+    "area": 3029,
+    "flag": "🇰🇪"
+  },
+  {
+    "name": {
+      "common": "Nandi",
+      "official": "Nandi County",
+      "native": {
+        "swa": {
+          "official": "Kaunti ya Nandi",
+          "common": "Nandi"
+        },
+        "eng": {
+          "official": "Nandi County",
+          "common": "Nandi"
+        }
+      }
+    },
+    "tld": [".ke"],
+    "cca2": "KE",
+    "ccn3": "030",
+    "code": "023",
+    "cioc": "KEN",
+    "status": "officially-assigned",
+    "currencies": {
+      "KES": {
+        "name": "Kenyan shilling",
+        "symbol": "Ksh"
+      }
+    },
+    "idd": {
+      "root": "+2",
+      "suffixes": ["54"]
+    },
+    "capital": ["Kapsabet"],
+    "altSpellings": ["Nandi County"],
+    "region": "Rift Valley",
+    "subregion": "Nandi",
+    "languages": {
+      "eng": "English",
+      "swa": "Swahili"
+    },
+    "translations": {
+      "fra": {
+        "official": "Comté de Nandi",
+        "common": "Nandi"
+      },
+      "swa": {
+        "official": "Kaunti ya Nandi",
+        "common": "Nandi"
+      }
+    },
+    "latlng": [0.1833, 35.0000],
+    "demonyms": {
+      "eng": {
+        "f": "Nandian",
+        "m": "Nandian"
+      },
+      "swa": {
+        "f": "Mnandi",
+        "m": "Mnandi"
+      }
+    },
+    "borders": ["031", "032", "033"],
+    "area": 2888,
+    "flag": "🇰🇪"
+  },
+  {
+    "name": {
+      "common": "Baringo",
+      "official": "Baringo County",
+      "native": {
+        "swa": {
+          "official": "Kaunti ya Baringo",
+          "common": "Baringo"
+        },
+        "eng": {
+          "official": "Baringo County",
+          "common": "Baringo"
+        }
+      }
+    },
+    "tld": [".ke"],
+    "cca2": "KE",
+    "ccn3": "032",
+    "code": "004",
+    "cioc": "KEN",
+    "status": "officially-assigned",
+    "currencies": {
+      "KES": {
+        "name": "Kenyan shilling",
+        "symbol": "Ksh"
+      }
+    },
+    "idd": {
+      "root": "+2",
+      "suffixes": ["54"]
+    },
+    "capital": ["Kabarnet"],
+    "altSpellings": ["Baringo County"],
+    "region": "Rift Valley",
+    "subregion": "Baringo",
+    "languages": {
+      "eng": "English",
+      "swa": "Swahili"
+    },
+    "translations": {
+      "fra": {
+        "official": "Comté de Baringo",
+        "common": "Baringo"
+      },
+      "swa": {
+        "official": "Kaunti ya Baringo",
+        "common": "Baringo"
+      }
+    },
+    "latlng": [0.5000, 35.7500],
+    "demonyms": {
+      "eng": {
+        "f": "Baringoian",
+        "m": "Baringoian"
+      },
+      "swa": {
+        "f": "Mbaringo",
+        "m": "Mbaringo"
+      }
+    },
+    "borders": ["030", "031", "033", "034"],
+    "area": 6580,
+    "flag": "🇰🇪"
+  },
+  {
+    "name": {
+      "common": "Laikipia",
+      "official": "Laikipia County",
+      "native": {
+        "swa": {
+          "official": "Kaunti ya Laikipia",
+          "common": "Laikipia"
+        },
+        "eng": {
+          "official": "Laikipia County",
+          "common": "Laikipia"
+        }
+      }
+    },
+    "tld": [".ke"],
+    "cca2": "KE",
+    "ccn3": "036",
+    "code": "005",
+    "cioc": "KEN",
+    "status": "officially-assigned",
+    "currencies": {
+      "KES": {
+        "name": "Kenyan shilling",
+        "symbol": "Ksh"
+      }
+    },
+    "idd": {
+      "root": "+2",
+      "suffixes": ["54"]
+    },
+    "capital": ["Nanyuki"],
+    "altSpellings": ["Laikipia County"],
+    "region": "Rift Valley",
+    "subregion": "Laikipia",
+    "languages": {
+      "eng": "English",
+      "swa": "Swahili"
+    },
+    "translations": {
+      "fra": {
+        "official": "Comté de Laikipia",
+        "common": "Laikipia"
+      },
+      "swa": {
+        "official": "Kaunti ya Laikipia",
+        "common": "Laikipia"
+      }
+    },
+    "latlng": [0.0000, 37.5000],
+    "demonyms": {
+      "eng": {
+        "f": "Laikipian",
+        "m": "Laikipian"
+      },
+      "swa": {
+        "f": "Mlaikipia",
+        "m": "Mlaikipia"
+      }
+    },
+    "borders": ["030", "031", "032", "034"],
+    "area": 9286,
+    "flag": "🇰🇪"
+  },
+  {
+    "name": {
+      "common": "Narok",
+      "official": "Narok County",
+      "native": {
+        "swa": {
+          "official": "Kaunti ya Narok",
+          "common": "Narok"
+        },
+        "eng": {
+          "official": "Narok County",
+          "common": "Narok"
+        }
+      }
+    },
+    "tld": [".ke"],
+    "cca2": "KE",
+    "ccn3": "037",
+    "code": "006",
+    "cioc": "KEN",
+    "status": "officially-assigned",
+    "currencies": {
+      "KES": {
+        "name": "Kenyan shilling",
+        "symbol": "Ksh"
+      }
+    },
+    "idd": {
+      "root": "+2",
+      "suffixes": ["54"]
+    },
+    "capital": ["Narok"],
+    "altSpellings": ["Narok County"],
+    "region": "Rift Valley",
+    "subregion": "Narok",
+    "languages": {
+      "eng": "English",
+      "swa": "Swahili"
+    },
+    "translations": {
+      "fra": {
+        "official": "Comté de Narok",
+        "common": "Narok"
+      },
+      "swa": {
+        "official": "Kaunti ya Narok",
+        "common": "Narok"
+      }
+    },
+    "latlng": [-1.0000, 35.5000],
+    "demonyms": {
+      "eng": {
+        "f": "Narokian",
+        "m": "Narokian"
+      },
+      "swa": {
+        "f": "Mnarok",
+        "m": "Mnarok"
+      }
+    },
+    "borders": ["030", "031", "032", "034", "035"],
+    "area": 18456,
+    "flag": "🇰🇪"
+  },
+  {
+    "name": {
+      "common": "Kajiado",
+      "official": "Kajiado County",
+      "native": {
+        "swa": {
+          "official": "Kaunti ya Kajiado",
+          "common": "Kajiado"
+        },
+        "eng": {
+          "official": "Kajiado County",
+          "common": "Kajiado"
+        }
+      }
+    },
+    "tld": [".ke"],
+    "cca2": "KE",
+    "ccn3": "038",
+    "code": "007",
+    "cioc": "KEN",
+    "status": "officially-assigned",
+    "currencies": {
+      "KES": {
+        "name": "Kenyan shilling",
+        "symbol": "Ksh"
+      }
+    },
+    "idd": {
+      "root": "+2",
+      "suffixes": ["54"]
+    },
+    "capital": ["Kajiado"],
+    "altSpellings": ["Kajiado County"],
+    "region": "Rift Valley",
+    "subregion": "Kajiado",
+    "languages": {
+      "eng": "English",
+      "swa": "Swahili"
+    },
+    "translations": {
+      "fra": {
+        "official": "Comté de Kajiado",
+        "common": "Kajiado"
+      },
+      "swa": {
+        "official": "Kaunti ya Kajiado",
+        "common": "Kajiado"
+      }
+    },
+    "latlng": [-1.5000, 36.8000],
+    "demonyms": {
+      "eng": {
+        "f": "Kajiadian",
+        "m": "Kajiadian"
+      },
+      "swa": {
+        "f": "Mkajiado",
+        "m": "Mkajiado"
+      }
+    },
+    "borders": ["030", "031", "032", "034"],
+    "area": 21000,
+    "flag": "🇰🇪"
+  },
+  {
+    "name": {
+      "common": "Kericho",
+      "official": "Kericho County",
+      "native": {
+        "swa": {
+          "official": "Kaunti ya Kericho",
+          "common": "Kericho"
+        },
+        "eng": {
+          "official": "Kericho County",
+          "common": "Kericho"
+        }
+      }
+    },
+    "tld": [".ke"],
+    "cca2": "KE",
+    "ccn3": "039",
+    "code": "008",
+    "cioc": "KEN",
+    "status": "officially-assigned",
+    "currencies": {
+      "KES": {
+        "name": "Kenyan shilling",
+        "symbol": "Ksh"
+      }
+    },
+    "idd": {
+      "root": "+2",
+      "suffixes": ["54"]
+    },
+    "capital": ["Kericho"],
+    "altSpellings": ["Kericho County"],
+    "region": "Rift Valley",
+    "subregion": "Kericho",
+    "languages": {
+      "eng": "English",
+      "swa": "Swahili"
+    },
+    "translations": {
+      "fra": {
+        "official": "Comté de Kericho",
+        "common": "Kericho"
+      },
+      "swa": {
+        "official": "Kaunti ya Kericho",
+        "common": "Kericho"
+      }
+    },
+    "latlng": [-0.3667, 35.2833],
+    "demonyms": {
+      "eng": {
+        "f": "Kerichoan",
+        "m": "Kerichoan"
+      },
+      "swa": {
+        "f": "Mkericho",
+        "m": "Mkericho"
+      }
+    },
+    "borders": ["030", "031", "032", "034"],
+    "area": 2897,
+    "flag": "🇰🇪"
+  },
+  {
+    "name": {
+      "common": "Bomet",
+      "official": "Bomet County",
+      "native": {
+        "swa": {
+          "official": "Kaunti ya Bomet",
+          "common": "Bomet"
+        },
+        "eng": {
+          "official": "Bomet County",
+          "common": "Bomet"
+        }
+      }
+    },
+    "tld": [".ke"],
+    "cca2": "KE",
+    "ccn3": "040",
+    "code": "009",
+    "cioc": "KEN",
+    "status": "officially-assigned",
+    "currencies": {
+      "KES": {
+        "name": "Kenyan shilling",
+        "symbol": "Ksh"
+      }
+    },
+    "idd": {
+      "root": "+2",
+      "suffixes": ["54"]
+    },
+    "capital": ["Bomet"],
+    "altSpellings": ["Bomet County"],
+    "region": "Rift Valley",
+    "subregion": "Bomet",
+    "languages": {
+      "eng": "English",
+      "swa": "Swahili"
+    },
+    "translations": {
+      "fra": {
+        "official": "Comté de Bomet",
+        "common": "Bomet"
+      },
+      "swa": {
+        "official": "Kaunti ya Bomet",
+        "common": "Bomet"
+      }
+    },
+    "latlng": [-0.6667, 35.7667],
+    "demonyms": {
+      "eng": {
+        "f": "Bometian",
+        "m": "Bometian"
+      },
+      "swa": {
+        "f": "Mbomet",
+        "m": "Mbomet"
+      }
+    },
+    "borders": ["030", "031", "032", "034"],
+    "area": 1970,
+    "flag": "🇰🇪"
+  },
+  {
+    "name": {
+      "common": "Kakamega",
+      "official": "Kakamega County",
+      "native": {
+        "swa": {
+          "official": "Kaunti ya Kakamega",
+          "common": "Kakamega"
+        },
+        "eng": {
+          "official": "Kakamega County",
+          "common": "Kakamega"
+        }
+      }
+    },
+    "tld": [".ke"],
+    "cca2": "KE",
+    "ccn3": "041",
+    "code": "011",
+    "cioc": "KEN",
+    "status": "officially-assigned",
+    "currencies": {
+      "KES": {
+        "name": "Kenyan shilling",
+        "symbol": "Ksh"
+      }
+    },
+    "idd": {
+      "root": "+2",
+      "suffixes": ["54"]
+    },
+    "capital": ["Kakamega"],
+    "altSpellings": ["Kakamega County"],
+    "region": "Western Kenya",
+    "subregion": "Kakamega",
+    "languages": {
+      "eng": "English",
+      "swa": "Swahili"
+    },
+    "translations": {
+      "fra": {
+        "official": "Comté de Kakamega",
+        "common": "Kakamega"
+      },
+      "swa": {
+        "official": "Kaunti ya Kakamega",
+        "common": "Kakamega"
+      }
+    },
+    "latlng": [0.2833, 34.7500],
+    "demonyms": {
+      "eng": {
+        "f": "Kakamegian",
+        "m": "Kakamegian"
+      },
+      "swa": {
+        "f": "Mkakamega",
+        "m": "Mkakamega"
+      }
+    },
+    "borders": ["012", "013", "014", "015"],
+    "area": 3052,
+    "flag": "🇰🇪"
+  },
+  {
+    "name": {
+      "common": "Vihiga",
+      "official": "Vihiga County",
+      "native": {
+        "swa": {
+          "official": "Kaunti ya Vihiga",
+          "common": "Vihiga"
+        },
+        "eng": {
+          "official": "Vihiga County",
+          "common": "Vihiga"
+        }
+      }
+    },
+    "tld": [".ke"],
+    "cca2": "KE",
+    "ccn3": "045",
+    "code": "018",
+    "cioc": "KEN",
+    "status": "officially-assigned",
+    "currencies": {
+      "KES": {
+        "name": "Kenyan shilling",
+        "symbol": "Ksh"
+      }
+    },
+    "idd": {
+      "root": "+2",
+      "suffixes": ["54"]
+    },
+    "capital": ["Mbale"],
+    "altSpellings": ["Vihiga County"],
+    "region": "Western Kenya",
+    "subregion": "Vihiga",
+    "languages": {
+      "eng": "English",
+      "swa": "Swahili"
+    },
+    "translations": {
+      "fra": {
+        "official": "Comté de Vihiga",
+        "common": "Vihiga"
+      },
+      "swa": {
+        "official": "Kaunti ya Vihiga",
+        "common": "Vihiga"
+      }
+    },
+    "latlng": [0.2833, 34.5833],
+    "demonyms": {
+      "eng": {
+        "f": "Vihigan",
+        "m": "Vihigan"
+      },
+      "swa": {
+        "f": "Mvihiga",
+        "m": "Mvihiga"
+      }
+    },
+    "borders": ["011", "012", "013"],
+    "area": 564,
+    "flag": "🇰🇪"
+  },
+  {
+    "name": {
+      "common": "Bungoma",
+      "official": "Bungoma County",
+      "native": {
+        "swa": {
+          "official": "Kaunti ya Bungoma",
+          "common": "Bungoma"
+        },
+        "eng": {
+          "official": "Bungoma County",
+          "common": "Bungoma"
+        }
+      }
+    },
+    "tld": [".ke"],
+    "cca2": "KE",
+    "ccn3": "046",
+    "code": "019",
+    "cioc": "KEN",
+    "status": "officially-assigned",
+    "currencies": {
+      "KES": {
+        "name": "Kenyan shilling",
+        "symbol": "Ksh"
+      }
+    },
+    "idd": {
+      "root": "+2",
+      "suffixes": ["54"]
+    },
+    "capital": ["Bungoma"],
+    "altSpellings": ["Bungoma County"],
+    "region": "Western Kenya",
+    "subregion": "Bungoma",
+    "languages": {
+      "eng": "English",
+      "swa": "Swahili"
+    },
+    "translations": {
+      "fra": {
+        "official": "Comté de Bungoma",
+        "common": "Bungoma"
+      },
+      "swa": {
+        "official": "Kaunti ya Bungoma",
+        "common": "Bungoma"
+      }
+    },
+    "latlng": [0.6000, 34.4000],
+    "demonyms": {
+      "eng": {
+        "f": "Bungoman",
+        "m": "Bungoman"
+      },
+      "swa": {
+        "f": "Mbungoma",
+        "m": "Mbungoma"
+      }
+    },
+    "borders": ["011", "012", "013", "014"],
+    "area": 3215,
+    "flag": "🇰🇪"
+  },
+  {
+    "name": {
+      "common": "Busia",
+      "official": "Busia County",
+      "native": {
+        "swa": {
+          "official": "Kaunti ya Busia",
+          "common": "Busia"
+        },
+        "eng": {
+          "official": "Busia County",
+          "common": "Busia"
+        }
+      }
+    },
+    "tld": [".ke"],
+    "cca2": "KE",
+    "ccn3": "047",
+    "code": "020",
+    "cioc": "KEN",
+    "status": "officially-assigned",
+    "currencies": {
+      "KES": {
+        "name": "Kenyan shilling",
+        "symbol": "Ksh"
+      }
+    },
+    "idd": {
+      "root": "+2",
+      "suffixes": ["54"]
+    },
+    "capital": ["Busia"],
+    "altSpellings": ["Busia County"],
+    "region": "Western Kenya",
+    "subregion": "Busia",
+    "languages": {
+      "eng": "English",
+      "swa": "Swahili"
+    },
+    "translations": {
+      "fra": {
+        "official": "Comté de Busia",
+        "common": "Busia"
+      },
+      "swa": {
+        "official": "Kaunti ya Busia",
+        "common": "Busia"
+      }
+    },
+    "latlng": [0.2000, 34.0000],
+    "demonyms": {
+      "eng": {
+        "f": "Busian",
+        "m": "Busian"
+      },
+      "swa": {
+        "f": "Mbusia",
+        "m": "Mbusia"
+      }
+    },
+    "borders": ["011", "012", "013", "014"],
+    "area": 1312,
+    "flag": "🇰🇪"
+  },
+  {
+    "name": {
+      "common": "Siaya",
+      "official": "Siaya County",
+      "native": {
+        "swa": {
+          "official": "Kaunti ya Siaya",
+          "common": "Siaya"
+        },
+        "eng": {
+          "official": "Siaya County",
+          "common": "Siaya"
+        }
+      }
+    },
+    "tld": [".ke"],
+    "cca2": "KE",
+    "ccn3": "048",
+    "code": "021",
+    "cioc": "KEN",
+    "status": "officially-assigned",
+    "currencies": {
+      "KES": {
+        "name": "Kenyan shilling",
+        "symbol": "Ksh"
+      }
+    },
+    "idd": {
+      "root": "+2",
+      "suffixes": ["54"]
+    },
+    "capital": ["Siaya"],
+    "altSpellings": ["Siaya County"],
+    "region": "Nyanza",
+    "subregion": "Siaya",
+    "languages": {
+      "eng": "English",
+      "swa": "Swahili"
+    },
+    "translations": {
+      "fra": {
+        "official": "Comté de Siaya",
+        "common": "Siaya"
+      },
+      "swa": {
+        "official": "Kaunti ya Siaya",
+        "common": "Siaya"
+      }
+    },
+    "latlng": [-0.1000, 34.4000],
+    "demonyms": {
+      "eng": {
+        "f": "Siayan",
+        "m": "Siayan"
+      },
+      "swa": {
+        "f": "Msiaya",
+        "m": "Msiaya"
+      }
+    },
+    "borders": ["011", "012", "013", "014"],
+    "area": 2447,
+    "flag": "🇰🇪"
+  },
+  {
+    "name": {
+      "common": "Homa Bay",
+      "official": "Homa Bay County",
+      "native": {
+        "swa": {
+          "official": "Kaunti ya Homa Bay",
+          "common": "Homa Bay"
+        },
+        "eng": {
+          "official": "Homa Bay County",
+          "common": "Homa Bay"
+        }
+      }
+    },
+    "tld": [".ke"],
+    "cca2": "KE",
+    "ccn3": "049",
+    "code": "022",
+    "cioc": "KEN",
+    "status": "officially-assigned",
+    "currencies": {
+      "KES": {
+        "name": "Kenyan shilling",
+        "symbol": "Ksh"
+      }
+    },
+    "idd": {
+      "root": "+2",
+      "suffixes": ["54"]
+    },
+    "capital": ["Homa Bay"],
+    "altSpellings": ["Homa Bay County"],
+    "region": "Nyanza",
+    "subregion": "Homa Bay",
+    "languages": {
+      "eng": "English",
+      "swa": "Swahili"
+    },
+    "translations": {
+      "fra": {
+        "official": "Comté de Homa Bay",
+        "common": "Homa Bay"
+      },
+      "swa": {
+        "official": "Kaunti ya Homa Bay",
+        "common": "Homa Bay"
+      }
+    },
+    "latlng": [-0.5000, 34.5000],
+    "demonyms": {
+      "eng": {
+        "f": "Homa Bayian",
+        "m": "Homa Bayian"
+      },
+      "swa": {
+        "f": "Mhoma Bay",
+        "m": "Mhoma Bay"
+      }
+    },
+    "borders": ["011", "012", "013", "014"],
+    "area": 3848,
+    "flag": "🇰🇪"
+  },
+  {
+    "name": {
+      "common": "Migori",
+      "official": "Migori County",
+      "native": {
+        "swa": {
+          "official": "Kaunti ya Migori",
+          "common": "Migori"
+        },
+        "eng": {
+          "official": "Migori County",
+          "common": "Migori"
+        }
+      }
+    },
+    "tld": [".ke"],
+    "cca2": "KE",
+    "ccn3": "404",
+    "code": "044",
+    "cioc": "KEN",
+    "status": "officially-assigned",
+    "currencies": {
+      "KES": {
+        "name": "Kenyan shilling",
+        "symbol": "Ksh"
+      }
+    },
+    "idd": {
+      "root": "+2",
+      "suffixes": ["54"]
+    },
+    "capital": ["Migori"],
+    "altSpellings": ["Migori County"],
+    "region": "Nyanza",
+    "subregion": "Nyanza",
+    "languages": {
+      "eng": "English",
+      "swa": "Swahili"
+    },
+    "translations": {
+      "fra": {
+        "official": "Comté de Migori",
+        "common": "Migori"
+      },
+      "swa": {
+        "official": "Kaunti ya Migori",
+        "common": "Migori"
+      }
+    },
+    "latlng": [-1.0667, 34.4667],
+    "demonyms": {
+      "eng": {
+        "f": "Migorian",
+        "m": "Migorian"
+      },
+      "swa": {
+        "f": "Mmigori",
+        "m": "Mmigori"
+      }
+    },
+    "borders": ["042", "043", "045"],
+    "area": 2596,
+    "flag": "🇰🇪"
+  },
+  {
+    "name": {
+      "common": "Kisii",
+      "official": "Kisii County",
+      "native": {
+        "swa": {
+          "official": "Kaunti ya Kisii",
+          "common": "Kisii"
+        },
+        "eng": {
+          "official": "Kisii County",
+          "common": "Kisii"
+        }
+      }
+    },
+    "tld": [".ke"],
+    "cca2": "KE",
+    "ccn3": "404",
+    "code": "045",
+    "cioc": "KEN",
+    "status": "officially-assigned",
+    "currencies": {
+      "KES": {
+        "name": "Kenyan shilling",
+        "symbol": "Ksh"
+      }
+    },
+    "idd": {
+      "root": "+2",
+      "suffixes": ["54"]
+    },
+    "capital": ["Kisii"],
+    "altSpellings": ["Kisii County"],
+    "region": "Nyanza",
+    "subregion": "Nyanza",
+    "languages": {
+      "eng": "English",
+      "swa": "Swahili"
+    },
+    "translations": {
+      "fra": {
+        "official": "Comté de Kisii",
+        "common": "Kisii"
+      },
+      "swa": {
+        "official": "Kaunti ya Kisii",
+        "common": "Kisii"
+      }
+    },
+    "latlng": [-0.6833, 34.7667],
+    "demonyms": {
+      "eng": {
+        "f": "Kisii",
+        "m": "Kisii"
+      },
+      "swa": {
+        "f": "Mkisii",
+        "m": "Mkisii"
+      }
+    },
+    "borders": ["042", "044", "046", "047"],
+    "area": 1317,
+    "flag": "🇰🇪"
+  },
+  {
+    "name": {
+      "common": "Nyamira",
+      "official": "Nyamira County",
+      "native": {
+        "swa": {
+          "official": "Kaunti ya Nyamira",
+          "common": "Nyamira"
+        },
+        "eng": {
+          "official": "Nyamira County",
+          "common": "Nyamira"
+        }
+      }
+    },
+    "tld": [".ke"],
+    "cca2": "KE",
+    "ccn3": "404",
+    "code": "046",
+    "cioc": "KEN",
+    "status": "officially-assigned",
+    "currencies": {
+      "KES": {
+        "name": "Kenyan shilling",
+        "symbol": "Ksh"
+      }
+    },
+    "idd": {
+      "root": "+2",
+      "suffixes": ["54"]
+    },
+    "capital": ["Nyamira"],
+    "altSpellings": ["Nyamira County"],
+    "region": "Nyanza",
+    "subregion": "Nyanza",
+    "languages": {
+      "eng": "English",
+      "swa": "Swahili"
+    },
+    "translations": {
+      "fra": {
+        "official": "Comté de Nyamira",
+        "common": "Nyamira"
+      },
+      "swa": {
+        "official": "Kaunti ya Nyamira",
+        "common": "Nyamira"
+      }
+    },
+    "latlng": [-0.5667, 34.9333],
+    "demonyms": {
+      "eng": {
+        "f": "Nyamiran",
+        "m": "Nyamiran"
+      },
+      "swa": {
+        "f": "Mnyamira",
+        "m": "Mnyamira"
+      }
+    },
+    "borders": ["042", "045", "047"],
+    "area": 899,
     "flag": "🇰🇪"
   }
 ]
