@@ -1088,7 +1088,7 @@
     "flag": "🇰🇪"
   },
   {
-    "Marsabit": {
+    "name": {
       "common": "Marsabit",
       "official": "Marsabit County",
       "native": {
@@ -1152,7 +1152,7 @@
     "flag": "🇰🇪"
   },
   {
-    "Isiolo": {
+    "name": {
       "common": "Isiolo",
       "official": "Isiolo County",
       "native": {
@@ -1216,7 +1216,7 @@
     "flag": "🇰🇪"
   },
   {
-    "Meru": {
+    "name": {
       "common": "Meru",
       "official": "Meru County",
       "native": {
@@ -1280,7 +1280,7 @@
     "flag": "🇰🇪"
   },
   {
-    "Tharaka-Nithi": {
+    "name": {
       "common": "Tharaka-Nithi",
       "official": "Tharaka-Nithi County",
       "native": {
@@ -1344,7 +1344,7 @@
     "flag": "🇰🇪"
   },
   {
-    "Embu": {
+    "name": {
       "common": "Embu",
       "official": "Embu County",
       "native": {
