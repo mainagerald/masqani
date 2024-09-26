@@ -1,6 +1,6 @@
 <div class="my-4 flex justify-content-center align-items-center">
   <p-autoComplete
-    [styleClass]="'autoComplete-masqani'"
+    [styleClass]="'autocomplete-masqani'"
     [panelStyleClass]="'country-panel'"
     [ngModel]="currentLocation"
     (onSelect)="onLocationChangeEvent($event)"
@@ -8,7 +8,7 @@
     (completeMethod)="search($event)"
     [dropdown]="true"
     [optionLabel]="formatLabel"
-    placeholder="placeholder()"
+    [placeholder]="placeHolder()"
   ></p-autoComplete>
 </div>
 <div
@@ -16,4 +16,5 @@
   [leafletOptions]="options"
   [leafletLayersControl]="layersControl"
   (leafletMapReady)="onMapReady($event)"
+  style="height: 400px; width: 100%;"
 ></div>

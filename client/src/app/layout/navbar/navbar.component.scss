@@ -38,3 +38,53 @@
 .my-button:hover {
   background-color: #72b39f;
 }
+
+
+.custom-dialog .p-dialog {
+  border-radius: 12px; 
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15); 
+  transition: all 0.3s ease-in-out; // Add smooth transitions for better UX
+  border: none; // Remove border for a cleaner look
+}
+
+.custom-dialog .p-dialog-header {
+  font-size: 1.6em; 
+  font-weight: bold; 
+  color: #333; 
+  background-color: #f0f0f0;
+  padding: 15px; 
+  border-bottom: 1px solid #e0e0e0; 
+}
+
+.custom-dialog .p-dialog-content {
+  background-color: #fafafa; 
+  color: #555; 
+  font-size: 1.1em; 
+  line-height: 1.6;
+}
+
+.custom-dialog .p-dialog-footer {
+  background-color: #ca3030; 
+  padding: 15px 20px; 
+  border-top: 1px solid #e0e0e0;
+  text-align: right;
+  color: #333;
+  border-bottom-right-radius: 12px;
+  border-bottom-left-radius: 12px;
+}
+
+.custom-dialog .p-button {
+  background-color: #204849; 
+  transition: background-color 0.3s ease;
+}
+
+.custom-dialog .p-button:hover {
+  background-color: #3D5A5B;
+}
+
+@media (max-width: 768px) {
+  .custom-dialog {
+    width: 90%;
+    height: auto;
+  }
+}

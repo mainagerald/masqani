@@ -4,6 +4,7 @@ import {
   EventEmitter,
   inject,
   input,
+  OnInit,
   Output,
 } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -27,15 +28,15 @@ import { query } from '@angular/animations';
   templateUrl: './geo-map.component.html',
   styleUrl: './geo-map.component.scss',
 })
-export class GeoMapComponent {
+export class GeoMapComponent implements OnInit{
   locationMapService: LocationMapService = inject(LocationMapService);
   toastService: ToastService = inject(ToastService);
 
   private map: L.Map | undefined;
   private provider: OpenStreetMapProvider | undefined;
 
-  location = input.required<String>();
-  placeHolder = input<String>('Select your property residence county');
+  location = input.required<string>();
+  placeHolder = input<string>('Select your property residence county');
   currentLocation: County | undefined;
 
   @Output()
@@ -81,6 +82,9 @@ export class GeoMapComponent {
   constructor() {
     this.listenToLocation();
   }
+  ngOnInit(): void {
+    console.log('Leaflet version:', L.version);
+  }
 
   onMapReady(map: L.Map): void {
     this.map = map;
@@ -118,7 +122,7 @@ export class GeoMapComponent {
         (res) => {
           if (res && res.length > 0) {
             const firstResult = res[0];
-            this.map!.setView(new L.LatLng(firstResult.y, firstResult.x), 13);
+            this.map!.setView(new L.LatLng(firstResult.y, firstResult.x), 15);
             new L.Marker([firstResult.y, firstResult.x])
               .addTo(this.map!)
               .bindPopup(firstResult.label)
@@ -130,8 +134,12 @@ export class GeoMapComponent {
   }
 
   search(newCompleteEvent: AutoCompleteCompleteEvent): void {
-    this.filteredCounties = this.counties.filter((county) =>
-      county.name.common.toLowerCase().startsWith(newCompleteEvent.query)
-    );
+    this.filteredCounties = this.counties.filter((county) => {
+      if (county && county.name && county.name.common) {
+        return county.name.common.toLowerCase().startsWith(newCompleteEvent.query.toLowerCase());
+      }
+      console.warn('Invalid county structure:', county);
+      return false;
+    });
   }
 }

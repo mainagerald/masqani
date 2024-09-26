@@ -12,15 +12,17 @@ import { Category, CategoryName } from '../../../layout/navbar/category/category
 import { FooterStepComponent } from "../../../shared/footer-step/footer-step.component";
 import { CategoryComponent } from '../../../layout/navbar/category/category.component';
 import { CategoryStepComponent } from './step/category-step/category-step.component';
+import { LocationStepComponent } from "./step/location-step/location-step.component";
 
 @Component({
   selector: 'app-create-property',
   standalone: true,
-  imports: [CategoryComponent, FooterStepComponent, CategoryStepComponent],
+  imports: [CategoryComponent, FooterStepComponent, CategoryStepComponent, LocationStepComponent],
   templateUrl: './create-property.component.html',
   styleUrl: './create-property.component.scss',
 })
 export class CreatePropertyComponent {
+
   CATEGORY: string = 'category';
   LOCATION: string = 'location';
   INFO: string = 'info';
@@ -161,4 +163,7 @@ export class CreatePropertyComponent {
   onValidityChange(validity: boolean): void{
     this.currentStep.isValid = validity;
   }
+  onLocationChange(newLocation: string) {
+      this.newListing.location=newLocation;
+    }
 }

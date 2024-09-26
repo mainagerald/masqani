@@ -1,4 +1,4 @@
-import { Component, effect, inject, OnInit } from '@angular/core';
+import { Component, effect, inject, OnInit, ViewEncapsulation } from '@angular/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ButtonModule } from 'primeng/button';
 import {ToolbarModule} from 'primeng/toolbar';
@@ -26,7 +26,8 @@ import { CreatePropertyComponent } from '../../components/landlord/create-proper
   ],
   providers:[DialogService],
   templateUrl: './navbar.component.html',
-  styleUrl: './navbar.component.scss'
+  styleUrl: './navbar.component.scss',
+  encapsulation: ViewEncapsulation.None
 })
 export class NavbarComponent implements OnInit {
   authService: AuthService = inject(AuthService);
@@ -103,8 +104,9 @@ export class NavbarComponent implements OnInit {
 openNewListing(): void{
   this.ref = this.dialogService.open(CreatePropertyComponent,
     {
-      width: "60%",
-      height: "70%",
+      width: "70%",
+      height: "80%",
+      styleClass: 'custom-dialog',
       header: "List your property",
       closable: true,
       focusOnShow: true,
