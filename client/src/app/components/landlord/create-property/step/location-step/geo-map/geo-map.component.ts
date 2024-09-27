@@ -42,7 +42,7 @@ export class GeoMapComponent implements OnInit{
   @Output()
   locationChange = new EventEmitter<string>();
 
-  formatLabel = (county: County) => county.code+" "+county.name;
+  formatLabel = (county: County) => "["+county.code+"]"+" "+county.name.common;
 
   options = {
     layers: [

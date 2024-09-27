@@ -12,8 +12,17 @@
     [location]="newListing.location"
     (locationChange)="onLocationChange($event)"
     (stepValidityChange)="onValidityChange($event)">
-
     </app-location-step>
+  }
+  @case (INFO) {
+    <div class="mb-3">
+      <h4 class="sub-style-h4 mb-2">Give the basics of your property</h4>
+      <app-info-step
+    [infos]="newListing.infos"
+    (infoChange)="onInfoChange($event)"
+    (stepValidityChange)="onValidityChange($event)">
+    </app-info-step>
+    </div>
   }
  }
 </div>
