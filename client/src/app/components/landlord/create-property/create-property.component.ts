@@ -21,6 +21,7 @@ import { CategoryComponent } from '../../../layout/navbar/category/category.comp
 import { CategoryStepComponent } from './step/category-step/category-step.component';
 import { LocationStepComponent } from './step/location-step/location-step.component';
 import { InfoStepComponent } from './step/info-step/info-step.component';
+import { PictureStepComponent } from './step/picture-step/picture-step.component';
 
 @Component({
   selector: 'app-create-property',
@@ -31,6 +32,7 @@ import { InfoStepComponent } from './step/info-step/info-step.component';
     CategoryStepComponent,
     LocationStepComponent,
     InfoStepComponent,
+    PictureStepComponent
   ],
   templateUrl: './create-property.component.html',
   styleUrl: './create-property.component.scss',
@@ -198,5 +200,8 @@ export class CreatePropertyComponent {
   }
   onInfoChange(newInfo: NewListingInfo) {
     this.newListing.infos = newInfo;
+  }
+  onPictureChange(newPictures: NewListingPictures[]){
+    this.newListing.pictures = newPictures;
   }
 }
