@@ -26,7 +26,7 @@ export class LandlordListingService {
     clone.pictures=[];
 
     formData.append("dto", JSON.stringify(clone));
-    this.http.post<CreatedListing>(`${environment.API_URL}/landlord/create-listing`, formData).subscribe(
+    this.http.post<CreatedListing>(`${environment.API_URL}/landlord-listing/create-listing`, formData).subscribe(
       {
         next: listing => this.create$.set(State.Builder<CreatedListing>().forSucces(listing)),
         error: err => this.create$.set(State.Builder<CreatedListing>().forError(err))

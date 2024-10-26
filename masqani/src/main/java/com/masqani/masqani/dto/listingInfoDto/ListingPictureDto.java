@@ -12,7 +12,10 @@ public class ListingPictureDto {
     @NotNull String fileContentType;
     @NotNull boolean isCover;
 
-    public ListingPictureDto(byte[] bytes, String contentType, boolean isCover) {
+    public ListingPictureDto(byte[] file, String contentType, boolean isCover) {
+        this.file=file;
+        this.fileContentType=contentType;
+        this.isCover=isCover;
     }
 
     @Override

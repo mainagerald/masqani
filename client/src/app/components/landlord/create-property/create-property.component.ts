@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { Step } from './step.model';
 import {
   CreatedListing,
+  Description,
   NewListing,
   NewListingInfo,
 } from '../model/listing.model';
@@ -22,6 +23,9 @@ import { CategoryStepComponent } from './step/category-step/category-step.compon
 import { LocationStepComponent } from './step/location-step/location-step.component';
 import { InfoStepComponent } from './step/info-step/info-step.component';
 import { PictureStepComponent } from './step/picture-step/picture-step.component';
+import { DescriptionStepComponent } from './step/description-step/description-step.component';
+import { PriceVO } from '../model/listing-vo.model';
+import { PriceStepComponent } from './step/price-step/price-step.component';
 
 @Component({
   selector: 'app-create-property',
@@ -32,7 +36,9 @@ import { PictureStepComponent } from './step/picture-step/picture-step.component
     CategoryStepComponent,
     LocationStepComponent,
     InfoStepComponent,
-    PictureStepComponent
+    PictureStepComponent,
+    DescriptionStepComponent,
+    PriceStepComponent
   ],
   templateUrl: './create-property.component.html',
   styleUrl: './create-property.component.scss',
@@ -121,7 +127,7 @@ export class CreatePropertyComponent {
 
   newListing: NewListing = {
     category: 'APARTMENTS',
-    infos: {
+    info: {
       bedrooms: { value: 0 },
       bathrooms: { value: 0 },
     },
@@ -139,6 +145,8 @@ export class CreatePropertyComponent {
   createListing(): void {
     this.loadingCreation = true;
     this.listingService.create(this.newListing);
+    console.log("creating--------", this.newListing);
+    
   }
 
   ngOnDestroy(): void {
@@ -199,9 +207,15 @@ export class CreatePropertyComponent {
     this.newListing.location = newLocation;
   }
   onInfoChange(newInfo: NewListingInfo) {
-    this.newListing.infos = newInfo;
+    this.newListing.info = newInfo;
   }
   onPictureChange(newPictures: NewListingPictures[]){
     this.newListing.pictures = newPictures;
+  }
+  onDescriptionChange(newDescription: Description){
+    this.newListing.description=newDescription;
+  }
+  onPriceChange(newPrice: PriceVO){
+    this.newListing.price=newPrice;
   }
 }

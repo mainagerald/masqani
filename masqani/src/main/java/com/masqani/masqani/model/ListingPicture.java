@@ -18,7 +18,7 @@ public class ListingPicture extends AuditingEntity<Long> {
     @JoinColumn(name = "listing_fk", referencedColumnName = "id")
     private Listing listing;
     @Lob
-    @Column(name = "file", nullable = false)
+    @Column(name = "file", nullable = false, columnDefinition = "LONGBLOB")
     private byte[] file;
     @Column(name = "file_content_type")
     private String fileContentType;

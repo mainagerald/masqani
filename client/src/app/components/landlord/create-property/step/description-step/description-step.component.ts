@@ -16,10 +16,10 @@ export class DescriptionStepComponent {
   descriptionChange=new EventEmitter<Description>();
   @Output()
   stepValidityChange=new EventEmitter<boolean>();
-  @ViewChild("FormDescription")
+  @ViewChild("formDescription")
   formDescription: NgForm|undefined;
 
-  onTitleChnage(newTitle: string){
+  onTitleChange(newTitle: string){
     this.description().title={value: newTitle}
     this.descriptionChange.emit(this.description());
     this.stepValidityChange.emit(this.validateForm());

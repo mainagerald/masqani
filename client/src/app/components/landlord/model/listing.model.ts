@@ -10,7 +10,7 @@ export interface NewListingInfo{
 export interface NewListing{
     category: CategoryName,
     location: string,
-    infos: NewListingInfo,
+    info: NewListingInfo,
     pictures: Array<NewListingPictures>,
     description: Description,
     price: PriceVO

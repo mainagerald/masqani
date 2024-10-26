@@ -18,7 +18,7 @@
     <div class="mb-3">
       <h4 class="sub-style-h4 mb-2">Give the basics of your property</h4>
       <app-info-step
-    [infos]="newListing.infos"
+    [infos]="newListing.info"
     (infoChange)="onInfoChange($event)"
     (stepValidityChange)="onValidityChange($event)">
     </app-info-step>
@@ -29,6 +29,21 @@
     [pictures]="newListing.pictures"
     (picturesChange)="onPictureChange($event)"
     (stepValidityChange)="onValidityChange($event)"></app-picture-step>
+  }
+  @case (DESCRIPTION) {
+    <app-description-step
+    [description]="newListing.description"
+    (descriptionChange)="onDescriptionChange($event)"
+    (stepValidityChange)="onValidityChange($event)">
+
+    </app-description-step>
+  }
+  @case (PRICE) {
+    <app-price-step
+    [price]="newListing.price"
+    (priceChange)="onPriceChange($event)"
+    (stepValidityChange)="onValidityChange($event)">
+    </app-price-step>
   }
  }
 </div>

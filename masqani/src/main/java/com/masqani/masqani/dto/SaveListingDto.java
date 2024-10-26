@@ -1,5 +1,6 @@
 package com.masqani.masqani.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.masqani.masqani.dto.listingInfoDto.ListingPictureDto;
 import com.masqani.masqani.dto.listingInfoDto.RentalDescriptionDto;
 import com.masqani.masqani.dto.listingInfoDto.RentalInfoDto;
@@ -13,6 +14,7 @@ import javax.xml.transform.Source;
 import java.util.List;
 
 @Data
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class SaveListingDto {
     @NotNull
     RentalCategory category;
