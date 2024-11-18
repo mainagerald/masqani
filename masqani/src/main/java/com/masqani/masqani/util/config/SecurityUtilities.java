@@ -1,7 +1,7 @@
 package com.masqani.masqani.util.config;
 
-import com.masqani.masqani.model.Authority;
-import com.masqani.masqani.model.User;
+import com.masqani.masqani.user.domain.Authority;
+import com.masqani.masqani.user.domain.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.core.Authentication;

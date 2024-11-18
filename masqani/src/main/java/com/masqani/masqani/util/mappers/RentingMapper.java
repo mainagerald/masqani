@@ -1,7 +1,7 @@
-package com.masqani.masqani.util.mappers;
-
-import org.mapstruct.Mapper;
-
-@Mapper(componentModel = "spring")
-public interface RentingMapper {
-}
+//package com.masqani.masqani.util.mappers;
+//
+//import org.mapstruct.Mapper;
+//
+//@Mapper(componentModel = "spring")
+//public interface RentingMapper {
+//}
