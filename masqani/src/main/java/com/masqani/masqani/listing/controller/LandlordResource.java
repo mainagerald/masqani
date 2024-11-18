@@ -1,4 +1,4 @@
-package com.masqani.masqani.listing.presentation;
+package com.masqani.masqani.listing.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.masqani.masqani.listing.application.LandlordService;

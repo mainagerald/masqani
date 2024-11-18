@@ -1,4 +1,4 @@
-package com.masqani.masqani.booking.presentation;
+package com.masqani.masqani.booking.controller;
 
 
 import com.masqani.masqani.booking.application.BookingService;

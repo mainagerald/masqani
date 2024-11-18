@@ -1,10 +1,8 @@
-package com.masqani.masqani.user.presentation;
+package com.masqani.masqani.user.controller;
 
 import com.masqani.masqani.user.application.UserService;
 import com.masqani.masqani.user.application.dto.ReadUserDTO;
 import jakarta.servlet.http.HttpServletRequest;
-import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
