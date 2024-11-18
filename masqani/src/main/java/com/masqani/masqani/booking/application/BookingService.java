@@ -15,6 +15,7 @@ import com.masqani.masqani.user.application.UserService;
 import com.masqani.masqani.user.application.dto.ReadUserDTO;
 import com.masqani.masqani.util.config.SecurityUtilities;
 import com.masqani.masqani.util.shared.State;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -24,6 +25,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 @Service
+@RequiredArgsConstructor
 public class BookingService {
 
     private final BookingRepository bookingRepository;
@@ -31,13 +33,6 @@ public class BookingService {
     private final UserService userService;
     private final LandlordService landlordService;
 
-    public BookingService(BookingRepository bookingRepository, BookingMapper bookingMapper,
-                          UserService userService, LandlordService landlordService) {
-        this.bookingRepository = bookingRepository;
-        this.bookingMapper = bookingMapper;
-        this.userService = userService;
-        this.landlordService = landlordService;
-    }
 
     @Transactional
     public State<Void, String> create(NewBookingDTO newBookingDTO) {

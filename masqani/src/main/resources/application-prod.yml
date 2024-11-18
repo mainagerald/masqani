@@ -12,7 +12,7 @@ spring:
   jpa:
     properties:
       hibernate:
-        default_schema: masqani
+        default_schema: tenancyTrack
   liquibase:
     contexts: prod
-    default-schema: masqani
+    default-schema: tenancyTrack

@@ -12,6 +12,7 @@ import com.masqani.masqani.user.application.Auth0Service;
 import com.masqani.masqani.user.application.UserService;
 import com.masqani.masqani.user.application.dto.ReadUserDTO;
 import com.masqani.masqani.util.shared.State;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -20,6 +21,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 @Service
+@RequiredArgsConstructor
 public class LandlordService {
 
     private final ListingRepository listingRepository;
@@ -28,14 +30,6 @@ public class LandlordService {
     private final UserService userService;
     private final Auth0Service auth0Service;
     private final PictureService pictureService;
-
-    public LandlordService(ListingRepository listingRepository, ListingMapper listingMapper, UserService userService, Auth0Service auth0Service, PictureService pictureService) {
-        this.listingRepository = listingRepository;
-        this.listingMapper = listingMapper;
-        this.userService = userService;
-        this.auth0Service = auth0Service;
-        this.pictureService = pictureService;
-    }
 
     public CreatedListingDTO create(SaveListingDTO saveListingDTO) {
         Listing newListing = listingMapper.saveListingDTOToListing(saveListingDTO);

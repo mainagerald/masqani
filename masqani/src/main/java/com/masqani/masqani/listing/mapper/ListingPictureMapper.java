@@ -18,8 +18,8 @@ public interface ListingPictureMapper {
 
     @Mapping(target = "id", ignore = true)
     @Mapping(target = "listing", ignore = true)
-    @Mapping(target = "createdDate", ignore = true)
-    @Mapping(target = "lastModifiedDate", ignore = true)
+    @Mapping(target = "createdAt", ignore = true)
+    @Mapping(target = "lastModifiedAt", ignore = true)
     @Mapping(target = "cover", source = "isCover")
     ListingPicture pictureDTOToListingPicture(PictureDTO pictureDTO);
 

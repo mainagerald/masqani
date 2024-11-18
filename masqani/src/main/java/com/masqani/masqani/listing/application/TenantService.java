@@ -74,7 +74,7 @@ public class TenantService {
     @Transactional(readOnly = true)
     public Page<DisplayCardListingDTO> search(Pageable pageable, SearchDTO newSearch) {
 
-        Page<Listing> allMatchedListings = listingRepository.findAllByLocationAndBathroomsAndBedroomsAndGuestsAndBeds(pageable, newSearch.location(),
+        Page<Listing> allMatchedListings = listingRepository.findAllByLocationAndBathroomsAndBedrooms(pageable, newSearch.location(),
                 newSearch.infos().baths().value(),
                 newSearch.infos().bedrooms().value());
 

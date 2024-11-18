@@ -21,13 +21,10 @@ public class Auth0Service {
 
     @Value("${okta.oauth2.client-id}")
     private String clientId;
-
     @Value("${okta.oauth2.client-secret}")
     private String clientSecret;
-
     @Value("${okta.oauth2.issuer}")
     private String domain;
-
     @Value("${application.auth0.role-landlord-id}")
     private String roleLandlordId;
 

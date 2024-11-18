@@ -3,6 +3,8 @@ package com.masqani.masqani.user.presentation;
 import com.masqani.masqani.user.application.UserService;
 import com.masqani.masqani.user.application.dto.ReadUserDTO;
 import jakarta.servlet.http.HttpServletRequest;
+import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,12 +22,11 @@ import java.util.Map;
 public class AuthResource {
 
     private final UserService userService;
-
     private final ClientRegistration registration;
 
-    public AuthResource(UserService userService, ClientRegistrationRepository registration) {
+    public AuthResource(UserService userService, ClientRegistrationRepository registrationRepository) {
         this.userService = userService;
-        this.registration = registration.findByRegistrationId("okta");
+        this.registration = registrationRepository.findByRegistrationId("okta");
     }
 
     @GetMapping("/get-authenticated-user")

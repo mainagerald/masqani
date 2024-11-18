@@ -44,10 +44,10 @@
 			<artifactId>okta-spring-boot-starter</artifactId>
 			<version>3.0.7</version>
 		</dependency>
-<!--		<dependency>-->
-<!--			<groupId>org.liquibase</groupId>-->
-<!--			<artifactId>liquibase-core</artifactId>-->
-<!--		</dependency>-->
+		<!--		<dependency>-->
+		<!--			<groupId>org.liquibase</groupId>-->
+		<!--			<artifactId>liquibase-core</artifactId>-->
+		<!--		</dependency>-->
 		<dependency>
 			<groupId>org.mapstruct</groupId>
 			<artifactId>mapstruct</artifactId>
@@ -75,12 +75,12 @@
 			<artifactId>auth0</artifactId>
 			<version>2.10.1</version>
 		</dependency>
-<!--		<dependency>-->
-<!--			<groupId>org.springframework.boot</groupId>-->
-<!--			<artifactId>spring-boot-docker-compose</artifactId>-->
-<!--			<scope>runtime</scope>-->
-<!--			<optional>true</optional>-->
-<!--		</dependency>-->
+		<!--		<dependency>-->
+		<!--			<groupId>org.springframework.boot</groupId>-->
+		<!--			<artifactId>spring-boot-docker-compose</artifactId>-->
+		<!--			<scope>runtime</scope>-->
+		<!--			<optional>true</optional>-->
+		<!--		</dependency>-->
 		<dependency>
 			<groupId>com.mysql</groupId>
 			<artifactId>mysql-connector-j</artifactId>
@@ -96,28 +96,28 @@
 			<artifactId>spring-security-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-<!--		<dependency>-->
-<!--			<groupId>org.liquibase</groupId>-->
-<!--			<artifactId>liquibase-maven-plugin</artifactId>-->
-<!--			<version>4.27.0</version>-->
-<!--		</dependency>-->
+		<!--		<dependency>-->
+		<!--			<groupId>org.liquibase</groupId>-->
+		<!--			<artifactId>liquibase-maven-plugin</artifactId>-->
+		<!--			<version>4.27.0</version>-->
+		<!--		</dependency>-->
 	</dependencies>
 
 	<build>
 		<plugins>
-<!--			<plugin>-->
-<!--				<groupId>org.liquibase</groupId>-->
-<!--				<artifactId>liquibase-maven-plugin</artifactId>-->
-<!--				<version>4.27.0</version>-->
-<!--				<configuration>-->
-<!--					<changeLogFile>src/main/resources/db/changelog/db.changelog-master.xml</changeLogFile>-->
-<!--					<outputChangeLogFile>src/main/resources/db/changelog/generated-changelog.xml</outputChangeLogFile>-->
-<!--					<url>jdbc:mysql://localhost:3306/masqani?createDatabaseIfNotExist=true</url>-->
-<!--					<username>root</username>-->
-<!--					<password>root</password>-->
-<!--					<driver>com.mysql.cj.jdbc.Driver</driver>-->
-<!--				</configuration>-->
-<!--			</plugin>-->
+			<!--			<plugin>-->
+			<!--				<groupId>org.liquibase</groupId>-->
+			<!--				<artifactId>liquibase-maven-plugin</artifactId>-->
+			<!--				<version>4.27.0</version>-->
+			<!--				<configuration>-->
+			<!--					<changeLogFile>src/main/resources/db/changelog/db.changelog-master.xml</changeLogFile>-->
+			<!--					<outputChangeLogFile>src/main/resources/db/changelog/generated-changelog.xml</outputChangeLogFile>-->
+			<!--					<url>jdbc:mysql://localhost:3306/masqani?createDatabaseIfNotExist=true</url>-->
+			<!--					<username>root</username>-->
+			<!--					<password>root</password>-->
+			<!--					<driver>com.mysql.cj.jdbc.Driver</driver>-->
+			<!--				</configuration>-->
+			<!--			</plugin>-->
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
