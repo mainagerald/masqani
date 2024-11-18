@@ -157,7 +157,7 @@ export class CreatePropertyComponent {
     effect(() => {
       if (
         this.authService.fetchUser().status === 'OK' &&
-        this.listingService.createSignal().status === 'OK'
+        this.listingService.createSig().status === 'OK'
       ) {
         this.router.navigate(['landlord', 'properties']);
       }
@@ -166,7 +166,7 @@ export class CreatePropertyComponent {
 
   listenListingCreation(): void {
     effect(() => {
-      let createdListingState = this.listingService.createSignal();
+      let createdListingState = this.listingService.createSig();
       if (createdListingState.status === 'OK') {
         this.onCreateOk(createdListingState);
       } else if (createdListingState.status === 'ERROR') {
