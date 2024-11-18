@@ -10,7 +10,7 @@ spring:
   application:
     name: masqani
   datasource:
-      url: jdbc:mysql://localhost:3306/masqani?createDatabaseIfNotExist=true
+      url: jdbc:mysql://localhost:3306/tenancyTrack?createDatabaseIfNotExist=true
       username: root
       password: root
       driver-class-name: com.mysql.cj.jdbc.Driver
@@ -28,12 +28,12 @@ spring:
       ddl-auto: update #because of liquibase!
     properties:
       hibernate:
-        default_schema: masqani
+        default_schema: tenancyTrack
 
   liquibase:
     contexts: dev
     change-log: classpath:db/changelog/db.changelog-master.xml
-    default-schema: masqani
+    default-schema: tenancyTrack
     enabled: false
     drop-first: true
 

@@ -1,6 +1,7 @@
 package com.masqani.masqani.listing.application;
 
 
+import com.masqani.masqani.booking.application.BookingService;
 import com.masqani.masqani.listing.application.dto.DisplayCardListingDTO;
 import com.masqani.masqani.listing.application.dto.DisplayListingDTO;
 import com.masqani.masqani.listing.application.dto.SearchDTO;
