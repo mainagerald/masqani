@@ -3,12 +3,10 @@ import { BiBuilding, BiX } from 'react-icons/bi';
 import { MdCreditCard, MdHome, MdMenu, MdSettings } from 'react-icons/md';
 import { Link } from 'react-router-dom';
 
-
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const navItems = [
-    { icon: <MdHome />, label: 'Home', path: '/' },
     { icon: <BiBuilding />, label: 'Properties', path: '/properties' },
     { icon: <MdCreditCard />, label: 'Billing', path: '/billing' },
     { icon: <MdSettings />, label: 'Settings', path: '/settings' }
@@ -19,12 +17,12 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="bg-primary-50 shadow-soft">
+    <nav className="bg-black text-white shadow-md fixed top-0 left-0 right-0 z-10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
             <Link to="/" className="flex-shrink-0">
-              <span className="text-2xl font-bold text-primary-700">Masqani</span>
+              <span className="text-3xl text-white">masQani</span>
             </Link>
           </div>
 
@@ -35,8 +33,8 @@ const Navbar = () => {
                 <Link
                   key={item.path}
                   to={item.path}
-                  className="text-primary-600 hover:bg-primary-100 hover:text-primary-900 
-                    px-3 py-2 rounded-md flex items-center space-x-2 transition-colors duration-200"
+                  className="text-white hover:bg-gray-700 
+                    px-3 py-2 rounded-md flex items-center space-x-2 transition-all duration-200"
                 >
                   {item.icon}
                   <span>{item.label}</span>
@@ -50,11 +48,11 @@ const Navbar = () => {
             <button
               onClick={toggleMenu}
               type="button"
-              className="bg-primary-100 inline-flex items-center justify-center p-2 
-                rounded-md text-primary-600 hover:text-primary-900 hover:bg-primary-200 
-                focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500"
+              className="bg-gray-800 inline-flex items-center justify-center p-2 
+                rounded-md text-white hover:bg-gray-700 
+                focus:outline-none focus:ring-2 focus:ring-offset-2"
               aria-controls="mobile-menu"
-              aria-expanded="false"
+              aria-expanded={isMenuOpen ? 'true' : 'false'}
             >
               <span className="sr-only">Open main menu</span>
               {isMenuOpen ? <BiX className="block h-6 w-6" /> : <MdMenu className="block h-6 w-6" />}
@@ -71,8 +69,8 @@ const Navbar = () => {
               <Link
                 key={item.path}
                 to={item.path}
-                className="text-primary-600 hover:bg-primary-100 hover:text-primary-900 
-                  block px-3 py-2 rounded-md text-base font-medium flex items-center space-x-2"
+                className="text-white hover:bg-gray-700 
+                  block px-3 py-2 rounded-md text-base font-medium items-center space-x-2"
                 onClick={toggleMenu}
               >
                 {item.icon}
