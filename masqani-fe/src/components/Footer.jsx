@@ -26,7 +26,7 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="bg-primary-100 text-primary-900">
+    <footer className="bg-black text-primary-900">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div>
@@ -38,12 +38,12 @@ const Footer = () => {
 
           <div>
             <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
-            <div className="space-y-2">
+            <div className="space-y-2 flex-col flex">
               {quickLinks.map((link) => (
                 <Link
                   key={link.path}
                   to={link.path}
-                  className="text-primary-600 hover:text-primary-900 transition-colors"
+                  className="text-primary-600 hover:text-primary-900 hover:underline transition-colors"
                 >
                   {link.label}
                 </Link>

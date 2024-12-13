@@ -1,0 +1,7 @@
+--INSERT INTO authority (name)
+--SELECT 'ROLE_LANDLORD'
+--WHERE NOT EXISTS (SELECT 1 FROM authority WHERE name = 'ROLE_LANDLORD');
+--
+--INSERT INTO authority (name)
+--SELECT 'ROLE_TENANT'
+--WHERE NOT EXISTS (SELECT 1 FROM authority WHERE name = 'ROLE_TENANT');

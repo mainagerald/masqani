@@ -28,7 +28,7 @@ export class AuthService {
   
   fetchHttpUser(forceResync: boolean): Observable<UserModel> {
     const params = new HttpParams().set('forceResync', forceResync);
-    return this.http.get<UserModel>(`${environment.API_URL}/auth/getAuthUser`, {
+    return this.http.get<UserModel>(`${environment.API_URL}/auth/get-authenticated-user`, {
       params,
     });
   }

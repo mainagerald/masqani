@@ -20,27 +20,41 @@ const Navbar = () => {
     <nav className="bg-black text-white shadow-md fixed top-0 left-0 right-0 z-10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          <div className="flex items-center">
+          <div className="flex items-center space-x-4">
             <Link to="/" className="flex-shrink-0">
-              <span className="text-3xl text-white">masQani</span>
+              <span className="text-3xl text-white font-bold">masQani</span>
             </Link>
+
+            {/* Desktop Navigation */}
+            <div className="hidden md:block">
+              <div className="ml-10 flex items-baseline space-x-4">
+                {navItems.map((item) => (
+                  <Link
+                    key={item.path}
+                    to={item.path}
+                    className="text-white hover:bg-gray-800 
+                      p-2 rounded-2xl flex items-center space-x-2 transition-all duration-200"
+                  >
+                    <span>{item.label}</span>
+                  </Link>
+                ))}
+              </div>
+            </div>
           </div>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:block">
-            <div className="ml-10 flex items-baseline space-x-4">
-              {navItems.map((item) => (
-                <Link
-                  key={item.path}
-                  to={item.path}
-                  className="text-white hover:bg-gray-700 
-                    px-3 py-2 rounded-md flex items-center space-x-2 transition-all duration-200"
-                >
-                  {item.icon}
-                  <span>{item.label}</span>
-                </Link>
-              ))}
-            </div>
+          <div className="flex space-x-4">
+            <Link
+              to="/login"
+              className="text-white hover:bg-gray-800 p-2 rounded-2xl text-sm font-medium"
+            >
+              Login
+            </Link>
+            <Link
+              to="/signup"
+              className="text-black bg-white rounded-2xl hover:bg-neutral-200 hover:text-black p-2 text-sm font-medium"
+            >
+              Signup
+            </Link>
           </div>
 
           {/* Mobile Menu Button */}
