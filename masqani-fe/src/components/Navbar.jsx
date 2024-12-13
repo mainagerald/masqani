@@ -123,7 +123,7 @@ const Navbar = () => {
                     {/* Dropdown for the item */}
                     {activeDropdown === index && (
                       <div 
-                        className="absolute left-0 mt-2 w-[50vw] bg-black rounded-md shadow-lg p-4"
+                        className="absolute left-0 mt-2 w-[60vw] bg-black rounded-md shadow-lg p-4"
                         onMouseEnter={handleDropdownContentMouseEnter}
                         onMouseLeave={handleDropdownMouseLeave}
                       >
@@ -138,7 +138,7 @@ const Navbar = () => {
                                   <Link
                                     key={linkIndex}
                                     to={link.to}
-                                    className="block text-white hover:text-gray-300 hover:underline transition-colors duration-200"
+                                    className="block font-thin text-white hover:text-gray-300 hover:underline transition-colors duration-200"
                                   >
                                     {link.label}
                                   </Link>
@@ -156,6 +156,12 @@ const Navbar = () => {
           </div>
 
           <div className="flex space-x-4">
+          <Link
+              to="/news-insights"
+              className="text-white hover:bg-gray-800 p-2 rounded-2xl text-sm font-medium underline"
+            >
+              News & Insights
+            </Link>
             <Link
               to="/login"
               className="text-white hover:bg-gray-800 p-2 rounded-2xl text-sm font-medium"
@@ -175,7 +181,7 @@ const Navbar = () => {
             <button
               onClick={toggleMenu}
               type="button"
-              className="bg-gray-800 inline-flex items-center justify-center p-2 
+              className="bg-black inline-flex items-center justify-center p-2 
                 rounded-md text-white hover:bg-gray-700 
                 focus:outline-none focus:ring-2 focus:ring-offset-2"
               aria-controls="mobile-menu"

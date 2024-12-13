@@ -2,6 +2,7 @@ import React from 'react';
 import { FiHome } from 'react-icons/fi';
 import { LuBuilding, LuCreditCard, LuHouse, LuUsers } from 'react-icons/lu';
 import { Link } from 'react-router-dom';
+import PropertyCard from '../components/PropertyCard'
 
 const FeatureCard = ({ icon, title, description }) => (
   <div className="bg-neutral-100 p-6 rounded-xl transition-all duration-300">
@@ -37,6 +38,37 @@ const Home = () => {
     }
   ];
 
+  const mockPropertiesForRent = [
+    {
+      id: 1,
+      image: 'https://via.placeholder.com/300x200',
+      price: '$1,200/month',
+      address: '123 Main Street, Springfield',
+    },
+    {
+      id: 2,
+      image: 'https://via.placeholder.com/300x200',
+      price: '$950/month',
+      address: '456 Elm Street, Smalltown',
+    },
+  ];
+
+  const mockPropertiesForSale = [
+    {
+      id: 1,
+      image: 'https://via.placeholder.com/300x200',
+      price: '$250,000',
+      address: '789 Oak Avenue, Metro City',
+    },
+    {
+      id: 2,
+      image: 'https://via.placeholder.com/300x200',
+      price: '$320,000',
+      address: '101 Maple Lane, Greenfield',
+    },
+  ];
+
+
   return (
     <div className="min-h-screen">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-12">
@@ -48,22 +80,7 @@ const Home = () => {
             masQani provides a comprehensive solution for property managers, 
             landlords, and tenants to streamline rental processes and property management.
           </p>
-          <div className="flex justify-center space-x-4 mb-12">
-            <Link
-              to="/properties"
-              className="bg-black text-white px-6 py-3 rounded-xl 
-              hover:bg-neutral-700 transition-colors duration-300"
-            >
-              View Properties
-            </Link>
-            <Link
-              to="/register"
-              className="bg-neutral-100 text-black px-6 py-3 rounded-xl 
-              hover:bg-neutral-300 transition-colors duration-300"
-            >
-              List Properties
-            </Link>
-          </div>
+
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {features.map((feature, index) => (
@@ -75,6 +92,24 @@ const Home = () => {
               />
             ))}
           </div>
+        </div>
+      </div>
+
+      <div className="px-4 sm:px-6 lg:px-8">
+        <h3 className="text-2xl font-semibold text-neutral-800 mb-4">Properties for Rent Near You</h3>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {mockPropertiesForRent.map((property) => (
+            <PropertyCard key={property.id} property={property} />
+          ))}
+        </div>
+      </div>
+
+      <div className="px-4 sm:px-6 lg:px-8 mt-12">
+        <h3 className="text-2xl font-semibold text-neutral-800 mb-4">Properties for Sale Near You</h3>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {mockPropertiesForSale.map((property) => (
+            <PropertyCard key={property.id} property={property} />
+          ))}
         </div>
       </div>
 
