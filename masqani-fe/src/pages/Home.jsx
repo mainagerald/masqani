@@ -1,8 +1,9 @@
 import React from 'react';
 import { FiHome } from 'react-icons/fi';
 import { LuBuilding, LuCreditCard, LuHouse, LuUsers } from 'react-icons/lu';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import PropertyCard from '../components/PropertyCard'
+import { PiArrowRight, PiArrowRightDuotone, PiArrowRightThin } from 'react-icons/pi';
 
 const FeatureCard = ({ icon, title, description }) => (
   <div className="bg-neutral-100 p-6 rounded-xl transition-all duration-300">
@@ -43,12 +44,14 @@ const Home = () => {
       id: 1,
       image: 'https://via.placeholder.com/300x200',
       price: '$1,200/month',
+      amenities:['2 Beds', '2 Baths'],
       address: '123 Main Street, Springfield',
     },
     {
       id: 2,
       image: 'https://via.placeholder.com/300x200',
       price: '$950/month',
+      amenities:['2 Beds', '1 Bath'],
       address: '456 Elm Street, Smalltown',
     },
   ];
@@ -58,12 +61,14 @@ const Home = () => {
       id: 1,
       image: 'https://via.placeholder.com/300x200',
       price: '$250,000',
+      amenities:['2 Beds', '2 Baths'],
       address: '789 Oak Avenue, Metro City',
     },
     {
       id: 2,
       image: 'https://via.placeholder.com/300x200',
       price: '$320,000',
+      amenities:['3 Beds', '2 Baths'],
       address: '101 Maple Lane, Greenfield',
     },
   ];
@@ -102,6 +107,7 @@ const Home = () => {
             <PropertyCard key={property.id} property={property} />
           ))}
         </div>
+        <Link className='justify-end flex underline space-x-1 items-center p-1 m-2' to='/properties-rent'>See more for rent<PiArrowRight/></Link>
       </div>
 
       <div className="px-4 sm:px-6 lg:px-8 mt-12">
@@ -111,9 +117,10 @@ const Home = () => {
             <PropertyCard key={property.id} property={property} />
           ))}
         </div>
+        <Link className='justify-end flex underline space-x-1 items-center p-1 m-2' to='/properties-buy'>See more for sale<PiArrowRight/></Link>
       </div>
 
-      <div className="py-16 bg-neutral-100">
+      <div className="py-16 bg-neutral-100 mt-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-bold text-center text-black mb-12">
             How masQani Works
