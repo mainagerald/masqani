@@ -18,7 +18,7 @@ export const AuthProvider = ({ children }) => {
 
   const validateToken = async (token) => {
     try {
-      const response = await axiosInstance.post(`${environment.apiUrl}/auth/validate-token`, {
+      const response = await axiosInstance.post(`${environment.apiUrl}/auth/validate-token`, {accessToken:token},{
         headers: { Authorization: `Bearer ${token}` }
       });
       console.log("Validate token response:", response);
