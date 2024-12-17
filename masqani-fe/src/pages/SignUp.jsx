@@ -8,7 +8,7 @@ import { toast, ToastContainer } from 'react-toastify';
 import Spinner from '../components/Spinner';
 import { ClipLoader } from 'react-spinners';
 
-const LoginPage = () => {
+const SignUp = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
@@ -245,4 +245,4 @@ const LoginPage = () => {
     );
 };
 
-export default LoginPage;
+export default SignUp;

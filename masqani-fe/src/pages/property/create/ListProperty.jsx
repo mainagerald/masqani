@@ -2,7 +2,9 @@ import React from 'react'
 
 const ListProperty = () => {
   return (
-    <div>ListProperty</div>
+    <div 
+    className='bg-white min-h-screen flex items-center justify-center'
+    ><p className='text-black'>create property</p></div>
   )
 }
 

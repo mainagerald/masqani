@@ -3,6 +3,7 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../utils/AuthContext';
 import { environment } from '../service/environment';
 import { toast, ToastContainer } from 'react-toastify';
+import Spinner from '../components/Spinner';
 
 const LoginPage = () => {
     const [email, setEmail] = useState('');
@@ -24,7 +25,6 @@ const LoginPage = () => {
                 try {
                     oauthLogin(accessToken, refreshToken);
                     toast.success('Logged in')
-                    
                     setTimeout(() => {
                         navigate('/', { replace: true });
                     }, 1000)
@@ -60,6 +60,7 @@ const LoginPage = () => {
 
         try {
             await login(email, password);
+            toast.success('Logging in')
             setTimeout(() => {
                 navigate('/', { replace: true });
             }, 1000)

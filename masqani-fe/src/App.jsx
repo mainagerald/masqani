@@ -7,6 +7,7 @@ import LoginPage from './pages/LoginPage'
 import SignUp from './pages/SignUp';
 import ListProperty from './pages/property/create/ListProperty'
 import PrivateRoute from './utils/PrivateRoute'
+import AllRent from './pages/property/rentals/AllRent'
 
 function App() {
 
@@ -20,6 +21,8 @@ function App() {
         <Route path='/billing' element={
           <PrivateRoute><Billing /></PrivateRoute>} />
           <Route path='/properties-listprop'element={<PrivateRoute><ListProperty/></PrivateRoute>}/>
+          <Route path='/properties-rent'element={<PrivateRoute><AllRent/></PrivateRoute>}/>
+
       </Route>
     </Routes>
   )
