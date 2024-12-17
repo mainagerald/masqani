@@ -5,6 +5,8 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import axiosInstance from '../utils/AxiosInstance';
 import { toast, ToastContainer } from 'react-toastify';
+import Spinner from '../components/Spinner';
+import { ClipLoader } from 'react-spinners';
 
 const LoginPage = () => {
     const [email, setEmail] = useState('');
@@ -17,6 +19,7 @@ const LoginPage = () => {
     const [verificationMessage, setVerificationMessage] = useState('');
     const navigate = useNavigate();
     const location = useLocation();
+    const [isLoading, setIsLoading]=useState(false);
 
     useEffect(() => {
         // Check for email verification token in URL
@@ -35,8 +38,9 @@ const LoginPage = () => {
                 position:'top-right',
                     autoClose:3000,
                     closeOnClick:true,
-                    pauseOnHover:true,
-                    hideProgressBar:false,
+                    pauseOnHover: false,
+                    hideProgressBar:true,
+                    pauseOnFocusLoss: false,
                     className:"toast-error"//create css for this
             })
         }
@@ -44,6 +48,7 @@ const LoginPage = () => {
 
     const verifyEmail = async (token) => {
         try {
+            
             const response = await axiosInstance.get(`${environment.apiUrl}/auth/verify`, {
                 params: { token }
             });
@@ -80,9 +85,11 @@ const LoginPage = () => {
         e.preventDefault();
         setError('');
         setVerificationMessage('');
+        setIsLoading(true);
 
         if (!email || !password) {
             setError('Email and password are required.');
+            setIsLoading(false)
             return;
         }
 
@@ -108,7 +115,6 @@ const LoginPage = () => {
 
         try {
             const response = await axiosInstance.post(`${environment.apiUrl}/auth/signup`, payload);
-            
             setVerificationMessage('Verification email sent. Please check your inbox.');
             
             setEmail('');
@@ -116,7 +122,6 @@ const LoginPage = () => {
             setConfirmPassword('');
         } catch (error) {
             console.error("Signup error:", error);
-            
             if (error.response && error.response.status === 409) {
                 setSignInError('Email already in use.');
                 toast.error(signInError);
@@ -124,6 +129,8 @@ const LoginPage = () => {
                 setSignInError('Signup failed. Please try again.');
                 toast.error(signInError);
             }
+        }finally{
+            setIsLoading(false);
         }
     };
 
@@ -196,8 +203,9 @@ const LoginPage = () => {
                         <button 
                             type='submit' 
                             className='bg-black text-white rounded-lg p-2 mt-2'
+                            disabled={isLoading}
                         >
-                            Sign Up
+                            {isLoading?(<><span>Signing up</span><ClipLoader size={10} style={{color:'white'}}/></>) :('Sign Up')}
                         </button>
                     </form>
                 </div>
@@ -229,6 +237,9 @@ const LoginPage = () => {
                 {signInError&&(
                     <ToastContainer
                     />
+                )}
+                {isLoading&&(
+                        <Spinner/>
                 )}
         </div>
     );
