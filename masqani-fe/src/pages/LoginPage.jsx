@@ -7,6 +7,7 @@ const LoginPage = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
+    const [signInSuccess, setSignInSuccess] = useState('');
     
     const navigate = useNavigate();
     const location = useLocation();

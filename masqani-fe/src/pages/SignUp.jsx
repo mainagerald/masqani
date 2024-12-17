@@ -4,6 +4,7 @@ import { environment } from '../service/environment';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import axiosInstance from '../utils/AxiosInstance';
+import { toast, ToastContainer } from 'react-toastify';
 
 const LoginPage = () => {
     const [email, setEmail] = useState('');
@@ -12,6 +13,7 @@ const LoginPage = () => {
     const [showPassword, setShowPassword] = useState(false)
     const [showConfirmPassword, setShowConfirmPassword] = useState(false)
     const [error, setError] = useState('');
+    const [signInError, setSignInError] = useState('');
     const [verificationMessage, setVerificationMessage] = useState('');
     const navigate = useNavigate();
     const location = useLocation();
@@ -26,13 +28,27 @@ const LoginPage = () => {
         }
     }, [location]);
 
+    useEffect(()=>{
+        if(signInError){
+            toast.error(signInError, {
+                draggable:false,
+                position:'top-right',
+                    autoClose:3000,
+                    closeOnClick:true,
+                    pauseOnHover:true,
+                    hideProgressBar:false,
+                    className:"toast-error"//create css for this
+            })
+        }
+    },[signInError])
+
     const verifyEmail = async (token) => {
         try {
             const response = await axiosInstance.get(`${environment.apiUrl}/auth/verify`, {
                 params: { token }
             });
-            setVerificationMessage('Email verified successfully! You can now log in.');
-            navigate("/login");
+            setVerificationMessage('Email verified successfully! Please proceed to log in.');
+            // navigate(`${environment.clientUrl}/login`);
         } catch (error) {
             setError('Email verification failed. Please try again or request a new verification link.');
         }
@@ -65,7 +81,6 @@ const LoginPage = () => {
         setError('');
         setVerificationMessage('');
 
-        // Validate inputs
         if (!email || !password) {
             setError('Email and password are required.');
             return;
@@ -103,9 +118,11 @@ const LoginPage = () => {
             console.error("Signup error:", error);
             
             if (error.response && error.response.status === 409) {
-                setError('Email already in use.');
+                setSignInError('Email already in use.');
+                toast.error(signInError);
             } else {
-                setError('Signup failed. Please try again.');
+                setSignInError('Signup failed. Please try again.');
+                toast.error(signInError);
             }
         }
     };
@@ -121,13 +138,6 @@ const LoginPage = () => {
                     <h1 className='font-bold'>Welcome to masQani</h1>
                     <h4 className='font-thin'>Please sign up to continue</h4>
                 </div>
-                
-                {verificationMessage && (
-                    <div className='text-green-600 mb-4'>
-                        {verificationMessage}
-                    </div>
-                )}
-
                 {error && <p className='text-red-500 mb-4'>{error}</p>}
 
                 <div>
@@ -207,6 +217,19 @@ const LoginPage = () => {
                     Already have an account?
                 </div>
             </div>
+            {verificationMessage && (
+                    <>
+                    <div className='inset-0 fixed bg-white h-screen flex justify-center items-center'>
+                    <div className='text-green-600 m-2 p-2 border rounded-lg'>
+                    {verificationMessage}
+                </div>
+                    </div>
+                    </>
+                )}
+                {signInError&&(
+                    <ToastContainer
+                    />
+                )}
         </div>
     );
 };
