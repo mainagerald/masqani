@@ -45,7 +45,7 @@ const Navbar = () => {
             { label: 'Apartments', to: '/properties/apartments-rent' },
             { label: 'Houses', to: '/properties/houses-rent' },
             { label: 'Commercial Property', to: '/properties/commercial-rent' },
-            { label: 'All Listings', to: '/properties/all-rent' },
+            { label: 'All Listings', to: '/properties-rent' },
           ]
         }
       ]
@@ -71,7 +71,7 @@ const Navbar = () => {
   };
 
   const handleLogout=()=>{
-    toast.info("Logging out");
+    toast.info("Logged out");
     logout();
   }
   const handleDropdownMouseEnter = useCallback((index) => {

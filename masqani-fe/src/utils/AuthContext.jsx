@@ -86,7 +86,7 @@ export const AuthProvider = ({ children }) => {
     localStorage.removeItem('refreshToken');
     setUser(null);
     setTimeout(()=>{
-      navigate("/login", {replace:true})
+      navigate("/", {replace:true})
     },500)
     setIsAuthenticated(false);
   };

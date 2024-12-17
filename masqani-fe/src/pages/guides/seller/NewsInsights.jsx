@@ -1,10 +1,10 @@
 import React from 'react'
 
-const ListProperty = () => {
+const NewsInsights = () => {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-12">
-<p className='text-black'>create property</p></div>
+        NewsInsights</div>
   )
 }
 
-export default ListProperty
+export default NewsInsights

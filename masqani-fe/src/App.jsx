@@ -8,6 +8,17 @@ import SignUp from './pages/SignUp';
 import ListProperty from './pages/property/create/ListProperty'
 import PrivateRoute from './utils/PrivateRoute'
 import AllRent from './pages/property/rentals/AllRent'
+import AllSale from './pages/property/sale/AllSale'
+import ApartmentSale from './pages/property/sale/ApartmentSale'
+import HouseSale from './pages/property/sale/HouseSale'
+import CommercialSale from './pages/property/sale/CommercialSale'
+import AffordabilityCalc from './pages/guides/buyer/AffordabilityCalc'
+import BuyersGuide from './pages/guides/buyer/BuyersGuide'
+import ApartmentsRent from './pages/property/rentals/ApartmentsRent'
+import HouseRent from './pages/property/rentals/HouseRent'
+import SellerGuide from './pages/guides/seller/SellerGuide'
+import AgentList from './pages/guides/agents/AgentList'
+import NewsInsights from './pages/guides/seller/NewsInsights'
 
 function App() {
 
@@ -20,9 +31,23 @@ function App() {
         <Route index element={<Home />} />
         <Route path='/billing' element={
           <PrivateRoute><Billing /></PrivateRoute>} />
-          <Route path='/properties-listprop'element={<PrivateRoute><ListProperty/></PrivateRoute>}/>
-          <Route path='/properties-rent'element={<PrivateRoute><AllRent/></PrivateRoute>}/>
+        <Route path='/properties-listprop' element={<PrivateRoute><ListProperty /></PrivateRoute>} />
+        <Route path='/properties-rent' element={<AllRent />} />
+        <Route path='/properties/apartments-rent' element={<ApartmentsRent />} />
+        <Route path='/properties/houses-rent' element={<HouseRent />} />
+        <Route path='/properties/commercial-rent' element={<AllRent />} />
+        
+        <Route path='/properties-buy' element={<AllSale />} />
+        <Route path='/properties/apartments-sale' element={<ApartmentSale />} />
+        <Route path='/properties/houses-sale' element={<HouseSale />} />
+        <Route path='/properties/commercial-sale' element={<CommercialSale />} />
+        
+        <Route path='/guide/affordability-calc' element={<AffordabilityCalc />} />
+        <Route path='/guide/buyer' element={<BuyersGuide />} />
+        <Route path='/guide/sellers' element={<SellerGuide />} />
 
+        <Route path='/agents/list' element={<AgentList />} />
+        <Route path='/news-insights' element={<NewsInsights/>}/>
       </Route>
     </Routes>
   )
