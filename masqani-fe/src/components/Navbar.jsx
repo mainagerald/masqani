@@ -3,12 +3,14 @@ import { BiBuilding, BiPurchaseTag, BiX } from 'react-icons/bi';
 import { MdApartment, MdCreditCard, MdHome, MdMenu, MdSettings } from 'react-icons/md';
 import { PiHouseLine } from 'react-icons/pi';
 import { Link } from 'react-router-dom';
+import { useAuth } from '../utils/AuthContext';
+import { toast, ToastContainer } from 'react-toastify';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState(null);
   const dropdownTimerRef = useRef(null);
-
+  const {isAuthenticated, logout}=useAuth();
   const navItems = [
     {
       icon: <BiPurchaseTag />,
@@ -68,6 +70,10 @@ const Navbar = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
+  const handleLogout=()=>{
+    toast.info("Logging out");
+    logout();
+  }
   const handleDropdownMouseEnter = useCallback((index) => {
     if (dropdownTimerRef.current) {
       clearTimeout(dropdownTimerRef.current);
@@ -164,7 +170,15 @@ const Navbar = () => {
             >
               News & Insights
             </Link>
-          <Link
+            {isAuthenticated?(
+              <>
+              <button type='button'
+              onClick={handleLogout} 
+              className="text-black bg-white rounded-2xl hover:bg-neutral-200 hover:text-black p-2 text-sm font-medium"
+              >Logout</button>
+            </>
+            ):(<>
+            <Link
               to="/login"
               className="text-white hover:bg-gray-800 p-2 rounded-2xl text-sm font-medium"
             >
@@ -176,8 +190,7 @@ const Navbar = () => {
             >
               Signup
             </Link>
-            
-            
+            </>)}
           </div>
 
 
@@ -239,6 +252,7 @@ const Navbar = () => {
           </div>
         </div>
       )}
+      <ToastContainer draggable autoClose={1000} hideProgressBar/>
     </nav>
   );
 };

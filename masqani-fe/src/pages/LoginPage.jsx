@@ -2,13 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../utils/AuthContext';
 import { environment } from '../service/environment';
+import { toast, ToastContainer } from 'react-toastify';
 
 const LoginPage = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
     const [signInSuccess, setSignInSuccess] = useState('');
-    
+
     const navigate = useNavigate();
     const location = useLocation();
     const { login, oauthLogin } = useAuth();
@@ -22,9 +23,14 @@ const LoginPage = () => {
             if (accessToken && refreshToken) {
                 try {
                     oauthLogin(accessToken, refreshToken);
-                    navigate('/', { replace: true });
+                    toast.success('Logged in')
+                    
+                    setTimeout(() => {
+                        navigate('/', { replace: true });
+                    }, 1000)
                 } catch (error) {
                     setError('OAuth login failed. Please try again.');
+                    toast.error(error);
                     console.error('OAuth Login Error:', error);
                 }
             }
@@ -44,7 +50,7 @@ const LoginPage = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        
+
         setError('');
 
         if (!email || !password) {
@@ -54,7 +60,9 @@ const LoginPage = () => {
 
         try {
             await login(email, password);
-            navigate('/');
+            setTimeout(() => {
+                navigate('/', { replace: true });
+            }, 1000)
         } catch (error) {
             setError('Login failed. Please check your credentials.');
             console.error("Login error:", error);
@@ -84,7 +92,7 @@ const LoginPage = () => {
                             className='border rounded p-1 mb-2'
                             required
                         />
-                        
+
                         <label>Password</label>
                         <input
                             name='password'
@@ -95,9 +103,9 @@ const LoginPage = () => {
                             className='border rounded p-1 mb-2'
                             required
                         />
-                        
+
                         {error && <p className='text-red-500'>{error}</p>}
-                        
+
                         <button type='submit' className='bg-black text-white rounded-lg p-2'>
                             Sign In
                         </button>
@@ -112,13 +120,18 @@ const LoginPage = () => {
                         Google
                     </button>
                 </div>
-                <div 
-                    className='text-end text-sm italic underline hover:cursor-pointer' 
+                <div
+                    className='text-end text-sm italic underline hover:cursor-pointer'
                     onClick={() => navigate('/signup')}
                 >
                     Don't have an account?
                 </div>
             </div>
+            <ToastContainer
+                draggable
+                position='top-right'
+                closeOnClick
+                autoClose={2000} />
         </div>
     );
 };
