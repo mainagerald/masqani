@@ -11,9 +11,8 @@ import com.masqani.masqani.listing.application.LandlordService;
 import com.masqani.masqani.listing.application.dto.DisplayCardListingDTO;
 import com.masqani.masqani.listing.application.dto.ListingCreateBookingDTO;
 import com.masqani.masqani.listing.application.dto.vo.PriceVO;
-import com.masqani.masqani.user.application.UserService;
-import com.masqani.masqani.user.application.dto.ReadUserDTO;
-import com.masqani.masqani.util.config.SecurityUtilities;
+import com.masqani.masqani.security.dto.ReadUserDTO;
+import com.masqani.masqani.security.service.UserService;
 import com.masqani.masqani.util.shared.State;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -54,8 +53,8 @@ public class BookingService {
 
         booking.setFkListing(listingCreateBookingDTO.listingPublicId());
 
-        ReadUserDTO connectedUser = userService.getAuthenticatedUserFromSecurityContext();
-        booking.setFkTenant(connectedUser.publicId());
+        ReadUserDTO connectedUser = userService.getAuthenticatedUser();
+        booking.setFkTenant(UUID.fromString(connectedUser.getPublicId()));
 
         long numberOfNights = ChronoUnit.DAYS.between(booking.getStartDate(), booking.getEndDate());
         booking.setTotalPrice((int) (numberOfNights * listingCreateBookingDTO.price().value()));
@@ -73,8 +72,8 @@ public class BookingService {
 
     @Transactional(readOnly = true)
     public List<BookedListingDTO> getBookedListing() {
-        ReadUserDTO connectedUser = userService.getAuthenticatedUserFromSecurityContext();
-        List<Booking> allBookings = bookingRepository.findAllByFkTenant(connectedUser.publicId());
+        ReadUserDTO connectedUser = userService.getAuthenticatedUser();
+        List<Booking> allBookings = bookingRepository.findAllByFkTenant(UUID.fromString(connectedUser.getPublicId()));
         List<UUID> allListingPublicIDs = allBookings.stream().map(Booking::getFkListing).toList();
         List<DisplayCardListingDTO> allListings = landlordService.getCardDisplayByListingPublicId(allListingPublicIDs);
         return mapBookingToBookedListing(allBookings, allListings);
@@ -97,15 +96,15 @@ public class BookingService {
 
     @Transactional
     public State<UUID, String> cancel(UUID bookingPublicId, UUID listingPublicId, boolean byLandlord) {
-        ReadUserDTO connectedUser = userService.getAuthenticatedUserFromSecurityContext();
+        ReadUserDTO connectedUser = userService.getAuthenticatedUser();
         int deleteSuccess = 0;
 
-        if (SecurityUtilities.hasCurrentUserAnyOfAuthorities(SecurityUtilities.ROLE_LANDLORD)
-                && byLandlord) {
-            deleteSuccess = handleDeletionForLandlord(bookingPublicId, listingPublicId, connectedUser, deleteSuccess);
-        } else {
-            deleteSuccess = bookingRepository.deleteBookingByFkTenantAndPublicId(connectedUser.publicId(), bookingPublicId);
-        }
+//        if (SecurityUtilities.hasCurrentUserAnyOfAuthorities(SecurityUtilities.ROLE_LANDLORD)
+//                && byLandlord) {
+//            deleteSuccess = handleDeletionForLandlord(bookingPublicId, listingPublicId, connectedUser, deleteSuccess);
+//        } else {
+//            deleteSuccess = bookingRepository.deleteBookingByFkTenantAndPublicId(UUID.fromString(connectedUser.getPublicId()), bookingPublicId);
+//        }
 
         if (deleteSuccess >= 1) {
             return State.<UUID, String>builder().forSuccess(bookingPublicId);
@@ -115,7 +114,7 @@ public class BookingService {
     }
 
     private int handleDeletionForLandlord(UUID bookingPublicId, UUID listingPublicId, ReadUserDTO connectedUser, int deleteSuccess) {
-        Optional<DisplayCardListingDTO> listingVerificationOpt = landlordService.getByPublicIdAndLandlordPublicId(listingPublicId, connectedUser.publicId());
+        Optional<DisplayCardListingDTO> listingVerificationOpt = landlordService.getByPublicIdAndLandlordPublicId(listingPublicId, UUID.fromString(connectedUser.getPublicId()));
         if (listingVerificationOpt.isPresent()) {
             deleteSuccess = bookingRepository.deleteBookingByPublicIdAndFkListing(bookingPublicId, listingVerificationOpt.get().publicId());
         }
@@ -124,7 +123,7 @@ public class BookingService {
 
     @Transactional(readOnly = true)
     public List<BookedListingDTO> getBookedListingForLandlord() {
-        ReadUserDTO connectedUser = userService.getAuthenticatedUserFromSecurityContext();
+        ReadUserDTO connectedUser = userService.getAuthenticatedUser();
         List<DisplayCardListingDTO> allProperties = landlordService.getAllProperties(connectedUser);
         List<UUID> allPropertyPublicIds = allProperties.stream().map(DisplayCardListingDTO::publicId).toList();
         List<Booking> allBookings = bookingRepository.findAllByFkListingIn(allPropertyPublicIds);

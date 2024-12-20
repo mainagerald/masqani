@@ -1,4 +1,4 @@
-package com.masqani.masqani.user.application;
+package com.masqani.masqani.exceptions;
 
 public class UserException extends RuntimeException {
 

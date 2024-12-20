@@ -1,19 +1,21 @@
 package com.masqani.masqani.listing.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.masqani.masqani.security.dto.ReadUserDTO;
+import com.masqani.masqani.exceptions.UserException;
 import com.masqani.masqani.listing.application.LandlordService;
 import com.masqani.masqani.listing.application.dto.CreatedListingDTO;
 import com.masqani.masqani.listing.application.dto.DisplayCardListingDTO;
 import com.masqani.masqani.listing.application.dto.SaveListingDTO;
 import com.masqani.masqani.listing.application.dto.sub.PictureDTO;
-import com.masqani.masqani.user.application.UserException;
-import com.masqani.masqani.user.application.UserService;
-import com.masqani.masqani.user.application.dto.ReadUserDTO;
-import com.masqani.masqani.util.config.SecurityUtilities;
+
+import com.masqani.masqani.security.service.UserService;
 import com.masqani.masqani.util.shared.State;
 import com.masqani.masqani.util.shared.StatusNotification;
 import jakarta.validation.ConstraintViolation;
 import jakarta.validation.Validator;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ProblemDetail;
@@ -30,8 +32,12 @@ import java.util.UUID;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
+import static com.masqani.masqani.security.enums.Role.ROLE_LANDLORD;
+
+@Slf4j
 @RestController
 @RequestMapping("/api/landlord-listing")
+@RequiredArgsConstructor
 public class LandlordResource {
 
     private final LandlordService landlordService;
@@ -43,11 +49,11 @@ public class LandlordResource {
     private ObjectMapper objectMapper = new ObjectMapper();
 
 
-    public LandlordResource(LandlordService landlordService, Validator validator, UserService userService) {
-        this.landlordService = landlordService;
-        this.validator = validator;
-        this.userService = userService;
-    }
+//    public LandlordResource(LandlordService landlordService, Validator validator, UserService userService) {
+//        this.landlordService = landlordService;
+//        this.validator = validator;
+//        this.userService = userService;
+//    }
 
 
     @PostMapping(value = "/create", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
@@ -89,17 +95,18 @@ public class LandlordResource {
     }
 
     @GetMapping(value = "/get-all")
-    @PreAuthorize("hasAnyRole('" + SecurityUtilities.ROLE_LANDLORD + "')")
+    @PreAuthorize("hasAnyRole('ROLE_LANDLORD')")
     public ResponseEntity<List<DisplayCardListingDTO>> getAll() {
-        ReadUserDTO connectedUser = userService.getAuthenticatedUserFromSecurityContext();
+        ReadUserDTO connectedUser = userService.getAuthenticatedUser();
+        log.info("connected user-----> {}", connectedUser);
         List<DisplayCardListingDTO> allProperties = landlordService.getAllProperties(connectedUser);
         return ResponseEntity.ok(allProperties);
     }
 
     @DeleteMapping("/delete")
-    @PreAuthorize("hasAnyRole('" + SecurityUtilities.ROLE_LANDLORD + "')")
+    @PreAuthorize("hasAnyRole('ROLE_LANDLORD')")
     public ResponseEntity<UUID> delete(@RequestParam UUID publicId) {
-        ReadUserDTO connectedUser = userService.getAuthenticatedUserFromSecurityContext();
+        ReadUserDTO connectedUser = userService.getAuthenticatedUser();
         State<UUID, String> deleteState = landlordService.delete(publicId, connectedUser);
         if (deleteState.getStatus().equals(StatusNotification.OK)) {
             return ResponseEntity.ok(deleteState.getValue());

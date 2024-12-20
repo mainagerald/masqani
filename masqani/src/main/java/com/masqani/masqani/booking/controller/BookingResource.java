@@ -5,7 +5,6 @@ import com.masqani.masqani.booking.application.BookingService;
 import com.masqani.masqani.booking.application.dto.BookedDateDTO;
 import com.masqani.masqani.booking.application.dto.BookedListingDTO;
 import com.masqani.masqani.booking.application.dto.NewBookingDTO;
-import com.masqani.masqani.util.config.SecurityUtilities;
 import com.masqani.masqani.util.shared.State;
 import com.masqani.masqani.util.shared.StatusNotification;
 import jakarta.validation.Valid;
@@ -50,7 +49,7 @@ public class BookingResource {
     }
 
     @DeleteMapping("cancel")
-    public ResponseEntity<UUID> cancel(@RequestParam UUID bookingPublicId,
+    public ResponseEntity<UUID> cancelBooking(@RequestParam UUID bookingPublicId,
                                        @RequestParam UUID listingPublicId,
                                        @RequestParam boolean byLandlord) {
         State<UUID, String> cancelState = bookingService.cancel(bookingPublicId, listingPublicId, byLandlord);
@@ -63,7 +62,7 @@ public class BookingResource {
     }
 
     @GetMapping("get-booked-listing-for-landlord")
-    @PreAuthorize("hasAnyRole('" + SecurityUtilities.ROLE_LANDLORD + "')")
+    @PreAuthorize("hasAnyRole('ROLE_LANDLORD')")
     public ResponseEntity<List<BookedListingDTO>> getBookedListingForLandlord() {
         return ResponseEntity.ok(bookingService.getBookedListingForLandlord());
     }

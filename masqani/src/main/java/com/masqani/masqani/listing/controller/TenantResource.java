@@ -9,6 +9,7 @@ import com.masqani.masqani.listing.domain.BookingCategory;
 import com.masqani.masqani.util.shared.State;
 import com.masqani.masqani.util.shared.StatusNotification;
 import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
@@ -20,14 +21,9 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/tenant-listing")
+@RequiredArgsConstructor
 public class TenantResource {
-
     private final TenantService tenantService;
-
-
-    public TenantResource(TenantService tenantService) {
-        this.tenantService = tenantService;
-    }
 
     @GetMapping("/get-all-by-category")
     public ResponseEntity<Page<DisplayCardListingDTO>> findAllByBookingCategory(Pageable pageable,

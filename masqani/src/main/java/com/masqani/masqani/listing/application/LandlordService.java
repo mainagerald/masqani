@@ -1,6 +1,5 @@
 package com.masqani.masqani.listing.application;
 
-
 import com.masqani.masqani.listing.application.dto.CreatedListingDTO;
 import com.masqani.masqani.listing.application.dto.DisplayCardListingDTO;
 import com.masqani.masqani.listing.application.dto.ListingCreateBookingDTO;
@@ -8,9 +7,9 @@ import com.masqani.masqani.listing.application.dto.SaveListingDTO;
 import com.masqani.masqani.listing.domain.Listing;
 import com.masqani.masqani.listing.mapper.ListingMapper;
 import com.masqani.masqani.listing.repository.ListingRepository;
-import com.masqani.masqani.user.application.Auth0Service;
-import com.masqani.masqani.user.application.UserService;
-import com.masqani.masqani.user.application.dto.ReadUserDTO;
+import com.masqani.masqani.security.dto.ReadUserDTO;
+import com.masqani.masqani.security.service.AuthService;
+import com.masqani.masqani.security.service.UserService;
 import com.masqani.masqani.util.shared.State;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -28,34 +27,34 @@ public class LandlordService {
 
     private final ListingMapper listingMapper;
     private final UserService userService;
-    private final Auth0Service auth0Service;
+    private final AuthService authService;
     private final PictureService pictureService;
 
     public CreatedListingDTO create(SaveListingDTO saveListingDTO) {
         Listing newListing = listingMapper.saveListingDTOToListing(saveListingDTO);
 
-        ReadUserDTO userConnected = userService.getAuthenticatedUserFromSecurityContext();
-        newListing.setLandlordPublicId(userConnected.publicId());
+        ReadUserDTO userConnected = userService.getAuthenticatedUser();
+        newListing.setLandlordPublicId(UUID.fromString(userConnected.getPublicId()));
 
         Listing savedListing = listingRepository.saveAndFlush(newListing);
 
         pictureService.saveAll(saveListingDTO.getPictures(), savedListing);
 
-        auth0Service.addLandlordRoleToUser(userConnected);
+        authService.promoteToLandlord(userConnected.getEmail());
 
         return listingMapper.listingToCreatedListingDTO(savedListing);
     }
 
     @Transactional(readOnly = true)
     public List<DisplayCardListingDTO> getAllProperties(ReadUserDTO landlord) {
-        List<Listing> properties = listingRepository.findAllByLandlordPublicIdFetchCoverPicture(landlord.publicId());
+        List<Listing> properties = listingRepository.findAllByLandlordPublicIdFetchCoverPicture(UUID.fromString(landlord.getPublicId()));
         return listingMapper.listingToDisplayCardListingDTOs(properties);
     }
 
     @Transactional
     public State<UUID, String> delete(UUID publicId, ReadUserDTO landlord) {
-        long deletedSuccessfuly = listingRepository.deleteByPublicIdAndLandlordPublicId(publicId, landlord.publicId());
-        if (deletedSuccessfuly > 0) {
+        long deletedSuccessfully = listingRepository.deleteByPublicIdAndLandlordPublicId(publicId, UUID.fromString(landlord.getPublicId()));
+        if (deletedSuccessfully > 0) {
             return State.<UUID, String>builder().forSuccess(publicId);
         } else {
             return State.<UUID, String>builder().forUnauthorized("User not authorized to delete this listing");

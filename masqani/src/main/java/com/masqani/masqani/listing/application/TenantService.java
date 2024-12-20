@@ -10,8 +10,8 @@ import com.masqani.masqani.listing.domain.BookingCategory;
 import com.masqani.masqani.listing.domain.Listing;
 import com.masqani.masqani.listing.mapper.ListingMapper;
 import com.masqani.masqani.listing.repository.ListingRepository;
-import com.masqani.masqani.user.application.UserService;
-import com.masqani.masqani.user.application.dto.ReadUserDTO;
+import com.masqani.masqani.security.dto.ReadUserDTO;
+import com.masqani.masqani.security.service.UserService;
 import com.masqani.masqani.util.shared.State;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
@@ -63,8 +63,8 @@ public class TenantService {
 
         DisplayListingDTO displayListingDTO = listingMapper.listingToDisplayListingDTO(listingByPublicIdOpt.get());
 
-        ReadUserDTO readUserDTO = userService.getByPublicId(listingByPublicIdOpt.get().getLandlordPublicId()).orElseThrow();
-        LandlordListingDTO landlordListingDTO = new LandlordListingDTO(readUserDTO.firstName(), readUserDTO.imageUrl());
+        ReadUserDTO readUserDTO = userService.getByPublicId(String.valueOf(listingByPublicIdOpt.get().getLandlordPublicId()));
+        LandlordListingDTO landlordListingDTO = new LandlordListingDTO(readUserDTO.getEmail());
         displayListingDTO.setLandlord(landlordListingDTO);
 
         return State.<DisplayListingDTO, String>builder().forSuccess(displayListingDTO);

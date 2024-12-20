@@ -25,7 +25,7 @@ spring:
   jpa:
     open-in-view: false
     hibernate:
-      ddl-auto: update #because of liquibase!
+      ddl-auto: none #because of liquibase!
     properties:
       hibernate:
         default_schema: tenancyTrack
@@ -34,8 +34,8 @@ spring:
     contexts: dev
     change-log: classpath:db/changelog/db.changelog-master.xml
     default-schema: tenancyTrack
-    enabled: false
-    drop-first: true
+    enabled: true
+#    drop-first: true
 
   servlet:
     multipart:
