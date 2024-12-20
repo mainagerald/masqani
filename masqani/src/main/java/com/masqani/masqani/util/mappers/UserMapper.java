@@ -1,8 +1,6 @@
 //package com.masqani.masqani.util.mappers;
 //
-//import com.masqani.masqani.dto.UserDto;
-//import com.masqani.masqani.model.Authority;
-//import com.masqani.masqani.model.User;
+//
 //import org.mapstruct.Mapper;
 //import org.mapstruct.Mapping;
 //

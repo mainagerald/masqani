@@ -1,7 +1,7 @@
 package com.masqani.masqani.listing.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.masqani.masqani.security.dto.ReadUserDTO;
+import com.masqani.masqani.user.dto.ReadUserDTO;
 import com.masqani.masqani.exceptions.UserException;
 import com.masqani.masqani.listing.application.LandlordService;
 import com.masqani.masqani.listing.application.dto.CreatedListingDTO;
@@ -9,7 +9,7 @@ import com.masqani.masqani.listing.application.dto.DisplayCardListingDTO;
 import com.masqani.masqani.listing.application.dto.SaveListingDTO;
 import com.masqani.masqani.listing.application.dto.sub.PictureDTO;
 
-import com.masqani.masqani.security.service.UserService;
+import com.masqani.masqani.user.service.UserService;
 import com.masqani.masqani.util.shared.State;
 import com.masqani.masqani.util.shared.StatusNotification;
 import jakarta.validation.ConstraintViolation;
@@ -32,8 +32,6 @@ import java.util.UUID;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
-import static com.masqani.masqani.security.enums.Role.ROLE_LANDLORD;
-
 @Slf4j
 @RestController
 @RequestMapping("/api/landlord-listing")
@@ -47,13 +45,6 @@ public class LandlordResource {
     private final UserService userService;
 
     private ObjectMapper objectMapper = new ObjectMapper();
-
-
-//    public LandlordResource(LandlordService landlordService, Validator validator, UserService userService) {
-//        this.landlordService = landlordService;
-//        this.validator = validator;
-//        this.userService = userService;
-//    }
 
 
     @PostMapping(value = "/create", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)

@@ -30,6 +30,22 @@ spring:
       hibernate:
         default_schema: tenancyTrack
 
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: ${GOOGLE_CLIENT_ID}
+            client-secret: ${GOOGLE_CLIENT_SECRET}
+            scope: profile, email
+            redirect-uri: "http://localhost:9900/login/oauth2/code/google"
+          provider:
+            google:
+              authorization-uri: https://accounts.google.com/o/oauth2/auth
+              token-uri: https://oauth2.googleapis.com/token
+              user-info-uri: https://www.googleapis.com/oauth2/v3/userinfo
+              user-name-attribute: sub
+
   liquibase:
     contexts: dev
     change-log: classpath:db/changelog/db.changelog-master.xml
@@ -44,15 +60,17 @@ spring:
       max-request-size: 100MB
 
 server:
-  port: 8080
+  port: 9090
 
-okta:
-  oauth2:
-    issuer: https://dev-w801unrgovy6ki0y.us.auth0.com/
-    client-id: ${AUTH0_CLIENT_ID}
-    client-secret: ${AUTH0_CLIENT_SECRET}
 
-application:
-  auth0:
-    role-landlord-id: rol_ZBYZ3WXJk1UzbZJu
+
+#okta:
+#  oauth2:
+#    issuer: https://dev-w801unrgovy6ki0y.us.auth0.com/
+#    client-id: ${AUTH0_CLIENT_ID}
+#    client-secret: ${AUTH0_CLIENT_SECRET}
+#
+#application:
+#  auth0:
+#    role-landlord-id: rol_ZBYZ3WXJk1UzbZJu
 
