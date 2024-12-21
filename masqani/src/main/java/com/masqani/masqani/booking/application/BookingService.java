@@ -12,6 +12,7 @@ import com.masqani.masqani.listing.application.dto.DisplayCardListingDTO;
 import com.masqani.masqani.listing.application.dto.ListingCreateBookingDTO;
 import com.masqani.masqani.listing.application.dto.vo.PriceVO;
 import com.masqani.masqani.user.dto.ReadUserDTO;
+import com.masqani.masqani.user.enums.Role;
 import com.masqani.masqani.user.service.UserService;
 import com.masqani.masqani.util.shared.State;
 import lombok.RequiredArgsConstructor;
@@ -105,6 +106,12 @@ public class BookingService {
 //        } else {
 //            deleteSuccess = bookingRepository.deleteBookingByFkTenantAndPublicId(UUID.fromString(connectedUser.getPublicId()), bookingPublicId);
 //        }
+        if(connectedUser.getRole().equals(Role.ROLE_LANDLORD)&&byLandlord){
+            deleteSuccess = handleDeletionForLandlord(bookingPublicId, listingPublicId, connectedUser, deleteSuccess);
+
+        }else{
+            deleteSuccess = bookingRepository.deleteBookingByFkTenantAndPublicId(UUID.fromString(connectedUser.getPublicId()), bookingPublicId);
+        }
 
         if (deleteSuccess >= 1) {
             return State.<UUID, String>builder().forSuccess(bookingPublicId);
