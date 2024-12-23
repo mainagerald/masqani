@@ -1,6 +1,5 @@
 package com.masqani.masqani.user.model;
 
-
 import com.masqani.masqani.user.enums.AuthProvider;
 import com.masqani.masqani.user.enums.Role;
 import jakarta.persistence.*;
@@ -59,10 +58,10 @@ public class User implements UserDetails, OAuth2User {
     public Map<String, Object> getAttributes() {
         return attributes;
     }
-
-    public Set<String> getAuthoritiesAsStrings(){
-        return authorities.stream().map(authority -> authority.getName()).collect(Collectors.toSet());
-    }
+//
+//    public Set<String> getAuthoritiesAsStrings(){
+//        return authorities.stream().map(authority -> authority.getName()).collect(Collectors.toSet());
+//    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
