@@ -30,7 +30,6 @@
             <column name="last_modified_date" type="timestamp">
                 <constraints nullable="false" />
             </column>
-
         </createTable>
     </changeSet>
 
