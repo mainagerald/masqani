@@ -5,7 +5,7 @@ import com.masqani.masqani.listing.application.dto.sub.LandlordListingDTO;
 import com.masqani.masqani.listing.application.dto.sub.ListingInfoDTO;
 import com.masqani.masqani.listing.application.dto.sub.PictureDTO;
 import com.masqani.masqani.listing.application.dto.vo.PriceVO;
-import com.masqani.masqani.listing.domain.BookingCategory;
+import com.masqani.masqani.listing.domain.enums.PropertyCategory;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -19,7 +19,7 @@ public class DisplayListingDTO {
     private List<PictureDTO> pictures;
     private ListingInfoDTO infos;
     private PriceVO price;
-    private BookingCategory category;
+    private PropertyCategory category;
     private String location;
     private LandlordListingDTO landlord;
 

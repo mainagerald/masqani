@@ -1,7 +1,7 @@
 package com.masqani.masqani.listing.repository;
 
 
-import com.masqani.masqani.listing.domain.BookingCategory;
+import com.masqani.masqani.listing.domain.enums.PropertyCategory;
 import com.masqani.masqani.listing.domain.Listing;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -21,8 +21,8 @@ public interface ListingRepository extends JpaRepository<Listing, Long> {
     long deleteByPublicIdAndLandlordPublicId(UUID publicId, UUID landlordPublicId);
 
     @Query("SELECT listing from Listing listing LEFT JOIN FETCH listing.pictures picture" +
-            " WHERE picture.isCover = true AND listing.bookingCategory = :bookingCategory")
-    Page<Listing> findAllByBookingCategoryWithCoverOnly(Pageable pageable, BookingCategory bookingCategory);
+            " WHERE picture.isCover = true AND listing.propertyCategory = :propertyCategory")
+    Page<Listing> findAllByPropertyCategoryWithCoverOnly(Pageable pageable, PropertyCategory propertyCategory);
 
     @Query("SELECT listing from Listing listing LEFT JOIN FETCH listing.pictures picture" +
             " WHERE picture.isCover = true")

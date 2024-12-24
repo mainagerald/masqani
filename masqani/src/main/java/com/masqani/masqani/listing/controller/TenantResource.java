@@ -5,7 +5,7 @@ import com.masqani.masqani.listing.application.TenantService;
 import com.masqani.masqani.listing.application.dto.DisplayCardListingDTO;
 import com.masqani.masqani.listing.application.dto.DisplayListingDTO;
 import com.masqani.masqani.listing.application.dto.SearchDTO;
-import com.masqani.masqani.listing.domain.BookingCategory;
+import com.masqani.masqani.listing.domain.enums.PropertyCategory;
 import com.masqani.masqani.util.shared.State;
 import com.masqani.masqani.util.shared.StatusNotification;
 import jakarta.validation.Valid;
@@ -27,7 +27,7 @@ public class TenantResource {
 
     @GetMapping("/get-all-by-category")
     public ResponseEntity<Page<DisplayCardListingDTO>> findAllByBookingCategory(Pageable pageable,
-                                                                                @RequestParam BookingCategory category) {
+                                                                                @RequestParam PropertyCategory category) {
         return ResponseEntity.ok(tenantService.getAllByCategory(pageable, category));
     }
 

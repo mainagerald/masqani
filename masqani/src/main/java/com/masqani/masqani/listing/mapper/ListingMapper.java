@@ -21,7 +21,7 @@ public interface ListingMapper {
     @Mapping(target = "title", source = "description.title.value")
     @Mapping(target = "description", source = "description.description.value")
     @Mapping(target = "bedrooms", source = "infos.bedrooms.value")
-    @Mapping(target = "bookingCategory", source = "category")
+    @Mapping(target = "propertyCategory", source = "category")
     @Mapping(target = "bathrooms", source = "infos.baths.value")
     @Mapping(target = "price", source = "price.value")
     Listing saveListingDTOToListing(SaveListingDTO saveListingDTO);
@@ -43,7 +43,7 @@ public interface ListingMapper {
     @Mapping(target = "description.description.value", source = "description")
     @Mapping(target = "infos.bedrooms.value", source = "bedrooms")
     @Mapping(target = "infos.baths.value", source = "bathrooms")
-    @Mapping(target = "category", source = "bookingCategory")
+    @Mapping(target = "category", source = "propertyCategory")
     @Mapping(target = "price.value", source = "price")
     DisplayListingDTO listingToDisplayListingDTO(Listing listing);
 

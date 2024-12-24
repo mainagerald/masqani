@@ -6,7 +6,7 @@ import com.masqani.masqani.listing.application.dto.DisplayCardListingDTO;
 import com.masqani.masqani.listing.application.dto.DisplayListingDTO;
 import com.masqani.masqani.listing.application.dto.SearchDTO;
 import com.masqani.masqani.listing.application.dto.sub.LandlordListingDTO;
-import com.masqani.masqani.listing.domain.BookingCategory;
+import com.masqani.masqani.listing.domain.enums.PropertyCategory;
 import com.masqani.masqani.listing.domain.Listing;
 import com.masqani.masqani.listing.mapper.ListingMapper;
 import com.masqani.masqani.listing.repository.ListingRepository;
@@ -41,15 +41,15 @@ public class TenantService {
         this.bookingService = bookingService;
     }
 
-    public Page<DisplayCardListingDTO> getAllByCategory(Pageable pageable, BookingCategory category) {
-        Page<Listing> allOrBookingCategory;
-        if (category == BookingCategory.ALL) {
-            allOrBookingCategory = listingRepository.findAllWithCoverOnly(pageable);
+    public Page<DisplayCardListingDTO> getAllByCategory(Pageable pageable, PropertyCategory category) {
+        Page<Listing> allOrPropertyCategory;
+        if (category == PropertyCategory.ALL) {
+            allOrPropertyCategory = listingRepository.findAllWithCoverOnly(pageable);
         } else {
-            allOrBookingCategory = listingRepository.findAllByBookingCategoryWithCoverOnly(pageable, category);
+            allOrPropertyCategory = listingRepository.findAllByPropertyCategoryWithCoverOnly(pageable, category);
         }
 
-        return allOrBookingCategory.map(listingMapper::listingToDisplayCardListingDTO);
+        return allOrPropertyCategory.map(listingMapper::listingToDisplayCardListingDTO);
     }
 
     @Transactional(readOnly = true)

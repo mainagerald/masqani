@@ -1,6 +1,6 @@
-package com.masqani.masqani.listing.domain;
+package com.masqani.masqani.listing.domain.enums;
 
-public enum BookingCategory {
+public enum PropertyCategory {
     ALL,
     APARTMENTS,
     STUDIOS,

@@ -5,7 +5,7 @@ import com.masqani.masqani.listing.application.dto.sub.DescriptionDTO;
 import com.masqani.masqani.listing.application.dto.sub.ListingInfoDTO;
 import com.masqani.masqani.listing.application.dto.sub.PictureDTO;
 import com.masqani.masqani.listing.application.dto.vo.PriceVO;
-import com.masqani.masqani.listing.domain.BookingCategory;
+import com.masqani.masqani.listing.domain.enums.PropertyCategory;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
@@ -18,7 +18,7 @@ import java.util.List;
 public class SaveListingDTO {
 
     @NotNull
-    BookingCategory category;
+    PropertyCategory category;
 
     @NotNull String location;
 

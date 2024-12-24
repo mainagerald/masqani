@@ -1,17 +1,17 @@
 package com.masqani.masqani.listing.domain;
 
+import com.masqani.masqani.listing.domain.enums.PropertyCategory;
 import com.masqani.masqani.util.AuditingEntity;
 import jakarta.persistence.*;
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.EqualsAndHashCode;
 import org.hibernate.annotations.UuidGenerator;
 
 import java.util.HashSet;
-import java.util.Objects;
 import java.util.Set;
 import java.util.UUID;
 
+@EqualsAndHashCode(callSuper = true)
 @Entity
 @Table(name = "listing")
 @Data
@@ -42,7 +42,7 @@ public class Listing extends AuditingEntity<Long> {
 
     @Enumerated(EnumType.STRING)
     @Column(name = "category")
-    private BookingCategory bookingCategory;
+    private PropertyCategory propertyCategory;
 
     @Column(name = "location")
     private String location;
@@ -67,7 +67,7 @@ public class Listing extends AuditingEntity<Long> {
                 ", bedrooms=" + bedrooms +
                 ", bathrooms=" + bathrooms +
                 ", price=" + price +
-                ", bookingCategory=" + bookingCategory +
+                ", bookingCategory=" + propertyCategory +
                 ", location='" + location + '\'' +
                 ", landlordPublicId=" + landlordPublicId +
                 '}';
