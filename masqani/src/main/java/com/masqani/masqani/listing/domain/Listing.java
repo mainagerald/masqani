@@ -2,6 +2,7 @@ package com.masqani.masqani.listing.domain;
 
 import com.masqani.masqani.util.AuditingEntity;
 import jakarta.persistence.*;
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.UuidGenerator;
@@ -13,13 +14,11 @@ import java.util.UUID;
 
 @Entity
 @Table(name = "listing")
-@Setter
-@Getter
+@Data
 public class Listing extends AuditingEntity<Long> {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "listingSequenceGenerator")
-    @SequenceGenerator(name = "listingSequenceGenerator", sequenceName = "listing_generator", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
 
@@ -59,19 +58,6 @@ public class Listing extends AuditingEntity<Long> {
         return id;
     }
 
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Listing listing = (Listing) o;
-        return bedrooms == listing.bedrooms && bathrooms == listing.bathrooms && price == listing.price && Objects.equals(title, listing.title) && Objects.equals(description, listing.description) && bookingCategory == listing.bookingCategory && Objects.equals(location, listing.location) && Objects.equals(landlordPublicId, listing.landlordPublicId);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(title, description, bedrooms, bathrooms, price, bookingCategory, location, landlordPublicId);
-    }
 
     @Override
     public String toString() {

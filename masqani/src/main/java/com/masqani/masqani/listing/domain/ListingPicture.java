@@ -2,6 +2,7 @@ package com.masqani.masqani.listing.domain;
 
 import com.masqani.masqani.util.AuditingEntity;
 import jakarta.persistence.*;
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -9,14 +10,12 @@ import java.util.Arrays;
 import java.util.Objects;
 
 @Entity
-@Table(name = "listing_picture")
-@Setter
-@Getter
+@Table(name = "listing_pictures")
+@Data
 public class ListingPicture extends AuditingEntity<Long> {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "listingPictureSequenceGenerator")
-    @SequenceGenerator(name = "listingPictureSequenceGenerator", sequenceName = "listing_picture_generator", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
 
@@ -34,38 +33,4 @@ public class ListingPicture extends AuditingEntity<Long> {
     @Column(name = "is_cover")
     private boolean isCover;
 
-    @Override
-    public Long getId() {
-        return id;
-    }
-
-    public boolean isCover() {
-        return isCover;
-    }
-
-    public void setCover(boolean cover) {
-        isCover = cover;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        ListingPicture that = (ListingPicture) o;
-        return isCover == that.isCover && Objects.deepEquals(file, that.file) && Objects.equals(fileContentType, that.fileContentType);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(Arrays.hashCode(file), fileContentType, isCover);
-    }
-
-    @Override
-    public String toString() {
-        return "ListingPicture{" +
-                "file=" + Arrays.toString(file) +
-                ", fileContentType='" + fileContentType + '\'' +
-                ", isCover=" + isCover +
-                '}';
-    }
 }
