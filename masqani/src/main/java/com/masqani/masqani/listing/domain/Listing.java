@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import org.hibernate.annotations.UuidGenerator;
 
+import java.math.BigDecimal;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
@@ -38,7 +39,10 @@ public class Listing extends AuditingEntity<Long> {
     private int bathrooms;
 
     @Column(name = "price")
-    private int price;
+    private BigDecimal price;
+
+    @Column(name = "rent_amount")
+    private BigDecimal rentAmount;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "category")
@@ -67,6 +71,7 @@ public class Listing extends AuditingEntity<Long> {
                 ", bedrooms=" + bedrooms +
                 ", bathrooms=" + bathrooms +
                 ", price=" + price +
+                ",rentAmount="+rentAmount+
                 ", bookingCategory=" + propertyCategory +
                 ", location='" + location + '\'' +
                 ", landlordPublicId=" + landlordPublicId +

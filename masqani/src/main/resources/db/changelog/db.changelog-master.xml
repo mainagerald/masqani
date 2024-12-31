@@ -76,4 +76,11 @@
         </createTable>
     </changeSet>
 
+    <changeSet author="maina" id="4-add-rent-amount-and-modify-price">
+        <modifyDataType tableName="listing" columnName="price" newDataType="DECIMAL(19,2)"/>
+        <addColumn tableName="listing">
+            <column name="rent_amount" type="DECIMAL(19,2)"/>
+        </addColumn>
+    </changeSet>
+
 </databaseChangeLog>
