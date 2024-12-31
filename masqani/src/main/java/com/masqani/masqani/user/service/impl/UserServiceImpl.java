@@ -45,6 +45,7 @@ public class UserServiceImpl implements UserService {
             throw new RuntimeException("No authentication found");
         }
         Object principal = authentication.getPrincipal();
+        log.info("user principal {}", principal);
         if(principal instanceof User user){
             return mapUserToReadUserDto(user);
         }else {

@@ -52,6 +52,8 @@ public class LandlordResource {
             MultipartHttpServletRequest request,
             @RequestPart(name = "dto") String saveListingDTOString
     ) throws IOException {
+        log.info("Received dto: {}", saveListingDTOString);
+
         List<PictureDTO> pictures = request.getFileMap()
                 .values()
                 .stream()
