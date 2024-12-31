@@ -44,7 +44,7 @@ spring:
             client-id: ${GOOGLE_CLIENT_ID}
             client-secret: ${GOOGLE_CLIENT_SECRET}
             scope: profile, email
-            redirect-uri: "http://localhost:9900/login/oauth2/code/google"
+            redirect-uri: "http://localhost:9090/login/oauth2/code/google"
           provider:
             google:
               authorization-uri: https://accounts.google.com/o/oauth2/auth
@@ -58,6 +58,12 @@ spring:
       enabled: true
       max-file-size: 100MB
       max-request-size: 100MB
+
+hazelcast:
+  network:
+    join:
+      multicast:
+        enabled: true
 
 server:
   port: 9090

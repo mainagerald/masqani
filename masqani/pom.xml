@@ -109,17 +109,17 @@
 			<version>3.4.0</version>
 		</dependency>
 <!--		&lt;!&ndash; https://mvnrepository.com/artifact/com.hazelcast/hazelcast &ndash;&gt;-->
-<!--		<dependency>-->
-<!--			<groupId>com.hazelcast</groupId>-->
-<!--			<artifactId>hazelcast</artifactId>-->
-<!--			<version>5.5.0</version>-->
-<!--		</dependency>-->
-<!--		&lt;!&ndash; https://mvnrepository.com/artifact/com.hazelcast/hazelcast-spring &ndash;&gt;-->
-<!--		<dependency>-->
-<!--			<groupId>com.hazelcast</groupId>-->
-<!--			<artifactId>hazelcast-spring</artifactId>-->
-<!--			<version>5.5.0</version>-->
-<!--		</dependency>-->
+		<dependency>
+			<groupId>com.hazelcast</groupId>
+			<artifactId>hazelcast</artifactId>
+			<version>5.5.0</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/com.hazelcast/hazelcast-spring -->
+		<dependency>
+			<groupId>com.hazelcast</groupId>
+			<artifactId>hazelcast-spring</artifactId>
+			<version>5.5.0</version>
+		</dependency>
 		<!-- https://mvnrepository.com/artifact/com.github.ben-manes.caffeine/caffeine -->
 		<dependency>
 			<groupId>com.github.ben-manes.caffeine</groupId>

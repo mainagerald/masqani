@@ -83,4 +83,9 @@
         </addColumn>
     </changeSet>
 
+    <changeSet id="5-add-default-values-to-user-date-columns" author="maina">
+        <addDefaultValue tableName="users" columnName="created_at" defaultValueComputed="CURRENT_TIMESTAMP"/>
+        <addDefaultValue tableName="users" columnName="last_modified_date" defaultValueComputed="CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP"/>
+    </changeSet>
+
 </databaseChangeLog>

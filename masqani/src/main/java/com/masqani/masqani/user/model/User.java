@@ -4,11 +4,14 @@ import com.masqani.masqani.user.enums.AuthProvider;
 import com.masqani.masqani.user.enums.Role;
 import jakarta.persistence.*;
 import lombok.Data;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 
+import java.time.Instant;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -16,6 +19,7 @@ import java.util.stream.Collectors;
 @Entity
 @Table(name = "users")
 public class User implements UserDetails, OAuth2User {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -45,11 +49,13 @@ public class User implements UserDetails, OAuth2User {
     @Column(name = "provider_id")
     private String providerId;
 
-//    @ManyToMany
-//    @JoinTable(name = "user_authority",
-//            joinColumns = {@JoinColumn(name = "user_id", referencedColumnName = "id")},
-//            inverseJoinColumns = {@JoinColumn(name = "authority_name", referencedColumnName = "name")})
-//    private Set<Authority> authorities = new HashSet<>();
+    @CreatedDate
+    @Column(updatable = false, name = "created_at")
+    private final Instant createdAt = Instant.now();
+
+    @LastModifiedDate
+    @Column(name = "last_modified_date")
+    private final Instant lastModifiedAt = Instant.now();
 
     @Transient
     private Map<String, Object> attributes;
