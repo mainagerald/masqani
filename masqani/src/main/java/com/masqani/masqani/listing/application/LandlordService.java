@@ -39,8 +39,12 @@ public class LandlordService {
         newListing.setLandlordPublicId(userConnected.getPublicId());
         newListing.setPublicId(UUID.randomUUID());
 
+        log.info("==========================================================================");
+        log.info("listing pub id--> {}", newListing.getPublicId());
+        log.info("==========================================================================");
+        log.info("==========================================================================");
         log.info("new listing------> {}", newListing);
-
+        log.info("==========================================================================");
         Listing savedListing = listingRepository.saveAndFlush(newListing);
 
         pictureService.saveAll(saveListingDTO.getPictures(), savedListing);

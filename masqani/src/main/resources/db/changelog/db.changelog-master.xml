@@ -96,4 +96,10 @@
         <modifyDataType tableName="listing" columnName="id" newDataType="BIGINT AUTO_INCREMENT"/>
         <modifyDataType tableName="listing_pictures" columnName="id" newDataType="BIGINT AUTO_INCREMENT"/>
     </changeSet>
+    <changeSet id="8-fix-uuid-columns" author="maina">
+        <!-- UUID columns as CHAR(36) as stored by db. I keep getting errors.-->
+        <modifyDataType tableName="listing" columnName="public_id" newDataType="CHAR(36)"/>
+        <modifyDataType tableName="listing" columnName="landlord_public_id" newDataType="CHAR(36)"/>
+        <modifyDataType tableName="users" columnName="public_id" newDataType="CHAR(36)"/>
+    </changeSet>
 </databaseChangeLog>

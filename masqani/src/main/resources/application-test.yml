@@ -1,0 +1,26 @@
+spring:
+  profiles:
+    active: test
+  datasource:
+    url: jdbc:mysql://localhost:3306/masqani_test?createDatabaseIfNotExist=true
+    username: root
+    password: root
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: test
+            client-secret: test
+
+jwt:
+  secret: testsecretkeytestsecretkeytestsecretkeytestsecretkey
+
+spring.mail:
+  host: smtp.gmail.com
+  port: 587
+  username: test@gmail.com
+  password: test
