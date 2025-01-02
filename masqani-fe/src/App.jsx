@@ -31,7 +31,7 @@ function App() {
         <Route index element={<Home />} />
         <Route path='/billing' element={
           <PrivateRoute><Billing /></PrivateRoute>} />
-        <Route path='/properties-listprop' element={<PrivateRoute><ListProperty /></PrivateRoute>} />
+        <Route path='/properties-list-property' element={<PrivateRoute><ListProperty /></PrivateRoute>} />
         <Route path='/properties-rent' element={<AllRent />} />
         <Route path='/properties/apartments-rent' element={<ApartmentsRent />} />
         <Route path='/properties/houses-rent' element={<HouseRent />} />

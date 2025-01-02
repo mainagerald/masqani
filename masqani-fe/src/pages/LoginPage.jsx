@@ -1,15 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../utils/AuthContext';
 import { environment } from '../service/environment';
 import { toast, ToastContainer } from 'react-toastify';
-import Spinner from '../components/Spinner';
 
 const LoginPage = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
-    const [signInSuccess, setSignInSuccess] = useState('');
 
     const navigate = useNavigate();
     const location = useLocation();
@@ -125,7 +123,7 @@ const LoginPage = () => {
                     className='text-end text-sm italic underline hover:cursor-pointer'
                     onClick={() => navigate('/signup')}
                 >
-                    Don't have an account?
+                    Don&apos;t have an account?
                 </div>
             </div>
             <ToastContainer

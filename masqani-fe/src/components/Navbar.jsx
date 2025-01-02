@@ -53,7 +53,7 @@ const Navbar = () => {
     {
       icon: <PiHouseLine />,
       label: 'List a property',
-      path: '/properties-listprop',
+      path: '/properties-list-property',
       menus: [
         {
           title: 'Seller\'s Resources',
