@@ -12,6 +12,7 @@ import com.masqani.masqani.user.service.AuthService;
 import com.masqani.masqani.user.service.UserService;
 import com.masqani.masqani.util.shared.State;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -19,6 +20,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
+@Slf4j
 @Service
 @RequiredArgsConstructor
 public class LandlordService {
@@ -34,7 +36,10 @@ public class LandlordService {
         Listing newListing = listingMapper.saveListingDTOToListing(saveListingDTO);
 
         ReadUserDTO userConnected = userService.getAuthenticatedUser();
-        newListing.setLandlordPublicId(UUID.fromString(userConnected.getPublicId()));
+        newListing.setLandlordPublicId(userConnected.getPublicId());
+        newListing.setPublicId(UUID.randomUUID());
+
+        log.info("new listing------> {}", newListing);
 
         Listing savedListing = listingRepository.saveAndFlush(newListing);
 
@@ -47,13 +52,13 @@ public class LandlordService {
 
     @Transactional(readOnly = true)
     public List<DisplayCardListingDTO> getAllProperties(ReadUserDTO landlord) {
-        List<Listing> properties = listingRepository.findAllByLandlordPublicIdFetchCoverPicture(UUID.fromString(landlord.getPublicId()));
+        List<Listing> properties = listingRepository.findAllByLandlordPublicIdFetchCoverPicture(landlord.getPublicId());
         return listingMapper.listingToDisplayCardListingDTOs(properties);
     }
 
     @Transactional
     public State<UUID, String> delete(UUID publicId, ReadUserDTO landlord) {
-        long deletedSuccessfully = listingRepository.deleteByPublicIdAndLandlordPublicId(publicId, UUID.fromString(landlord.getPublicId()));
+        long deletedSuccessfully = listingRepository.deleteByPublicIdAndLandlordPublicId(publicId, landlord.getPublicId());
         if (deletedSuccessfully > 0) {
             return State.<UUID, String>builder().forSuccess(publicId);
         } else {

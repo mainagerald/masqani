@@ -45,10 +45,24 @@ public class UserServiceImpl implements UserService {
             throw new RuntimeException("No authentication found");
         }
         Object principal = authentication.getPrincipal();
+        log.info("-----------------------------------------------------------------------------------");
         log.info("user principal {}", principal);
+        log.info("-----------------------------------------------------------------------------------");
+        log.info("Principal class: {}", principal.getClass());
+        log.info("-----------------------------------------------------------------------------------");
+        log.info("Principal classloader: {}", principal.getClass().getClassLoader());
+        log.info("-----------------------------------------------------------------------------------");
+        log.info("User class: {}", User.class);
+        log.info("-----------------------------------------------------------------------------------");
+        log.info("User classloader: {}", User.class.getClassLoader());
+        log.info("-----------------------------------------------------------------------------------");
+
+//        return mapUserToReadUserDto((User) principal);
+        log.info("principal check--->{}", principal);
         if(principal instanceof User user){
             return mapUserToReadUserDto(user);
         }else {
+            log.info("User not of type user");
             throw new RuntimeException("Auth not of type user");
         }
     }

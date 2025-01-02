@@ -44,7 +44,7 @@ public class AuthServiceImpl implements AuthService {
         String verificationToken = generateVerificationToken();
         User user = new User();
         user.setEmail(signUpRequest.getEmail());
-        user.setPublicId(UUID.randomUUID().toString());
+        user.setPublicId(UUID.randomUUID());
         user.setPassword(passwordEncoder.encode(signUpRequest.getPassword()));
         user.setRole(Role.ROLE_TENANT);
         user.setVerificationToken(verificationToken);

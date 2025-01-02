@@ -43,7 +43,7 @@ public class CustomOAuth2UserService extends DefaultOAuth2UserService {
     private User createNewUser(OAuth2User oAuth2User) {
         User user = new User();
         user.setEmail(oAuth2User.getAttribute("email"));
-        user.setPublicId(UUID.randomUUID().toString());
+        user.setPublicId(UUID.randomUUID());
         user.setActivated(true);
         user.setAttributes(oAuth2User.getAttributes());
         user.setProvider(AuthProvider.GOOGLE);

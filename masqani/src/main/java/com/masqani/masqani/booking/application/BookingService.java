@@ -55,7 +55,7 @@ public class BookingService {
         booking.setFkListing(listingCreateBookingDTO.listingPublicId());
 
         ReadUserDTO connectedUser = userService.getAuthenticatedUser();
-        booking.setFkTenant(UUID.fromString(connectedUser.getPublicId()));
+        booking.setFkTenant(connectedUser.getPublicId());
 
         long numberOfNights = ChronoUnit.DAYS.between(booking.getStartDate(), booking.getEndDate());
         booking.setTotalPrice((int) (numberOfNights * listingCreateBookingDTO.price().value()));
@@ -74,7 +74,7 @@ public class BookingService {
     @Transactional(readOnly = true)
     public List<BookedListingDTO> getBookedListing() {
         ReadUserDTO connectedUser = userService.getAuthenticatedUser();
-        List<Booking> allBookings = bookingRepository.findAllByFkTenant(UUID.fromString(connectedUser.getPublicId()));
+        List<Booking> allBookings = bookingRepository.findAllByFkTenant(connectedUser.getPublicId());
         List<UUID> allListingPublicIDs = allBookings.stream().map(Booking::getFkListing).toList();
         List<DisplayCardListingDTO> allListings = landlordService.getCardDisplayByListingPublicId(allListingPublicIDs);
         return mapBookingToBookedListing(allBookings, allListings);
@@ -110,7 +110,7 @@ public class BookingService {
             deleteSuccess = handleDeletionForLandlord(bookingPublicId, listingPublicId, connectedUser, deleteSuccess);
 
         }else{
-            deleteSuccess = bookingRepository.deleteBookingByFkTenantAndPublicId(UUID.fromString(connectedUser.getPublicId()), bookingPublicId);
+            deleteSuccess = bookingRepository.deleteBookingByFkTenantAndPublicId(connectedUser.getPublicId(), bookingPublicId);
         }
 
         if (deleteSuccess >= 1) {
@@ -121,7 +121,7 @@ public class BookingService {
     }
 
     private int handleDeletionForLandlord(UUID bookingPublicId, UUID listingPublicId, ReadUserDTO connectedUser, int deleteSuccess) {
-        Optional<DisplayCardListingDTO> listingVerificationOpt = landlordService.getByPublicIdAndLandlordPublicId(listingPublicId, UUID.fromString(connectedUser.getPublicId()));
+        Optional<DisplayCardListingDTO> listingVerificationOpt = landlordService.getByPublicIdAndLandlordPublicId(listingPublicId,connectedUser.getPublicId());
         if (listingVerificationOpt.isPresent()) {
             deleteSuccess = bookingRepository.deleteBookingByPublicIdAndFkListing(bookingPublicId, listingVerificationOpt.get().publicId());
         }

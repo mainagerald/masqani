@@ -32,7 +32,7 @@ public class User implements UserDetails, OAuth2User {
     private String password;
 
     @Column(unique = true, name = "public_id")
-    private String publicId;
+    private UUID publicId;
     @Column(name = "verification_token")
     private String verificationToken;
     @Column(name = "is_activated")

@@ -88,4 +88,12 @@
         <modifyDataType tableName="users" columnName="last_modified_date" newDataType="timestamp DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP"/>
     </changeSet>
 
+    <changeSet id="6-change-public-id-to-uuid-primitive" author="maina">
+        <modifyDataType tableName="users" columnName="public_id" newDataType="UUID"/>
+    </changeSet>
+
+    <changeSet id="7-add-primary-key-constraints" author="maina">
+        <modifyDataType tableName="listing" columnName="id" newDataType="BIGINT AUTO_INCREMENT"/>
+        <modifyDataType tableName="listing_pictures" columnName="id" newDataType="BIGINT AUTO_INCREMENT"/>
+    </changeSet>
 </databaseChangeLog>

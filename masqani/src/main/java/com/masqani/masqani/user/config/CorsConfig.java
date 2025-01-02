@@ -19,6 +19,7 @@ public class CorsConfig {
 
         // Allow specific origin
 //       TODO: CHANGE TO YOUR SPECIFIC FRONTEND OR CLIENT URL
+
         config.setAllowedOrigins(Collections.singletonList("http://localhost:5173"));
 
         // Allowed HTTP methods
