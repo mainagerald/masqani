@@ -4,8 +4,10 @@ import com.masqani.masqani.listing.application.dto.CreatedListingDTO;
 import com.masqani.masqani.listing.application.dto.DisplayCardListingDTO;
 import com.masqani.masqani.listing.application.dto.ListingCreateBookingDTO;
 import com.masqani.masqani.listing.application.dto.SaveListingDTO;
-import com.masqani.masqani.listing.domain.Listing;
+import com.masqani.masqani.shared.idm.IdempotencyRecord;
+import com.masqani.masqani.listing.model.Listing;
 import com.masqani.masqani.listing.mapper.ListingMapper;
+import com.masqani.masqani.shared.idm.IdmKeyRepository;
 import com.masqani.masqani.listing.repository.ListingRepository;
 import com.masqani.masqani.user.dto.ReadUserDTO;
 import com.masqani.masqani.user.service.AuthService;
@@ -26,32 +28,38 @@ import java.util.UUID;
 public class LandlordService {
 
     private final ListingRepository listingRepository;
-
+    private final IdmKeyRepository idmKeyRepository;
     private final ListingMapper listingMapper;
     private final UserService userService;
     private final AuthService authService;
     private final PictureService pictureService;
 
-    public CreatedListingDTO create(SaveListingDTO saveListingDTO) {
-        Listing newListing = listingMapper.saveListingDTOToListing(saveListingDTO);
+    @Transactional
+    public CreatedListingDTO create(SaveListingDTO saveListingDTO, String idempotencyKey) {
+        try{
+            Listing newListing = listingMapper.saveListingDTOToListing(saveListingDTO);
+            ReadUserDTO userConnected = userService.getAuthenticatedUser();
+            newListing.setLandlordPublicId(userConnected.getPublicId());
+            newListing.setPublicId(UUID.randomUUID());
+            Listing savedListing = listingRepository.saveAndFlush(newListing);
 
-        ReadUserDTO userConnected = userService.getAuthenticatedUser();
-        newListing.setLandlordPublicId(userConnected.getPublicId());
-        newListing.setPublicId(UUID.randomUUID());
+            pictureService.saveAll(saveListingDTO.getPictures(), savedListing);
+            authService.promoteToLandlord(userConnected.getEmail());
 
-        log.info("==========================================================================");
-        log.info("listing pub id--> {}", newListing.getPublicId());
-        log.info("==========================================================================");
-        log.info("==========================================================================");
-        log.info("new listing------> {}", newListing);
-        log.info("==========================================================================");
-        Listing savedListing = listingRepository.saveAndFlush(newListing);
+            IdempotencyRecord record = new IdempotencyRecord();
+            record.setKey(idempotencyKey);
+            record.setListing(newListing);
+            idmKeyRepository.save(record);
 
-        pictureService.saveAll(saveListingDTO.getPictures(), savedListing);
+            return listingMapper.listingToCreatedListingDTO(savedListing);
+        }catch (Exception e){
+            throw e;
+        }
+    }
 
-        authService.promoteToLandlord(userConnected.getEmail());
-
-        return listingMapper.listingToCreatedListingDTO(savedListing);
+    public Optional<CreatedListingDTO> findByIdempotencyKey(String key) {
+        return idmKeyRepository.findByKey(key)
+                .map(record -> listingMapper.listingToCreatedListingDTO(record.getListing()));
     }
 
     @Transactional(readOnly = true)

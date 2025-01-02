@@ -3,7 +3,7 @@ package com.masqani.masqani.listing.mapper;
 
 import com.masqani.masqani.listing.application.dto.*;
 import com.masqani.masqani.listing.application.dto.vo.PriceVO;
-import com.masqani.masqani.listing.domain.Listing;
+import com.masqani.masqani.listing.model.Listing;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 

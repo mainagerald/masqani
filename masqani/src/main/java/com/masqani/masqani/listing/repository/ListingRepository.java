@@ -1,8 +1,8 @@
 package com.masqani.masqani.listing.repository;
 
 
-import com.masqani.masqani.listing.domain.enums.PropertyCategory;
-import com.masqani.masqani.listing.domain.Listing;
+import com.masqani.masqani.listing.model.enums.PropertyCategory;
+import com.masqani.masqani.listing.model.Listing;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;

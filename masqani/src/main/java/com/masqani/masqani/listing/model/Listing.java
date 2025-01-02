@@ -1,6 +1,6 @@
-package com.masqani.masqani.listing.domain;
+package com.masqani.masqani.listing.model;
 
-import com.masqani.masqani.listing.domain.enums.PropertyCategory;
+import com.masqani.masqani.listing.model.enums.PropertyCategory;
 import com.masqani.masqani.util.AuditingEntity;
 import jakarta.persistence.*;
 import lombok.Data;

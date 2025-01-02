@@ -2,7 +2,7 @@ package com.masqani.masqani.listing.mapper;
 
 
 import com.masqani.masqani.listing.application.dto.sub.PictureDTO;
-import com.masqani.masqani.listing.domain.ListingPicture;
+import com.masqani.masqani.listing.model.ListingPicture;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Named;

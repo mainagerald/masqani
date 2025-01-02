@@ -9,10 +9,12 @@ import com.masqani.masqani.listing.application.dto.DisplayCardListingDTO;
 import com.masqani.masqani.listing.application.dto.SaveListingDTO;
 import com.masqani.masqani.listing.application.dto.sub.PictureDTO;
 
+import com.masqani.masqani.user.exceptions.UnauthorizedException;
 import com.masqani.masqani.user.service.UserService;
 import com.masqani.masqani.util.shared.State;
 import com.masqani.masqani.util.shared.StatusNotification;
 import jakarta.validation.ConstraintViolation;
+import jakarta.validation.ValidationException;
 import jakarta.validation.Validator;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -21,14 +23,13 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ProblemDetail;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.util.DigestUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import java.io.IOException;
-import java.util.List;
-import java.util.Set;
-import java.util.UUID;
+import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
@@ -51,8 +52,40 @@ public class LandlordResource {
     public ResponseEntity<CreatedListingDTO> create(
             MultipartHttpServletRequest request,
             @RequestPart(name = "dto") String saveListingDTOString
-    ) throws IOException {
-        log.info("Received dto: {}", saveListingDTOString);
+    ) {
+        try {
+            SaveListingDTO saveListingDTO = parseAndValidateRequest(request, saveListingDTOString);
+            String idempotencyKey = generateIdempotencyKey(saveListingDTO);
+
+            Optional<CreatedListingDTO> existingListing = landlordService.findByIdempotencyKey(idempotencyKey);
+            if (existingListing.isPresent()) {
+                return ResponseEntity.ok(existingListing.get());
+            }
+
+            CreatedListingDTO result = landlordService.create(saveListingDTO, idempotencyKey);
+            return ResponseEntity.status(HttpStatus.CREATED).body(result);
+
+        } catch (UnauthorizedException e) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
+                    .body(null);
+        } catch (ValidationException e) {
+            ProblemDetail problemDetail = ProblemDetail.forStatusAndDetail(
+                    HttpStatus.BAD_REQUEST,
+                    e.getMessage()
+            );
+            return ResponseEntity.badRequest()
+                    .body(null);
+        } catch (IOException e) {
+            log.error("Error processing request", e);
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body(null);
+        }
+    }
+
+    private SaveListingDTO parseAndValidateRequest(
+            MultipartHttpServletRequest request,
+            String saveListingDTOString
+    ) throws IOException, ValidationException {
 
         List<PictureDTO> pictures = request.getFileMap()
                 .values()
@@ -67,15 +100,11 @@ public class LandlordResource {
         if (!violations.isEmpty()) {
             String violationsJoined = violations.stream()
                     .map(violation -> violation.getPropertyPath() + " " + violation.getMessage())
-                    .collect(Collectors.joining());
-
-            ProblemDetail problemDetail = ProblemDetail.forStatusAndDetail(HttpStatus.BAD_REQUEST, violationsJoined);
-            return ResponseEntity.of(problemDetail).build();
-        } else {
-            return ResponseEntity.ok(landlordService.create(saveListingDTO));
+                    .collect(Collectors.joining("; "));
+            throw new ValidationException(violationsJoined);
         }
+        return saveListingDTO;
     }
-
 
     private static Function<MultipartFile, PictureDTO> mapMultipartFileToPictureDTO() {
         return multipartFile -> {
@@ -107,5 +136,11 @@ public class LandlordResource {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
         }
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+    }
+
+
+    private String generateIdempotencyKey(SaveListingDTO dto) {
+        String dataToHash = dto.getDescription().title().value() + dto.getDescription().description().value() + dto.getPrice().value();
+        return Base64.getUrlEncoder().encodeToString(dataToHash.getBytes());
     }
 }

@@ -1,14 +1,9 @@
-package com.masqani.masqani.listing.domain;
+package com.masqani.masqani.listing.model;
 
 import com.masqani.masqani.util.AuditingEntity;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
-
-import java.util.Arrays;
-import java.util.Objects;
 
 @EqualsAndHashCode(callSuper = true)
 @Entity

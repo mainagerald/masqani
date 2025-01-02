@@ -2,8 +2,8 @@ package com.masqani.masqani.listing.application;
 
 
 import com.masqani.masqani.listing.application.dto.sub.PictureDTO;
-import com.masqani.masqani.listing.domain.Listing;
-import com.masqani.masqani.listing.domain.ListingPicture;
+import com.masqani.masqani.listing.model.Listing;
+import com.masqani.masqani.listing.model.ListingPicture;
 import com.masqani.masqani.listing.mapper.ListingPictureMapper;
 import com.masqani.masqani.listing.repository.ListingPictureRepository;
 import org.springframework.stereotype.Service;

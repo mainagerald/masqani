@@ -5,7 +5,7 @@ import com.masqani.masqani.listing.application.dto.sub.LandlordListingDTO;
 import com.masqani.masqani.listing.application.dto.sub.ListingInfoDTO;
 import com.masqani.masqani.listing.application.dto.sub.PictureDTO;
 import com.masqani.masqani.listing.application.dto.vo.PriceVO;
-import com.masqani.masqani.listing.domain.enums.PropertyCategory;
+import com.masqani.masqani.listing.model.enums.PropertyCategory;
 import lombok.Getter;
 import lombok.Setter;
 
