@@ -127,6 +127,11 @@
 			<version>3.1.8</version>
 		</dependency>
 
+		<dependency>
+			<groupId>org.springdoc</groupId>
+			<artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+			<version>2.3.0</version>
+		</dependency>
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -166,28 +171,11 @@
 			<artifactId>spring-security-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-		<!--		<dependency>-->
-		<!--			<groupId>org.liquibase</groupId>-->
-		<!--			<artifactId>liquibase-maven-plugin</artifactId>-->
-		<!--			<version>4.27.0</version>-->
-		<!--		</dependency>-->
+
 	</dependencies>
 
 	<build>
 		<plugins>
-			<!--			<plugin>-->
-			<!--				<groupId>org.liquibase</groupId>-->
-			<!--				<artifactId>liquibase-maven-plugin</artifactId>-->
-			<!--				<version>4.27.0</version>-->
-			<!--				<configuration>-->
-			<!--					<changeLogFile>src/main/resources/db/changelog/db.changelog-master.xml</changeLogFile>-->
-			<!--					<outputChangeLogFile>src/main/resources/db/changelog/generated-changelog.xml</outputChangeLogFile>-->
-			<!--					<url>jdbc:mysql://localhost:3306/masqani?createDatabaseIfNotExist=true</url>-->
-			<!--					<username>root</username>-->
-			<!--					<password>root</password>-->
-			<!--					<driver>com.mysql.cj.jdbc.Driver</driver>-->
-			<!--				</configuration>-->
-			<!--			</plugin>-->
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>

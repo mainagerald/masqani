@@ -27,7 +27,7 @@ public class BookingResource {
         this.bookingService = bookingService;
     }
 
-    @PostMapping("create")
+    @PostMapping("/create")
     public ResponseEntity<Boolean> create(@Valid @RequestBody NewBookingDTO newBookingDTO) {
         State<Void, String> createState = bookingService.create(newBookingDTO);
         if (createState.getStatus().equals(StatusNotification.ERROR)) {
@@ -38,17 +38,17 @@ public class BookingResource {
         }
     }
 
-    @GetMapping("check-availability")
+    @GetMapping("/check-availability")
     public ResponseEntity<List<BookedDateDTO>> checkAvailability(@RequestParam UUID listingPublicId) {
         return ResponseEntity.ok(bookingService.checkAvailability(listingPublicId));
     }
 
-    @GetMapping("get-booked-listing")
+    @GetMapping("/get-booked-listing")
     public ResponseEntity<List<BookedListingDTO>> getBookedListing() {
         return ResponseEntity.ok(bookingService.getBookedListing());
     }
 
-    @DeleteMapping("cancel")
+    @DeleteMapping("/cancel")
     public ResponseEntity<UUID> cancelBooking(@RequestParam UUID bookingPublicId,
                                        @RequestParam UUID listingPublicId,
                                        @RequestParam boolean byLandlord) {
@@ -61,7 +61,7 @@ public class BookingResource {
         }
     }
 
-    @GetMapping("get-booked-listing-for-landlord")
+    @GetMapping("/get-booked-listing-for-landlord")
     @PreAuthorize("hasAnyRole('ROLE_LANDLORD')")
     public ResponseEntity<List<BookedListingDTO>> getBookedListingForLandlord() {
         return ResponseEntity.ok(bookingService.getBookedListingForLandlord());
