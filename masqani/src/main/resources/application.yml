@@ -64,6 +64,9 @@ spring:
     port: 587
     username: mainageralddev@gmail.com
     password: ${MAIL_PASSWORD}
+  devtools:
+    restart:
+      exclude: com/masqani/masqani/user/**
 
 hazelcast:
   network:

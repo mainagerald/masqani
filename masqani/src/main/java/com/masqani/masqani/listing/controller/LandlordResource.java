@@ -62,8 +62,8 @@ public class LandlordResource {
                 return ResponseEntity.ok(existingListing.get());
             }
 
-            CreatedListingDTO result = landlordService.create(saveListingDTO, idempotencyKey);
-            return ResponseEntity.status(HttpStatus.CREATED).body(result);
+            CreatedListingDTO response = landlordService.create(saveListingDTO, idempotencyKey);
+            return ResponseEntity.status(HttpStatus.CREATED).body(response);
 
         } catch (UnauthorizedException e) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
@@ -140,7 +140,6 @@ public class LandlordResource {
 
 
     private String generateIdempotencyKey(SaveListingDTO dto) {
-        String dataToHash = dto.getDescription().title().value() + dto.getDescription().description().value() + dto.getPrice().value();
-        return Base64.getUrlEncoder().encodeToString(dataToHash.getBytes());
+        return UUID.randomUUID().toString();
     }
 }

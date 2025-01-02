@@ -1,5 +1,6 @@
 package com.masqani.masqani.user.service.impl;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.masqani.masqani.user.dto.ReadUserDTO;
 import com.masqani.masqani.user.model.User;
 import com.masqani.masqani.user.repository.UserRepository;
@@ -57,8 +58,8 @@ public class UserServiceImpl implements UserService {
         log.info("User classloader: {}", User.class.getClassLoader());
         log.info("-----------------------------------------------------------------------------------");
 
-//        return mapUserToReadUserDto((User) principal);
         log.info("principal check--->{}", principal);
+
         if(principal instanceof User user){
             return mapUserToReadUserDto(user);
         }else {

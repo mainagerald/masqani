@@ -97,9 +97,31 @@
         <modifyDataType tableName="listing_pictures" columnName="id" newDataType="BIGINT AUTO_INCREMENT"/>
     </changeSet>
     <changeSet id="8-fix-uuid-columns" author="maina">
-        <!-- UUID columns as CHAR(36) as stored by db. I keep getting errors.-->
         <modifyDataType tableName="listing" columnName="public_id" newDataType="CHAR(36)"/>
         <modifyDataType tableName="listing" columnName="landlord_public_id" newDataType="CHAR(36)"/>
         <modifyDataType tableName="users" columnName="public_id" newDataType="CHAR(36)"/>
+    </changeSet>
+    <changeSet id="9-idm-table" author="maina">
+        <createTable tableName="idempotency_record">
+            <column name="id" autoIncrement="true" type="bigint">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="idm_key" type="VARCHAR(36)">
+                <constraints unique="true" nullable="false"/>
+            </column>
+            <column name="listing_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <addForeignKeyConstraint
+                constraintName="fk_idempotency_listing"
+                baseTableName="idempotency_record"
+                baseColumnNames="listing_id"
+                referencedTableName="listing"
+                referencedColumnNames="id"
+        />
+        <createIndex tableName="idempotency_record" indexName="idx_idempotency_key">
+            <column name="idm_key"/>
+        </createIndex>
     </changeSet>
 </databaseChangeLog>

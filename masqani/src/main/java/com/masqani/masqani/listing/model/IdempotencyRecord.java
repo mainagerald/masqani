@@ -1,6 +1,5 @@
-package com.masqani.masqani.shared.idm;
+package com.masqani.masqani.listing.model;
 
-import com.masqani.masqani.listing.model.Listing;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -16,6 +15,6 @@ public class IdempotencyRecord {
     private String key;
 
     @OneToOne
-    @Column(name = "idm_listing")
+    @JoinColumn(name = "listing_id", nullable = false, referencedColumnName = "id")
     Listing listing;
 }
