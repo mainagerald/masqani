@@ -3,7 +3,7 @@ import { BiBuilding, BiPurchaseTag, BiX } from 'react-icons/bi';
 import { MdApartment, MdCreditCard, MdHome, MdMenu, MdSettings } from 'react-icons/md';
 import { PiHouseLine } from 'react-icons/pi';
 import { Link } from 'react-router-dom';
-import { useAuth } from '../utils/AuthContext';
+import { useAuth } from '../utils/auth/AuthContext';
 import { toast, ToastContainer } from 'react-toastify';
 
 const Navbar = () => {

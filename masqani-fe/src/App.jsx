@@ -6,7 +6,7 @@ import Billing from './pages/Billing'
 import LoginPage from './pages/LoginPage'
 import SignUp from './pages/SignUp';
 import ListProperty from './pages/property/create/ListProperty'
-import PrivateRoute from './utils/PrivateRoute'
+import PrivateRoute from './utils/auth/PrivateRoute'
 import AllRent from './pages/property/rentals/AllRent'
 import AllSale from './pages/property/sale/AllSale'
 import ApartmentSale from './pages/property/sale/ApartmentSale'

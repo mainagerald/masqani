@@ -1,6 +1,6 @@
 import React, { createContext, useState, useContext, ReactNode, useEffect } from 'react';
-import axiosInstance from '../utils/AxiosInstance';
-import { environment } from '../service/environment';
+import axiosInstance from '../http/AxiosInstance';
+import { environment } from '../../service/environment/environment';
 import { jwtDecode } from 'jwt-decode';
 import { Snackbar, Alert } from '@mui/material';
 import { replace, useNavigate } from 'react-router-dom';

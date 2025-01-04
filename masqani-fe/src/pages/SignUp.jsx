@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { environment } from '../service/environment';
+import { environment } from '../service/environment/environment';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
-import axiosInstance from '../utils/AxiosInstance';
+import axiosInstance from '../utils/http/AxiosInstance';
 import { toast, ToastContainer } from 'react-toastify';
 import Spinner from '../components/Spinner';
 import { ClipLoader } from 'react-spinners';

@@ -1,9 +1,8 @@
 import { useState } from "react";
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
-import { FaBuilding, FaHome } from "react-icons/fa";
-import { BiPackage } from "react-icons/bi";
 import MapLocationPicker from "../../../components/MapLocationPicker";
+import PropertyCategories from "../../../service/model/PropertyCategory";
 
 // Fix for default marker icon
 delete L.Icon.Default.prototype._getIconUrl;
@@ -40,11 +39,6 @@ const ListProperty = () => {
     pictures: [],
   });
 
-  const categories = [
-    { id: "ALL", icon: FaHome },
-    { id: "APARTMENTS", icon: FaBuilding },
-    { id: "MODULAR", icon: BiPackage },
-  ];
 
   const validateStep = (currentStep) => {
     switch (currentStep) {
@@ -134,7 +128,7 @@ const ListProperty = () => {
           {step === 1 && (
             <div className="space-y-4">
               <div className="grid grid-cols-3 gap-4">
-                {categories.map(({ id, icon: Icon }) => (
+                {PropertyCategories.map(({ id, icon: Icon }) => (
                   <button
                     key={id}
                     type="button"

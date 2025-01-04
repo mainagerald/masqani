@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { useAuth } from '../utils/AuthContext';
-import { environment } from '../service/environment';
+import { useAuth } from '../utils/auth/AuthContext';
+import { environment } from '../service/environment/environment';
 import { toast, ToastContainer } from 'react-toastify';
 
 const LoginPage = () => {
