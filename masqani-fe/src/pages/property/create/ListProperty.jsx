@@ -5,6 +5,7 @@ import PropertyDetails from "../../../components/ListProperty/PropertyDetailsSte
 import { PropertyDescription } from "../../../components/ListProperty/PropertyDescriptionStep";
 import { PhotosStep } from "../../../components/ListProperty/PhotosStep";
 import { PricingStep } from "../../../components/ListProperty/PriceStep";
+import { LocationStep } from "../../../components/ListProperty/LocationStep";
 
 const ListProperty = () => {
   const [step, setStep] = useState(1);
@@ -32,15 +33,19 @@ const ListProperty = () => {
   const validateStep = (currentStep) => {
     switch (currentStep) {
       case 1:
-        return Boolean(formData.category && formData.address);
+        return Boolean(formData.category);
       case 2:
         return formData.infos.bedrooms.value > 0 && formData.infos.baths.value > 0;
       case 3:
+        return Boolean(formData.address && formData.coordinates.latitude && formData.coordinates.longitude);
+      case 4:
         return Boolean(
           formData.description.title.value && formData.description.description.value
         );
-      case 4:
+      case 5:
         return formData.price.value > 0;
+      case 6:
+        return formData.pictures.length>1;
       default:
         return true;
     }
@@ -94,7 +99,20 @@ const ListProperty = () => {
             }
           />
         );
-      case 3:
+        case 3:
+        return (
+          <LocationStep
+            address={formData.address}
+            onLocationSelect={({ address, coordinates }) => {
+              setFormData({
+                ...formData,
+                address,
+                coordinates,
+              });
+            }}
+          />
+        );
+      case 4:
         return (
           <PropertyDescription
             title={formData.description.title.value}
@@ -119,7 +137,7 @@ const ListProperty = () => {
             }
           />
         );
-        case 4:
+        case 5:
           return (
             <PricingStep
               price={formData.price.value}
@@ -131,7 +149,7 @@ const ListProperty = () => {
               }
             />
           );
-          case 5:
+          case 6:
             return (
               <PhotosStep
                 onFilesChange={(fileList) => setFiles(Array.from(fileList))}
@@ -157,7 +175,7 @@ const ListProperty = () => {
                 Previous
               </button>
             )}
-            {step < 5 ? (
+            {step < 6 ? (
               <button
                 type="button"
                 onClick={() => validateStep(step) && setStep(step + 1)}
