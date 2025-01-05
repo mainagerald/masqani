@@ -1,8 +1,8 @@
-import js from '@eslint/js'
-import globals from 'globals'
-import react from 'eslint-plugin-react'
-import reactHooks from 'eslint-plugin-react-hooks'
-import reactRefresh from 'eslint-plugin-react-refresh'
+import js from '@eslint/js';
+import globals from 'globals';
+import react from 'eslint-plugin-react';
+import reactHooks from 'eslint-plugin-react-hooks';
+import reactRefresh from 'eslint-plugin-react-refresh';
 
 export default [
   { ignores: ['dist'] },
@@ -33,6 +33,16 @@ export default [
         'warn',
         { allowConstantExport: true },
       ],
+      // Custom rules for unused variables and props
+      'no-unused-vars': [
+        'warn',
+        {
+          vars: 'all',
+          args: 'none', // Ignore unused function arguments (e.g., props)
+          ignoreRestSiblings: true,
+        },
+      ],
+      'react/prop-types': 'off', // Disable prop-types since you're likely using TypeScript or another type checker
     },
   },
-]
+];

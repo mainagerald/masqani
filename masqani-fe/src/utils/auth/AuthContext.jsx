@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React, { createContext, useState, useContext, ReactNode, useEffect } from 'react';
 import axiosInstance from '../http/AxiosInstance';
 import { environment } from '../../service/environment/environment';
@@ -12,12 +13,14 @@ export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const navigate = useNavigate();
-
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const token = localStorage.getItem('accessToken');
     if (token) {
-      validateToken(token);
+      validateToken(token).finally(() => setLoading(false));
+    } else {
+      setLoading(false);
     }
   }, []);
 
@@ -95,6 +98,8 @@ export const AuthProvider = ({ children }) => {
    }finally{
     localStorage.removeItem('accessToken');
     localStorage.removeItem('refreshToken');
+    localStorage.removeItem("currentStep");
+    localStorage.removeItem("propertyFormData");
     setUser(null);
     setTimeout(()=>{
       navigate("/", {replace:true})
@@ -134,7 +139,8 @@ export const AuthProvider = ({ children }) => {
     logout,
     signup,
     oauthLogin,
-    isAuthenticated
+    isAuthenticated,
+    loading
   };
 
   return (
