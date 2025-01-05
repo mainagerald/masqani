@@ -16,22 +16,16 @@ import java.util.List;
 @Getter
 @Setter
 public class SaveListingDTO {
-
     @NotNull
     PropertyCategory category;
-
     @NotNull String location;
-
     @NotNull @Valid
     ListingInfoDTO infos;
-
     @NotNull @Valid
     DescriptionDTO description;
-
     @NotNull @Valid
     PriceVO price;
-
     @NotNull
     List<PictureDTO> pictures;
-
+    CoordinatesDTO coordinates;
 }

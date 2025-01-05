@@ -1,6 +1,7 @@
 package com.masqani.masqani.listing.model;
 
 import com.masqani.masqani.listing.model.enums.PropertyCategory;
+import com.masqani.masqani.listing.model.objects.Coordinates;
 import com.masqani.masqani.util.AuditingEntity;
 import jakarta.persistence.*;
 import lombok.Data;
@@ -51,30 +52,17 @@ public class Listing extends AuditingEntity<Long> {
     @Column(name = "location")
     private String location;
 
+    @Column(name="address")
+    private String address;
+
+    @Column(name = "map_coordinates")
+    @Embedded
+    private Coordinates coordinates;
+
     @Column(name = "landlord_public_id")
     private UUID landlordPublicId;
 
     @OneToMany(mappedBy = "listing", cascade = CascadeType.REMOVE)
     private Set<ListingPicture> pictures = new HashSet<>();
 
-    @Override
-    public Long getId() {
-        return id;
-    }
-
-
-    @Override
-    public String toString() {
-        return "Listing{" +
-                "title='" + title + '\'' +
-                ", description='" + description + '\'' +
-                ", bedrooms=" + bedrooms +
-                ", bathrooms=" + bathrooms +
-                ", price=" + price +
-                ",rentAmount="+rentAmount+
-                ", bookingCategory=" + propertyCategory +
-                ", location='" + location + '\'' +
-                ", landlordPublicId=" + landlordPublicId +
-                '}';
-    }
 }

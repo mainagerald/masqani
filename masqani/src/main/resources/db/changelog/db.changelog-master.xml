@@ -124,4 +124,18 @@
             <column name="idm_key"/>
         </createIndex>
     </changeSet>
+
+    <changeSet author="maina" id="10-add-coordinates-col">
+        <addColumn tableName="listing">
+            <column name="map_coordinates" type="JSON"/>
+        </addColumn>
+    </changeSet>
+
+    <changeSet author="maina" id="11-add-address-col">
+        <addColumn tableName="listing">
+            <column name="address" type="VARCHAR(255)"/>
+        </addColumn>
+    </changeSet>
+
+
 </databaseChangeLog>

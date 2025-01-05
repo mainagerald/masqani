@@ -1,17 +1,11 @@
-package com.masqani.masqani.listing.model;
+package com.masqani.masqani.listing.model.objects;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Data;
 
 @Data
-@Entity
+@Embeddable
 public class Coordinates {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
     private double latitude;
     private double longitude;
 }
