@@ -87,5 +87,12 @@ springdoc:
     path: /swagger-ui
     enabled: true
 
+#backblaze config
+b2:
+  application-key-id: ${B2_APP_KEY_ID}
+  application-key: ${B2_APP_KEY_NAME}
+  bucket-name: ${B2_BUCKET_I}
+#  url-expiration: 3600 # URL expiration in seconds
+
 server:
   port: 9090

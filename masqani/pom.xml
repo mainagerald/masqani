@@ -132,6 +132,12 @@
 			<artifactId>commons-codec</artifactId>
 			<version>1.17.1</version>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/com.backblaze.b2/b2-sdk-core -->
+		<dependency>
+			<groupId>com.backblaze.b2</groupId>
+			<artifactId>b2-sdk-core</artifactId>
+			<version>6.3.0</version>
+		</dependency>
 
 		<dependency>
 			<groupId>org.springdoc</groupId>
