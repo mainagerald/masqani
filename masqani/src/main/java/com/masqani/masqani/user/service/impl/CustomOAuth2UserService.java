@@ -2,6 +2,7 @@ package com.masqani.masqani.user.service.impl;
 
 
 import com.masqani.masqani.user.enums.AuthProvider;
+import com.masqani.masqani.user.enums.Role;
 import com.masqani.masqani.user.model.User;
 import com.masqani.masqani.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -11,6 +12,7 @@ import org.springframework.security.oauth2.core.OAuth2AuthenticationException;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.UUID;
 
 @Service
@@ -30,12 +32,15 @@ public class CustomOAuth2UserService extends DefaultOAuth2UserService {
         User user = userRepository.findByEmail(email)
                 .map(existingUser -> updateExistingUser(existingUser, oAuth2User))
                 .orElseGet(() -> createNewUser(oAuth2User));
-
-        return oAuth2User;
+        user.setAttributes(new HashMap<>(oAuth2User.getAttributes()));
+        return user;
     }
 
     private User updateExistingUser(User existingUser, OAuth2User oAuth2User) {
-        existingUser.setAttributes(oAuth2User.getAttributes());
+        existingUser.setEmail(oAuth2User.getAttribute("email"));
+        existingUser.setPublicId(oAuth2User.getAttribute("public_id"));
+        existingUser.setRole(oAuth2User.getAttribute("role"));
+        existingUser.setAttributes(new HashMap<>(oAuth2User.getAttributes()));
         userRepository.save(existingUser);
         return existingUser;
     }
@@ -45,7 +50,8 @@ public class CustomOAuth2UserService extends DefaultOAuth2UserService {
         user.setEmail(oAuth2User.getAttribute("email"));
         user.setPublicId(UUID.randomUUID());
         user.setActivated(true);
-        user.setAttributes(oAuth2User.getAttributes());
+        user.setRole(Role.ROLE_TENANT);
+        user.setAttributes(new HashMap<>(oAuth2User.getAttributes()));
         user.setProvider(AuthProvider.GOOGLE);
         user.setProviderId(oAuth2User.getAttribute("sub"));
         return userRepository.save(user);

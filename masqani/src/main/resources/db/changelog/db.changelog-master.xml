@@ -131,10 +131,41 @@
         </addColumn>
     </changeSet>
 
-    <changeSet author="maina" id="11-add-address-col">
-        <addColumn tableName="listing">
-            <column name="address" type="VARCHAR(255)"/>
+        <changeSet author="maina" id="11-fix-coordinates-embeddable">
+            <addColumn tableName="listing">
+                <column name="map_coordinates_latitude" type="DECIMAL(10,8)"/>
+            </addColumn>
+            <addColumn tableName="listing">
+                <column name="map_coordinates_longitude" type="DECIMAL(11,8)"/>
+            </addColumn>
+            <dropColumn tableName="listing" columnName="map_coordinates"/>
+        </changeSet>
+    <changeSet author="maina" id="12-fix-listing-pictures-table">
+        <modifyDataType tableName="listing_pictures" columnName="file" newDataType="LONGBLOB"/>
+        <addForeignKeyConstraint
+                baseTableName="listing_pictures"
+                baseColumnNames="listing_fk"
+                constraintName="fk_listing_pictures_listing"
+                referencedTableName="listing"
+                referencedColumnNames="id"
+                onDelete="CASCADE"/>
+        <modifyDataType tableName="listing_pictures" columnName="created_at" newDataType="timestamp DEFAULT CURRENT_TIMESTAMP"/>
+        <modifyDataType tableName="listing_pictures" columnName="last_modified_date" newDataType="timestamp DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP"/>
+    </changeSet>
+
+    <changeSet author="maina" id="12-add-oauth-attributes-col">
+        <addColumn tableName="users">
+            <column name="oauth2_attributes" type="TEXT"/>
         </addColumn>
+    </changeSet>
+
+    <changeSet author="maina" id="13-index-users-email-pubId">
+        <createIndex tableName="users" indexName="idx_users_email">
+            <column name="email"/>
+        </createIndex>
+        <createIndex tableName="users" indexName="idx_users_email">
+            <column name="public_id"/>
+        </createIndex>
     </changeSet>
 
 

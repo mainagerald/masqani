@@ -52,10 +52,7 @@ public class Listing extends AuditingEntity<Long> {
     @Column(name = "location")
     private String location;
 
-    @Column(name="address")
-    private String address;
 
-    @Column(name = "map_coordinates")
     @Embedded
     private Coordinates coordinates;
 
@@ -64,5 +61,6 @@ public class Listing extends AuditingEntity<Long> {
 
     @OneToMany(mappedBy = "listing", cascade = CascadeType.REMOVE)
     private Set<ListingPicture> pictures = new HashSet<>();
+
 
 }

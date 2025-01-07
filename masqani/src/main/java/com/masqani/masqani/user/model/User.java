@@ -1,9 +1,12 @@
 package com.masqani.masqani.user.model;
 
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.masqani.masqani.user.enums.AuthProvider;
 import com.masqani.masqani.user.enums.Role;
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.security.core.GrantedAuthority;
@@ -18,20 +21,24 @@ import java.util.stream.Collectors;
 @Data
 @Entity
 @Table(name = "users")
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class User implements UserDetails, OAuth2User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
+    @EqualsAndHashCode.Include
     private Long id;
 
     @Column(unique = true, nullable = false, name = "email")
+    @EqualsAndHashCode.Include
     private String email;
 
     @Column(name = "password")
     private String password;
 
     @Column(unique = true, name = "public_id")
+    @EqualsAndHashCode.Include
     private UUID publicId;
     @Column(name = "verification_token")
     private String verificationToken;
@@ -57,18 +64,36 @@ public class User implements UserDetails, OAuth2User {
     @Column(name = "last_modified_date")
     private final Instant lastModifiedAt = Instant.now();
 
+    @Column(name = "oauth2_attributes")
+    private String oauth2AttributesJson;
+
     @Transient
     private Map<String, Object> attributes;
 
-    @Override
     public Map<String, Object> getAttributes() {
-        return attributes;
+        if (attributes == null && oauth2AttributesJson != null) {
+            // deserialize attributes when needed
+            try {
+                ObjectMapper mapper = new ObjectMapper();
+                attributes = mapper.readValue(oauth2AttributesJson,
+                        new TypeReference<Map<String, Object>>() {});
+            } catch (Exception e) {
+                attributes = new HashMap<>();
+            }
+        }
+        return attributes == null ? new HashMap<>() : attributes;
     }
-//
-//    public Set<String> getAuthoritiesAsStrings(){
-//        return authorities.stream().map(authority -> authority.getName()).collect(Collectors.toSet());
-//    }
 
+    public void setAttributes(Map<String, Object> attributes) {
+        this.attributes = attributes;
+        try {
+            // for storage
+            ObjectMapper mapper = new ObjectMapper();
+            this.oauth2AttributesJson = mapper.writeValueAsString(attributes);
+        } catch (Exception e) {
+            this.oauth2AttributesJson = "{}";
+        }
+    }
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return Collections.singletonList(new SimpleGrantedAuthority(role.name()));

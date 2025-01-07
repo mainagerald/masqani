@@ -17,7 +17,7 @@ public class ListingPicture extends AuditingEntity<Long> {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "listing_fk", referencedColumnName = "id")
+    @JoinColumn(name = "listing_fk", referencedColumnName = "id", columnDefinition = "LONGBLOB")
     private Listing listing;
 
     @Lob
