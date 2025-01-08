@@ -1,6 +1,9 @@
 package com.masqani.masqani.listing.controller;
 
+import com.backblaze.b2.client.exceptions.B2Exception;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.masqani.masqani.listing.application.BackBlazeService;
+import com.masqani.masqani.listing.application.dto.ImageUploadResponseDto;
 import com.masqani.masqani.user.dto.ReadUserDTO;
 import com.masqani.masqani.exceptions.UserException;
 import com.masqani.masqani.listing.application.LandlordService;
@@ -40,6 +43,8 @@ import java.util.stream.Collectors;
 public class LandlordResource {
 
     private final LandlordService landlordService;
+
+    private final BackBlazeService b2Service;
 
     private final Validator validator;
 
@@ -138,6 +143,30 @@ public class LandlordResource {
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
     }
 
+    @PostMapping("/upload")
+    @PreAuthorize("hasAnyRole('ROLE_LANDLORD')")
+    public ResponseEntity<ImageUploadResponseDto> uploadImage(
+            @RequestParam("file") MultipartFile file) {
+        try {
+            ImageUploadResponseDto response = b2Service.uploadFile(file);
+            return ResponseEntity.ok(response);
+        } catch (Exception e) {
+            log.error("Error uploading file to B2", e);
+            return ResponseEntity.internalServerError().build();
+        }
+    }
+
+    @DeleteMapping("/delete-image")
+    @PreAuthorize("hasAnyRole('ROLE_LANDLORD')")
+    public ResponseEntity<Void> deleteImage(@RequestParam("key") String key) {
+        try {
+            b2Service.deleteFile(key);
+            return ResponseEntity.ok().build();
+        } catch (B2Exception e) {
+            log.error("Error deleting file from B2", e);
+            return ResponseEntity.internalServerError().build();
+        }
+    }
 
     private String generateIdempotencyKey(SaveListingDTO dto) {
         return UUID.randomUUID().toString();

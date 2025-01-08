@@ -1,9 +1,6 @@
 package com.masqani.masqani.listing.application;
 
-import com.masqani.masqani.listing.application.dto.CreatedListingDTO;
-import com.masqani.masqani.listing.application.dto.DisplayCardListingDTO;
-import com.masqani.masqani.listing.application.dto.ListingCreateBookingDTO;
-import com.masqani.masqani.listing.application.dto.SaveListingDTO;
+import com.masqani.masqani.listing.application.dto.*;
 import com.masqani.masqani.listing.model.IdempotencyRecord;
 import com.masqani.masqani.listing.model.Listing;
 import com.masqani.masqani.listing.mapper.ListingMapper;
@@ -33,6 +30,7 @@ public class LandlordService {
     private final UserService userService;
     private final AuthService authService;
     private final PictureService pictureService;
+    private final BackBlazeService backBlazeService;
 
     @Transactional
     public CreatedListingDTO create(SaveListingDTO saveListingDTO, String idempotencyKey) {
@@ -44,6 +42,11 @@ public class LandlordService {
             Listing savedListing = listingRepository.saveAndFlush(newListing);
 
             pictureService.saveAll(saveListingDTO.getPictures(), savedListing);
+//            for (int i = 0; i < saveListingDTO.getPictures().size(); i++) {
+//                ImageUploadResponseDto uploadResponse = backBlazeService.uploadFile(saveListingDTO.getPictures().get(i));
+//                boolean isCover = (i == 0); // First picture is cover
+//                pictureService.saveListingPicture(uploadResponse, listing, isCover);
+//            }
             authService.promoteToLandlord(userConnected.getEmail());
 
             IdempotencyRecord record = new IdempotencyRecord();
