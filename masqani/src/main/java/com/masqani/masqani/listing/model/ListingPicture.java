@@ -19,10 +19,16 @@ public class ListingPicture extends AuditingEntity<Long> {
     @ManyToOne
     @JoinColumn(name = "listing_fk", referencedColumnName = "id", columnDefinition = "LONGBLOB")
     private Listing listing;
+//
+//    @Lob
+//    @Column(name = "file", nullable = false)
+//    private byte[] file;
 
-    @Lob
-    @Column(name = "file", nullable = false)
-    private byte[] file;
+    @Column(name = "file_name")
+    private String fileName;
+
+    @Column(name = "file_url")
+    private String fileUrl;
 
     @Column(name = "file_content_type")
     private String fileContentType;
