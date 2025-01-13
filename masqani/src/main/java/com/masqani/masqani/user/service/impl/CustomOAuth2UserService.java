@@ -38,8 +38,8 @@ public class CustomOAuth2UserService extends DefaultOAuth2UserService {
 
     private User updateExistingUser(User existingUser, OAuth2User oAuth2User) {
         existingUser.setEmail(oAuth2User.getAttribute("email"));
-        existingUser.setPublicId(oAuth2User.getAttribute("public_id"));
-        existingUser.setRole(oAuth2User.getAttribute("role"));
+//        existingUser.setPublicId(oAuth2User.getAttribute("public_id"));
+//        existingUser.setRole(oAuth2User.getAttribute("role"));
         existingUser.setAttributes(new HashMap<>(oAuth2User.getAttributes()));
         userRepository.save(existingUser);
         return existingUser;

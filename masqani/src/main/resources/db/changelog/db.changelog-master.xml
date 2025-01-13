@@ -159,11 +159,42 @@
         </addColumn>
     </changeSet>
 
-    <changeSet author="maina" id="13-index-users-email-pubId">
+<!--    <changeSet author="maina" id="13-index-users-email-pubId">-->
+<!--        <createIndex tableName="users" indexName="idx_users_email">-->
+<!--            <column name="email"/>-->
+<!--        </createIndex>-->
+<!--        <createIndex tableName="users" indexName="idx_users_public_id">-->
+<!--            <column name="public_id"/>-->
+<!--        </createIndex>-->
+<!--    </changeSet>-->
+    <changeSet author="maina" id="14-update-listing-pictures">
+        <dropColumn tableName="listing_pictures" columnName="file"/>
+
+        <addColumn tableName="listing_pictures">
+            <column name="file_name" type="VARCHAR(255)"/>
+        </addColumn>
+
+        <addColumn tableName="listing_pictures">
+            <column name="file_url" type="VARCHAR(512)"/>
+        </addColumn>
+
+        <addDefaultValue tableName="listing_pictures"
+                         columnName="is_cover"
+                         defaultValueBoolean="false"/>
+    </changeSet>
+    <changeSet author="maina" id="15-fix-user-indexes">
+        <!-- First drop the existing index if it exists -->
+        <preConditions onFail="MARK_RAN">
+            <indexExists indexName="idx_users_email"/>
+        </preConditions>
+        <dropIndex tableName="users" indexName="idx_users_email"/>
+
+        <!-- Then create both indexes with unique names -->
         <createIndex tableName="users" indexName="idx_users_email">
             <column name="email"/>
         </createIndex>
-        <createIndex tableName="users" indexName="idx_users_email">
+
+        <createIndex tableName="users" indexName="idx_users_public_id">
             <column name="public_id"/>
         </createIndex>
     </changeSet>
