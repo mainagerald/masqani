@@ -41,6 +41,8 @@ public class AuthServiceImpl implements AuthService {
         if (userRepository.existsByEmail(signUpRequest.getEmail())) {
             return ResponseEntity.status(HttpStatus.CONFLICT).body("Email already in use.");
         }
+
+        log.info("inside initiate service");
         String verificationToken = generateVerificationToken();
         User user = new User();
         user.setEmail(signUpRequest.getEmail());

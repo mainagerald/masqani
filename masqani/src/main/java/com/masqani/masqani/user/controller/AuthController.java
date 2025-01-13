@@ -42,8 +42,8 @@ public class AuthController {
 
     private boolean isValidPassword(String password) {
         return password != null &&
-                password.length() >= 8 &&
-                password.matches("^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}$");
+                password.length() >= 8;
+//                && password.matches("^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}$");
     }
     @PostMapping("/signin")
     public ResponseEntity<JwtAuthResponse> signIn(@RequestBody SignInRequest signInRequest){

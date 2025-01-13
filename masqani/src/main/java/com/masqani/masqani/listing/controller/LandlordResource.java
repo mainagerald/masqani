@@ -1,8 +1,8 @@
 package com.masqani.masqani.listing.controller;
 
-import com.backblaze.b2.client.exceptions.B2Exception;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.masqani.masqani.listing.application.BackBlazeService;
+import com.masqani.masqani.exceptions.StorageException;
+import com.masqani.masqani.listing.application.AwsStorageService;
 import com.masqani.masqani.listing.application.dto.ImageUploadResponseDto;
 import com.masqani.masqani.user.dto.ReadUserDTO;
 import com.masqani.masqani.exceptions.UserException;
@@ -36,6 +36,137 @@ import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
+//@Slf4j
+//@RestController
+//@RequestMapping("/api/landlord-listing")
+//@RequiredArgsConstructor
+//public class LandlordResource {
+//
+//    private final LandlordService landlordService;
+//    private final AwsStorageService awsStorageService;
+//    private final Validator validator;
+//    private final UserService userService;
+//    private ObjectMapper objectMapper = new ObjectMapper();
+//
+//    @PostMapping(value = "/create", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+//    public ResponseEntity<CreatedListingDTO> create(
+//            @RequestPart(value = "files") List<MultipartFile> files,
+//            @RequestPart(value = "dto") String saveListingDTOString
+//    ) {
+//        try {
+//            SaveListingDTO saveListingDTO = parseAndValidateRequest(files, saveListingDTOString);
+//            String idempotencyKey = generateIdempotencyKey(saveListingDTO);
+//
+//            Optional<CreatedListingDTO> existingListing = landlordService.findByIdempotencyKey(idempotencyKey);
+//            if (existingListing.isPresent()) {
+//                return ResponseEntity.ok(existingListing.get());
+//            }
+//
+//            CreatedListingDTO response = landlordService.create(saveListingDTO, files, idempotencyKey);
+//            return ResponseEntity.status(HttpStatus.CREATED).body(response);
+//
+//        } catch (UnauthorizedException e) {
+//            return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
+//                    .body(null);
+//        } catch (ValidationException e) {
+//            ProblemDetail problemDetail = ProblemDetail.forStatusAndDetail(
+//                    HttpStatus.BAD_REQUEST,
+//                    e.getMessage()
+//            );
+//            return ResponseEntity.badRequest()
+//                    .body(null);
+//        } catch (IOException e) {
+//            log.error("Error processing request", e);
+//            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+//                    .body(null);
+//        }
+//    }
+//
+//    private SaveListingDTO parseAndValidateRequest(
+//            MultipartHttpServletRequest request,
+//            String saveListingDTOString
+//    ) throws IOException, ValidationException {
+//
+//        List<PictureDTO> pictures = request.getFileMap()
+//                .values()
+//                .stream()
+//                .map(mapMultipartFileToPictureDTO())
+//                .toList();
+//        SaveListingDTO saveListingDTO = objectMapper.readValue(saveListingDTOString, SaveListingDTO.class);
+//        saveListingDTO.setPictures(pictures);
+//
+//        Set<ConstraintViolation<SaveListingDTO>> violations = validator.validate(saveListingDTO);
+//        if (!violations.isEmpty()) {
+//            String violationsJoined = violations.stream()
+//                    .map(violation -> violation.getPropertyPath() + " " + violation.getMessage())
+//                    .collect(Collectors.joining("; "));
+//            throw new ValidationException(violationsJoined);
+//        }
+//        return saveListingDTO;
+//    }
+//
+//    private static Function<MultipartFile, PictureDTO> mapMultipartFileToPictureDTO() {
+//        return multipartFile -> {
+//            try {
+//                return new PictureDTO(multipartFile.getBytes(), multipartFile.getContentType(), false);
+//            } catch (IOException ioe) {
+//                throw new UserException(String.format("Cannot parse multipart file: %s", multipartFile.getOriginalFilename()));
+//            }
+//        };
+//    }
+//
+//    @GetMapping(value = "/get-all")
+//    @PreAuthorize("hasAnyRole('ROLE_LANDLORD')")
+//    public ResponseEntity<List<DisplayCardListingDTO>> getAll() {
+//        ReadUserDTO connectedUser = userService.getAuthenticatedUser();
+//        log.info("connected user-----> {}", connectedUser);
+//        List<DisplayCardListingDTO> allProperties = landlordService.getAllProperties(connectedUser);
+//        return ResponseEntity.ok(allProperties);
+//    }
+//
+//    @DeleteMapping("/delete")
+//    @PreAuthorize("hasAnyRole('ROLE_LANDLORD')")
+//    public ResponseEntity<UUID> delete(@RequestParam UUID publicId) {
+//        ReadUserDTO connectedUser = userService.getAuthenticatedUser();
+//        State<UUID, String> deleteState = landlordService.delete(publicId, connectedUser);
+//        if (deleteState.getStatus().equals(StatusNotification.OK)) {
+//            return ResponseEntity.ok(deleteState.getValue());
+//        } else if (deleteState.getStatus().equals(StatusNotification.UNAUTHORIZED)) {
+//            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+//        }
+//        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+//    }
+//
+//    @PostMapping("/upload")
+//    @PreAuthorize("hasAnyRole('ROLE_LANDLORD')")
+//    public ResponseEntity<ImageUploadResponseDto> uploadImage(
+//            @RequestParam("file") MultipartFile file) {
+//        try {
+//            ImageUploadResponseDto response = awsStorageService.uploadFile(file);
+//            return ResponseEntity.ok(response);
+//        } catch (StorageException e) {
+//            log.error("Error uploading file to S3", e);
+//            return ResponseEntity.internalServerError().build();
+//        }
+//    }
+//
+//    @DeleteMapping("/delete-image")
+//    @PreAuthorize("hasAnyRole('ROLE_LANDLORD')")
+//    public ResponseEntity<Void> deleteImage(@RequestParam("fileName") String fileName) {
+//        try {
+//            awsStorageService.deleteFile(fileName);
+//            return ResponseEntity.ok().build();
+//        } catch (StorageException e) {
+//            log.error("Error deleting file from S3", e);
+//            return ResponseEntity.internalServerError().build();
+//        }
+//    }
+//
+//    private String generateIdempotencyKey(SaveListingDTO dto) {
+//        return UUID.randomUUID().toString();
+//    }
+//}
+
 @Slf4j
 @RestController
 @RequestMapping("/api/landlord-listing")
@@ -43,89 +174,55 @@ import java.util.stream.Collectors;
 public class LandlordResource {
 
     private final LandlordService landlordService;
-
-    private final BackBlazeService b2Service;
-
+    private final AwsStorageService awsStorageService;
     private final Validator validator;
-
     private final UserService userService;
-
-    private ObjectMapper objectMapper = new ObjectMapper();
-
+    private final ObjectMapper objectMapper;
 
     @PostMapping(value = "/create", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ResponseEntity<CreatedListingDTO> create(
-            MultipartHttpServletRequest request,
-            @RequestPart(name = "dto") String saveListingDTOString
+            @RequestPart(value = "files") List<MultipartFile> files,
+            @RequestPart(value = "dto") String saveListingDTOString
     ) {
         try {
-            SaveListingDTO saveListingDTO = parseAndValidateRequest(request, saveListingDTOString);
+            // First validate the files
+            validateFiles(files);
+
+            // Parse and validate the listing DTO
+            SaveListingDTO saveListingDTO = parseAndValidateListingDTO(saveListingDTOString);
             String idempotencyKey = generateIdempotencyKey(saveListingDTO);
 
+            // Check for existing listing
             Optional<CreatedListingDTO> existingListing = landlordService.findByIdempotencyKey(idempotencyKey);
             if (existingListing.isPresent()) {
                 return ResponseEntity.ok(existingListing.get());
             }
 
-            CreatedListingDTO response = landlordService.create(saveListingDTO, idempotencyKey);
+            // Upload files and create listing
+            List<PictureDTO> pictures = landlordService.uploadFilesAndCreatePictureDTOs(files);
+
+            CreatedListingDTO response = landlordService.create(saveListingDTO, pictures, idempotencyKey);
             return ResponseEntity.status(HttpStatus.CREATED).body(response);
 
         } catch (UnauthorizedException e) {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
-                    .body(null);
+            log.error("Unauthorized access attempt", e);
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
         } catch (ValidationException e) {
-            ProblemDetail problemDetail = ProblemDetail.forStatusAndDetail(
-                    HttpStatus.BAD_REQUEST,
-                    e.getMessage()
-            );
-            return ResponseEntity.badRequest()
-                    .body(null);
-        } catch (IOException e) {
-            log.error("Error processing request", e);
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                    .body(null);
+            log.error("Validation error", e);
+            return ResponseEntity.badRequest().build();
+        } catch (StorageException e) {
+            log.error("Storage error", e);
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        } catch (Exception e) {
+            log.error("Unexpected error during listing creation", e);
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
-    }
-
-    private SaveListingDTO parseAndValidateRequest(
-            MultipartHttpServletRequest request,
-            String saveListingDTOString
-    ) throws IOException, ValidationException {
-
-        List<PictureDTO> pictures = request.getFileMap()
-                .values()
-                .stream()
-                .map(mapMultipartFileToPictureDTO())
-                .toList();
-
-        SaveListingDTO saveListingDTO = objectMapper.readValue(saveListingDTOString, SaveListingDTO.class);
-        saveListingDTO.setPictures(pictures);
-
-        Set<ConstraintViolation<SaveListingDTO>> violations = validator.validate(saveListingDTO);
-        if (!violations.isEmpty()) {
-            String violationsJoined = violations.stream()
-                    .map(violation -> violation.getPropertyPath() + " " + violation.getMessage())
-                    .collect(Collectors.joining("; "));
-            throw new ValidationException(violationsJoined);
-        }
-        return saveListingDTO;
-    }
-
-    private static Function<MultipartFile, PictureDTO> mapMultipartFileToPictureDTO() {
-        return multipartFile -> {
-            try {
-                return new PictureDTO(multipartFile.getBytes(), multipartFile.getContentType(), false);
-            } catch (IOException ioe) {
-                throw new UserException(String.format("Cannot parse multipart file: %s", multipartFile.getOriginalFilename()));
-            }
-        };
     }
 
     @GetMapping(value = "/get-all")
     @PreAuthorize("hasAnyRole('ROLE_LANDLORD')")
     public ResponseEntity<List<DisplayCardListingDTO>> getAll() {
         ReadUserDTO connectedUser = userService.getAuthenticatedUser();
-        log.info("connected user-----> {}", connectedUser);
         List<DisplayCardListingDTO> allProperties = landlordService.getAllProperties(connectedUser);
         return ResponseEntity.ok(allProperties);
     }
@@ -135,38 +232,64 @@ public class LandlordResource {
     public ResponseEntity<UUID> delete(@RequestParam UUID publicId) {
         ReadUserDTO connectedUser = userService.getAuthenticatedUser();
         State<UUID, String> deleteState = landlordService.delete(publicId, connectedUser);
-        if (deleteState.getStatus().equals(StatusNotification.OK)) {
-            return ResponseEntity.ok(deleteState.getValue());
-        } else if (deleteState.getStatus().equals(StatusNotification.UNAUTHORIZED)) {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
-        }
-        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
-    }
 
-    @PostMapping("/upload")
-    @PreAuthorize("hasAnyRole('ROLE_LANDLORD')")
-    public ResponseEntity<ImageUploadResponseDto> uploadImage(
-            @RequestParam("file") MultipartFile file) {
-        try {
-            ImageUploadResponseDto response = b2Service.uploadFile(file);
-            return ResponseEntity.ok(response);
-        } catch (Exception e) {
-            log.error("Error uploading file to B2", e);
-            return ResponseEntity.internalServerError().build();
-        }
+        return switch (deleteState.getStatus()) {
+            case OK -> ResponseEntity.ok(deleteState.getValue());
+            case UNAUTHORIZED -> ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+            default -> ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        };
     }
 
     @DeleteMapping("/delete-image")
     @PreAuthorize("hasAnyRole('ROLE_LANDLORD')")
-    public ResponseEntity<Void> deleteImage(@RequestParam("key") String key) {
+    public ResponseEntity<Void> deleteImage(@RequestParam("fileName") String fileName) {
         try {
-            b2Service.deleteFile(key);
+            awsStorageService.deleteFile(fileName);
             return ResponseEntity.ok().build();
-        } catch (B2Exception e) {
-            log.error("Error deleting file from B2", e);
+        } catch (StorageException e) {
+            log.error("Error deleting file from S3", e);
             return ResponseEntity.internalServerError().build();
         }
     }
+
+    private void validateFiles(List<MultipartFile> files) throws ValidationException {
+        if (files == null || files.isEmpty()) {
+            throw new ValidationException("At least one image file is required");
+        }
+
+        for (MultipartFile file : files) {
+            if (file.isEmpty()) {
+                throw new ValidationException("Empty file detected");
+            }
+            if (!isValidImageContentType(file.getContentType())) {
+                throw new ValidationException("Invalid file type: " + file.getContentType());
+            }
+        }
+    }
+
+    private boolean isValidImageContentType(String contentType) {
+        return contentType != null && (
+                contentType.equals(MediaType.IMAGE_JPEG_VALUE) ||
+                        contentType.equals(MediaType.IMAGE_PNG_VALUE) ||
+                        contentType.equals("image/jpg")
+        );
+    }
+
+    private SaveListingDTO parseAndValidateListingDTO(String saveListingDTOString)
+            throws IOException, ValidationException {
+        SaveListingDTO saveListingDTO = objectMapper.readValue(saveListingDTOString, SaveListingDTO.class);
+
+        Set<ConstraintViolation<SaveListingDTO>> violations = validator.validate(saveListingDTO);
+        if (!violations.isEmpty()) {
+            String violationsJoined = violations.stream()
+                    .map(violation -> violation.getPropertyPath() + " " + violation.getMessage())
+                    .collect(Collectors.joining("; "));
+            throw new ValidationException(violationsJoined);
+        }
+
+        return saveListingDTO;
+    }
+
 
     private String generateIdempotencyKey(SaveListingDTO dto) {
         return UUID.randomUUID().toString();

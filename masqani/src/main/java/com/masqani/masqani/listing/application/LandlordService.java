@@ -1,6 +1,8 @@
 package com.masqani.masqani.listing.application;
 
+import com.masqani.masqani.exceptions.StorageException;
 import com.masqani.masqani.listing.application.dto.*;
+import com.masqani.masqani.listing.application.dto.sub.PictureDTO;
 import com.masqani.masqani.listing.model.IdempotencyRecord;
 import com.masqani.masqani.listing.model.Listing;
 import com.masqani.masqani.listing.mapper.ListingMapper;
@@ -14,7 +16,9 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -30,33 +34,32 @@ public class LandlordService {
     private final UserService userService;
     private final AuthService authService;
     private final PictureService pictureService;
-    private final BackBlazeService backBlazeService;
+    private final AwsStorageService awsStorageService;
 
     @Transactional
-    public CreatedListingDTO create(SaveListingDTO saveListingDTO, String idempotencyKey) {
-        try{
+    public CreatedListingDTO create(SaveListingDTO saveListingDTO, List<PictureDTO> pictures, String idempotencyKey) {
+        try {
+            // Create and save the listing
             Listing newListing = listingMapper.saveListingDTOToListing(saveListingDTO);
             ReadUserDTO userConnected = userService.getAuthenticatedUser();
             newListing.setLandlordPublicId(userConnected.getPublicId());
             newListing.setPublicId(UUID.randomUUID());
             Listing savedListing = listingRepository.saveAndFlush(newListing);
 
-            pictureService.saveAll(saveListingDTO.getPictures(), savedListing);
-//            for (int i = 0; i < saveListingDTO.getPictures().size(); i++) {
-//                ImageUploadResponseDto uploadResponse = backBlazeService.uploadFile(saveListingDTO.getPictures().get(i));
-//                boolean isCover = (i == 0); // First picture is cover
-//                pictureService.saveListingPicture(uploadResponse, listing, isCover);
-//            }
+            // Save the pictures
+            pictureService.saveAll(pictures, savedListing);
+
             authService.promoteToLandlord(userConnected.getEmail());
 
             IdempotencyRecord record = new IdempotencyRecord();
             record.setKey(idempotencyKey);
-            record.setListing(newListing);
+            record.setListing(savedListing);
             idmKeyRepository.save(record);
 
             return listingMapper.listingToCreatedListingDTO(savedListing);
-        }catch (Exception e){
-            throw e;
+        } catch (Exception e) {
+            log.error("Error creating listing", e);
+            throw new RuntimeException("Failed to create listing", e);
         }
     }
 
@@ -96,5 +99,37 @@ public class LandlordService {
     public Optional<DisplayCardListingDTO> getByPublicIdAndLandlordPublicId(UUID listingPublicId, UUID landlordPublicId) {
         return listingRepository.findOneByPublicIdAndLandlordPublicId(listingPublicId, landlordPublicId)
                 .map(listingMapper::listingToDisplayCardListingDTO);
+    }
+
+    public List<PictureDTO> uploadFilesAndCreatePictureDTOs(List<MultipartFile> files) {
+        List<PictureDTO> pictures = new ArrayList<>();
+
+        for (int i = 0; i < files.size(); i++) {
+            MultipartFile file = files.get(i);
+            try {
+                ImageUploadResponseDto uploadResponse = awsStorageService.uploadFile(file);
+
+                PictureDTO pictureDTO = new PictureDTO(
+                        uploadResponse.getFileUrl(),
+                        uploadResponse.getFileName(),
+                        uploadResponse.getContentType(),
+                        i == 0  // First image is cover
+                );
+
+                pictures.add(pictureDTO);
+            } catch (Exception e) {
+                // If upload fails, clean up any previously uploaded files
+                pictures.forEach(pic -> {
+                    try {
+                        awsStorageService.deleteFile(pic.fileName());
+                    } catch (Exception ex) {
+                        log.error("Error cleaning up file: {}", pic.fileName(), ex);
+                    }
+                });
+                throw new StorageException("Failed to upload file: " + file.getOriginalFilename(), e);
+            }
+        }
+
+        return pictures;
     }
 }

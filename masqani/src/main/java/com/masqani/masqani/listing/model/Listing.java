@@ -59,7 +59,7 @@ public class Listing extends AuditingEntity<Long> {
     @Column(name = "landlord_public_id")
     private UUID landlordPublicId;
 
-    @OneToMany(mappedBy = "listing", cascade = CascadeType.REMOVE)
+    @OneToMany(mappedBy = "listing", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Set<ListingPicture> pictures = new HashSet<>();
 
 

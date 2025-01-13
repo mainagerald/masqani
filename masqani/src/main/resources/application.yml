@@ -87,11 +87,25 @@ springdoc:
     path: /swagger-ui
     enabled: true
 
+
+#s3 config
+cloud:
+  aws:
+    credentials:
+      access-key: ${AWS-ACCESS-KEY}
+      secret-key: ${AWS-SECRET-KEY}
+    region: eu-north-1
+    s3:
+      bucket:
+        name: ${S3-BUCKET-FILE-STORAGE}
+        url-prefix: ${S3-URL-PREFIX}
+
+
 #backblaze config
-b2:
-  application-key-id: ${B2_APP_KEY_ID}
-  application-key: ${B2_APP_KEY_NAME}
-  bucket-name: ${B2_BUCKET_I}
+#b2:
+#  application-key-id: ${B2_APP_KEY_ID}
+#  application-key: ${B2_APP_KEY_NAME}
+#  bucket-name: ${B2_BUCKET_I}
 #  url-expiration: 3600 # URL expiration in seconds
 
 server:
