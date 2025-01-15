@@ -41,7 +41,7 @@ public class ImageCompressor {
     private byte[] compressWithQuality(BufferedImage image, float quality, String contentType) throws IOException {
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
 
-        // Choose appropriate writer based on content type
+
         String formatName = contentType.toLowerCase().contains("png") ? "PNG" : "JPEG";
 
         if (formatName.equals("JPEG")) {
