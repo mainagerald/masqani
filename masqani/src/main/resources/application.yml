@@ -10,7 +10,7 @@ spring:
   application:
     name: masqani
   datasource:
-    url: jdbc:mysql://localhost:3306/masqani?createDatabaseIfNotExist=true
+    url: jdbc:mysql://localhost:3306/masqani2?createDatabaseIfNotExist=true
     username: root
     password: root
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -33,11 +33,11 @@ spring:
         hibernate:
           type:
             preferred_uuid_jdbc_type: CHAR #for uuid storage. might change to binary(16) later.
-          default_schema: masqani
+          default_schema: masqani2
   liquibase:
     contexts: dev
     change-log: db/changelog/db.changelog-master.xml
-    default-schema: masqani
+    default-schema: masqani2
     enabled: true
   security:
     oauth2:

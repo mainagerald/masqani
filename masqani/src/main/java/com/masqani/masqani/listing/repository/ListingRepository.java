@@ -1,6 +1,5 @@
 package com.masqani.masqani.listing.repository;
 
-
 import com.masqani.masqani.listing.model.enums.PropertyCategory;
 import com.masqani.masqani.listing.model.Listing;
 import org.springframework.data.domain.Page;
@@ -14,10 +13,13 @@ import java.util.Optional;
 import java.util.UUID;
 
 public interface ListingRepository extends JpaRepository<Listing, Long> {
-
-    @Query("SELECT listing FROM Listing listing LEFT JOIN FETCH listing.pictures picture" +
-            " WHERE listing.landlordPublicId = :landlordPublicId AND picture.isCover = true")
+    @Query("SELECT listing FROM Listing listing " +
+            "LEFT JOIN FETCH listing.pictures " +
+            "WHERE listing.landlordPublicId = :landlordPublicId")
     List<Listing> findAllByLandlordPublicIdFetchCoverPicture(UUID landlordPublicId);
+
+    @Query("SELECT listing from Listing listing where listing.landlordPublicId = :landlordPublicId")
+    List<Listing> findAllByLandlordPublicId(UUID landlordPublicId);
 
     @Query("SELECT l FROM Listing l LEFT JOIN FETCH l.pictures WHERE l.publicId = :publicId")
     Optional<Listing> findByPublicIdWithPictures(@Param("publicId") UUID publicId);

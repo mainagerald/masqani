@@ -4,11 +4,13 @@ import com.masqani.masqani.util.AuditingEntity;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.ToString;
 
-@EqualsAndHashCode(callSuper = true)
 @Entity
 @Table(name = "listing_pictures")
 @Data
+@ToString(exclude = "listing") // Exclude listing from toString
+@EqualsAndHashCode(callSuper = true, exclude = "listing")
 public class ListingPicture extends AuditingEntity<Long> {
 
     @Id
@@ -16,13 +18,9 @@ public class ListingPicture extends AuditingEntity<Long> {
     @Column(name = "id")
     private Long id;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "listing_fk", referencedColumnName = "id")
     private Listing listing;
-//
-//    @Lob
-//    @Column(name = "file", nullable = false)
-//    private byte[] file;
 
     @Column(name = "file_name")
     private String fileName;

@@ -6,17 +6,18 @@ import com.masqani.masqani.util.AuditingEntity;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.ToString;
 import org.hibernate.annotations.UuidGenerator;
 
 import java.math.BigDecimal;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.UUID;
+import java.util.*;
 
-@EqualsAndHashCode(callSuper = true)
+
 @Entity
 @Table(name = "listing")
 @Data
+@EqualsAndHashCode(callSuper = true, exclude = {"pictures"})
+@ToString(exclude = "pictures")
 public class Listing extends AuditingEntity<Long> {
 
     @Id
@@ -59,8 +60,8 @@ public class Listing extends AuditingEntity<Long> {
     @Column(name = "landlord_public_id")
     private UUID landlordPublicId;
 
-    @OneToMany(mappedBy = "listing", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private Set<ListingPicture> pictures = new HashSet<>();
+    @OneToMany(mappedBy = "listing", cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
+    private List<ListingPicture> pictures = new ArrayList<>();
 
 
 }

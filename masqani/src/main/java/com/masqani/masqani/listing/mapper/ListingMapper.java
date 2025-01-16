@@ -24,6 +24,7 @@ public interface ListingMapper {
     @Mapping(target = "propertyCategory", source = "category")
     @Mapping(target = "bathrooms", source = "infos.baths.value")
     @Mapping(target = "price", source = "price.value")
+    @Mapping(target = "rentAmount", source = "rentAmount")
     Listing saveListingDTOToListing(SaveListingDTO saveListingDTO);
 
     CreatedListingDTO listingToCreatedListingDTO(Listing listing);

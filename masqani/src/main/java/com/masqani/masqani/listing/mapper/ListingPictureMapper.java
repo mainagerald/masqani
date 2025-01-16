@@ -65,7 +65,8 @@ public interface ListingPictureMapper {
     PictureDTO convertToPictureDTO(ListingPicture listingPicture);
 
     @Named("extract-cover")
-    default PictureDTO extractCover(Set<ListingPicture> pictures) {
-        return pictures.stream().findFirst().map(this::convertToPictureDTO).orElseThrow();
+    default PictureDTO extractCover(List<ListingPicture> pictures) {
+        if(pictures.isEmpty())return null;
+        return pictures.stream().findFirst().map(this::convertToPictureDTO).orElse(null);
     }
 }

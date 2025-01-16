@@ -71,6 +71,7 @@ public class LandlordService {
     @Transactional(readOnly = true)
     public List<DisplayCardListingDTO> getAllProperties(ReadUserDTO landlord) {
         List<Listing> properties = listingRepository.findAllByLandlordPublicIdFetchCoverPicture(landlord.getPublicId());
+        log.info("---db res properties------{}",properties);
         return listingMapper.listingToDisplayCardListingDTOs(properties);
     }
 

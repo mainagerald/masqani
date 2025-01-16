@@ -12,6 +12,7 @@ import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 //@Getter
@@ -38,4 +39,5 @@ public class SaveListingDTO {
     @NotNull @Valid DescriptionDTO description;
     @NotNull @Valid PriceVO price;
     CoordinatesDTO coordinates;
+    BigDecimal rentAmount;
 }

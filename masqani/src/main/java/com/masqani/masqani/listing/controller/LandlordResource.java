@@ -56,23 +56,18 @@ public class LandlordResource {
         try {
             // First validate the files
             validateFiles(files);
-
             // Parse and validate the listing DTO
             SaveListingDTO saveListingDTO = parseAndValidateListingDTO(saveListingDTOString);
             String idempotencyKey = generateIdempotencyKey(saveListingDTO);
-
             // Check for existing listing
             Optional<CreatedListingDTO> existingListing = landlordService.findByIdempotencyKey(idempotencyKey);
             if (existingListing.isPresent()) {
                 return ResponseEntity.ok(existingListing.get());
             }
-
             // Upload files and create listing
             List<PictureDTO> pictures = landlordService.uploadFilesAndCreatePictureDTOs(files);
-
             CreatedListingDTO response = landlordService.create(saveListingDTO, pictures, idempotencyKey);
             return ResponseEntity.status(HttpStatus.CREATED).body(response);
-
         } catch (UnauthorizedException e) {
             log.error("Unauthorized access attempt", e);
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
@@ -92,6 +87,7 @@ public class LandlordResource {
     @PreAuthorize("hasAnyRole('ROLE_LANDLORD')")
     public ResponseEntity<List<DisplayCardListingDTO>> getAll() {
         ReadUserDTO connectedUser = userService.getAuthenticatedUser();
+        log.info("connectedUser landlord ------------->{}",connectedUser);
         List<DisplayCardListingDTO> allProperties = landlordService.getAllProperties(connectedUser);
         return ResponseEntity.ok(allProperties);
     }
