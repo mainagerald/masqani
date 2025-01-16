@@ -42,6 +42,8 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class LandlordResource {
 
+//    TODO: ADD RATE LIMITING
+
     private final LandlordService landlordService;
     private final AwsStorageService awsStorageService;
     private final Validator validator;
