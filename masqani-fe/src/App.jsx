@@ -19,6 +19,7 @@ import HouseRent from './pages/property/rentals/HouseRent'
 import SellerGuide from './pages/guides/seller/SellerGuide'
 import AgentList from './pages/guides/agents/AgentList'
 import NewsInsights from './pages/guides/seller/NewsInsights'
+import LandlordProperties from './pages/landlord/LandlordProperties'
 
 function App() {
 
@@ -32,6 +33,7 @@ function App() {
         <Route path='/billing' element={
           <PrivateRoute><Billing /></PrivateRoute>} />
         <Route path='/properties-list-property' element={<PrivateRoute><ListProperty /></PrivateRoute>} />
+        <Route path='/my-properties' element={<PrivateRoute><LandlordProperties /></PrivateRoute>} />
         <Route path='/properties-rent' element={<AllRent />} />
         <Route path='/properties/apartments-rent' element={<ApartmentsRent />} />
         <Route path='/properties/houses-rent' element={<HouseRent />} />

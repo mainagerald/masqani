@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { createPropertyListing } from "../../../service/api/propertyApi";
+import { createPropertyListing } from "../../../service/api/landlordPropertyApi";
 import { CategoryStep } from "../../../components/ListProperty/CategoryStep";
 import PropertyDetails from "../../../components/ListProperty/PropertyDetailsStep";
 import { PropertyDescription } from "../../../components/ListProperty/PropertyDescriptionStep";
@@ -8,6 +8,8 @@ import { PricingStep } from "../../../components/ListProperty/PriceStep";
 import { LocationStep } from "../../../components/ListProperty/LocationStep";
 import { toast } from "react-toastify";
 import Spinner from "../../../components/Spinner";
+
+// TODO: Button 'next' on step 5 submits form when images are uploaded
 
 const INIT_FORM_DATA = {
   category: "ALL",
@@ -82,6 +84,8 @@ const ListProperty = () => {
       
       localStorage.removeItem("currentStep");
       localStorage.removeItem("propertyFormData");
+      setFormData(INIT_FORM_DATA);
+      setStep(1);
       
       toast.success("Property listing created successfully!");
       
@@ -207,7 +211,8 @@ const ListProperty = () => {
       default:
         return null;
     }
-  };setIsSubmitting
+  };
+  // setIsSubmitting
 
   const renderStepIndicator = () => {
     const steps = ["Category", "Details", "Location", "Description", "Price", "Photos"];
@@ -304,7 +309,7 @@ const ListProperty = () => {
             ) : (
               <button
                 type="submit"
-                disabled={!validateStep(step) || isSubmitting}
+                disabled={!validateStep(step) || isSubmitting || step<6}
                 className="ml-auto px-6 py-2 bg-black text-white rounded-md text-sm font-medium hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900 disabled:bg-gray-300 disabled:cursor-not-allowed"
               >
                 {isSubmitting ? "Submitting..." : "Submit Listing"}
@@ -319,3 +324,4 @@ const ListProperty = () => {
 };
 
 export default ListProperty;
+

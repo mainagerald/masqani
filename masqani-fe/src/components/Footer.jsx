@@ -38,7 +38,7 @@ const Footer = () => {
 
           <div>
             <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
-            <div className="space-y-2 flex-col flex">
+            <div className="space-y-2 flex-col flex items-start">
               {quickLinks.map((link) => (
                 <Link
                   key={link.path}
@@ -60,7 +60,7 @@ const Footer = () => {
                   href={social.path}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-primary-600 hover:text-primary-900 transition-colors"
+                  className="text-primary-600 hover:text-primary-900 transition-colors hover:scale-110"
                   aria-label={social.label}
                 >
                   {social.icon}

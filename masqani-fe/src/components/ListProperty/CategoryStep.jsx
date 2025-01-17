@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import PropertyCategories from "../../service/model/PropertyCategory";
 
 export const CategoryStep = ({

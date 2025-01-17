@@ -77,15 +77,16 @@ const SignUp = () => {
 
     const validatePassword = (password) => {
         // At least 8 characters, one letter and one number
-        const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
-        return passwordRegex.test(password);
+        // const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+        // return passwordRegex.test(password);
+        if(String(password).length<8)return false;
     };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         setError('');
         setVerificationMessage('');
-        setIsLoading(true);
+        
 
         if (!email || !password) {
             setError('Email and password are required.');
@@ -99,7 +100,7 @@ const SignUp = () => {
         }
 
         if (!validatePassword(password)) {
-            setError('Password must be at least 8 characters long and contain both letters and numbers.');
+            setError('Password must be at least 8 characters long');
             return;
         }
 
@@ -114,7 +115,9 @@ const SignUp = () => {
         };
 
         try {
-            const response = await axiosInstance.post(`${environment.apiUrl}/auth/signup`, payload);
+
+            setIsLoading(true);
+            await axiosInstance.post(`${environment.apiUrl}/auth/signup`, payload);
             setVerificationMessage('Verification email sent. Please check your inbox.');
             
             setEmail('');
@@ -246,3 +249,4 @@ const SignUp = () => {
 };
 
 export default SignUp;
+
