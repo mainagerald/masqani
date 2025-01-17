@@ -1,19 +1,15 @@
-package com.masqani.masqani.listing.application.dto;
+package com.masqani.masqani.listing.service.dto;
 
 
-import com.masqani.masqani.listing.application.dto.sub.DescriptionDTO;
-import com.masqani.masqani.listing.application.dto.sub.ListingInfoDTO;
-import com.masqani.masqani.listing.application.dto.sub.PictureDTO;
-import com.masqani.masqani.listing.application.dto.vo.PriceVO;
+import com.masqani.masqani.listing.service.dto.sub.DescriptionDTO;
+import com.masqani.masqani.listing.service.dto.sub.ListingInfoDTO;
+import com.masqani.masqani.listing.service.dto.vo.PriceVO;
 import com.masqani.masqani.listing.model.enums.PropertyCategory;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
 
 import java.math.BigDecimal;
-import java.util.List;
 
 //@Getter
 //@Setter

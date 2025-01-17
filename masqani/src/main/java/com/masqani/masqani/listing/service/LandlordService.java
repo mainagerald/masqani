@@ -1,9 +1,8 @@
-package com.masqani.masqani.listing.application;
+package com.masqani.masqani.listing.service;
 
 import com.masqani.masqani.exceptions.StorageException;
-import com.masqani.masqani.listing.application.dto.*;
-import com.masqani.masqani.listing.application.dto.sub.PictureDTO;
-import com.masqani.masqani.listing.model.IdempotencyRecord;
+import com.masqani.masqani.listing.service.dto.*;
+import com.masqani.masqani.listing.service.dto.sub.PictureDTO;
 import com.masqani.masqani.listing.model.Listing;
 import com.masqani.masqani.listing.mapper.ListingMapper;
 import com.masqani.masqani.listing.repository.IdmKeyRepository;
@@ -37,7 +36,7 @@ public class LandlordService {
     private final AwsStorageService awsStorageService;
 
     @Transactional
-    public CreatedListingDTO create(SaveListingDTO saveListingDTO, List<PictureDTO> pictures, String idempotencyKey) {
+    public CreatedListingDTO create(SaveListingDTO saveListingDTO, List<PictureDTO> pictures) {
         try {
             // Create and save the listing
             Listing newListing = listingMapper.saveListingDTOToListing(saveListingDTO);
@@ -46,15 +45,16 @@ public class LandlordService {
             newListing.setPublicId(UUID.randomUUID());
             Listing savedListing = listingRepository.saveAndFlush(newListing);
 
+
             // Save the pictures
             pictureService.saveAll(pictures, savedListing);
 
             authService.promoteToLandlord(userConnected.getEmail());
 
-            IdempotencyRecord record = new IdempotencyRecord();
-            record.setKey(idempotencyKey);
-            record.setListing(savedListing);
-            idmKeyRepository.save(record);
+//            IdempotencyRecord record = new IdempotencyRecord();
+//            record.setKey(idempotencyKey);
+//            record.setListing(savedListing);
+//            idmKeyRepository.save(record);
 
             return listingMapper.listingToCreatedListingDTO(savedListing);
         } catch (Exception e) {
@@ -77,7 +77,31 @@ public class LandlordService {
 
     @Transactional
     public State<UUID, String> delete(UUID publicId, ReadUserDTO landlord) {
+        log.info("reached delete transaction int with pub id---{}", publicId);
+        Optional<Listing> listing = listingRepository.findByPublicId(publicId);
+        if (listing.isEmpty()) {
+            log.info("no listing found");
+            return State.<UUID, String>builder().forError("Listing not found.");
+        }
+        log.info("listing landlord id ---- {} [[[[[[[[VS]]]]]]] the logged in landlord pub id---{}",listing.get().getLandlordPublicId(), landlord.getPublicId());
+        if(!String.valueOf(listing.get().getLandlordPublicId()).equals(String.valueOf(landlord.getPublicId()))){
+            log.info("user cannot delete");
+            return State.<UUID, String>builder().forUnauthorized("User not authorized to delete this listing");
+        }
+        log.info("deleting listing with pub id------- {}",listing.get().getPublicId());
+        try{
+            log.info("inside aws delete pictures try");
+                List<ListingPictureDTO> listingPictures = pictureService.getListingPicturesByListing(listing.get());
+                listingPictures.forEach(picture->{
+                    awsStorageService.deleteFile(picture.getFileName());
+                });
+
+        }catch (Exception e){
+                log.info("Error fetching listing pictures for deletion {}", e.getMessage());
+        }
+
         long deletedSuccessfully = listingRepository.deleteByPublicIdAndLandlordPublicId(publicId, landlord.getPublicId());
+        log.info("deleted response from repo ??? ------{}", deletedSuccessfully);
         if (deletedSuccessfully > 0) {
             return State.<UUID, String>builder().forSuccess(publicId);
         } else {
@@ -102,6 +126,7 @@ public class LandlordService {
                 .map(listingMapper::listingToDisplayCardListingDTO);
     }
 
+    @Transactional
     public List<PictureDTO> uploadFilesAndCreatePictureDTOs(List<MultipartFile> files) {
         List<PictureDTO> pictures = new ArrayList<>();
 

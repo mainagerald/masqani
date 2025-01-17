@@ -1,14 +1,15 @@
-package com.masqani.masqani.listing.application.dto;
+package com.masqani.masqani.listing.service.dto;
 
-import com.masqani.masqani.listing.application.dto.sub.DescriptionDTO;
-import com.masqani.masqani.listing.application.dto.sub.LandlordListingDTO;
-import com.masqani.masqani.listing.application.dto.sub.ListingInfoDTO;
-import com.masqani.masqani.listing.application.dto.sub.PictureDTO;
-import com.masqani.masqani.listing.application.dto.vo.PriceVO;
+import com.masqani.masqani.listing.service.dto.sub.DescriptionDTO;
+import com.masqani.masqani.listing.service.dto.sub.LandlordListingDTO;
+import com.masqani.masqani.listing.service.dto.sub.ListingInfoDTO;
+import com.masqani.masqani.listing.service.dto.sub.PictureDTO;
+import com.masqani.masqani.listing.service.dto.vo.PriceVO;
 import com.masqani.masqani.listing.model.enums.PropertyCategory;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.time.Instant;
 import java.util.List;
 
 @Getter
@@ -22,5 +23,6 @@ public class DisplayListingDTO {
     private PropertyCategory category;
     private String location;
     private LandlordListingDTO landlord;
+    private Instant createdAt;
 
 }

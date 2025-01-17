@@ -1,4 +1,4 @@
-package com.masqani.masqani.listing.application.dto.sub;
+package com.masqani.masqani.listing.service.dto.sub;
 
 import jakarta.validation.constraints.NotNull;
 

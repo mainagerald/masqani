@@ -2,20 +2,17 @@ package com.masqani.masqani.listing.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.masqani.masqani.exceptions.StorageException;
-import com.masqani.masqani.listing.application.AwsStorageService;
-import com.masqani.masqani.listing.application.dto.ImageUploadResponseDto;
+import com.masqani.masqani.listing.service.AwsStorageService;
 import com.masqani.masqani.user.dto.ReadUserDTO;
-import com.masqani.masqani.exceptions.UserException;
-import com.masqani.masqani.listing.application.LandlordService;
-import com.masqani.masqani.listing.application.dto.CreatedListingDTO;
-import com.masqani.masqani.listing.application.dto.DisplayCardListingDTO;
-import com.masqani.masqani.listing.application.dto.SaveListingDTO;
-import com.masqani.masqani.listing.application.dto.sub.PictureDTO;
+import com.masqani.masqani.listing.service.LandlordService;
+import com.masqani.masqani.listing.service.dto.CreatedListingDTO;
+import com.masqani.masqani.listing.service.dto.DisplayCardListingDTO;
+import com.masqani.masqani.listing.service.dto.SaveListingDTO;
+import com.masqani.masqani.listing.service.dto.sub.PictureDTO;
 
 import com.masqani.masqani.user.exceptions.UnauthorizedException;
 import com.masqani.masqani.user.service.UserService;
 import com.masqani.masqani.util.shared.State;
-import com.masqani.masqani.util.shared.StatusNotification;
 import jakarta.validation.ConstraintViolation;
 import jakarta.validation.ValidationException;
 import jakarta.validation.Validator;
@@ -23,17 +20,13 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
-import org.springframework.http.ProblemDetail;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.util.DigestUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import java.io.IOException;
 import java.util.*;
-import java.util.function.Function;
 import java.util.stream.Collectors;
 
 @Slf4j
@@ -60,15 +53,10 @@ public class LandlordResource {
             validateFiles(files);
             // Parse and validate the listing DTO
             SaveListingDTO saveListingDTO = parseAndValidateListingDTO(saveListingDTOString);
-            String idempotencyKey = generateIdempotencyKey(saveListingDTO);
-            // Check for existing listing
-            Optional<CreatedListingDTO> existingListing = landlordService.findByIdempotencyKey(idempotencyKey);
-            if (existingListing.isPresent()) {
-                return ResponseEntity.ok(existingListing.get());
-            }
+
             // Upload files and create listing
             List<PictureDTO> pictures = landlordService.uploadFilesAndCreatePictureDTOs(files);
-            CreatedListingDTO response = landlordService.create(saveListingDTO, pictures, idempotencyKey);
+            CreatedListingDTO response = landlordService.create(saveListingDTO, pictures);
             return ResponseEntity.status(HttpStatus.CREATED).body(response);
         } catch (UnauthorizedException e) {
             log.error("Unauthorized access attempt", e);
@@ -94,10 +82,12 @@ public class LandlordResource {
         return ResponseEntity.ok(allProperties);
     }
 
-    @DeleteMapping("/delete")
+    @DeleteMapping("/delete/{publicId}")
     @PreAuthorize("hasAnyRole('ROLE_LANDLORD')")
-    public ResponseEntity<UUID> delete(@RequestParam UUID publicId) {
+    public ResponseEntity<UUID> delete(@PathVariable UUID publicId) {
+        log.info("reached endpoint with pub id----{}", publicId);
         ReadUserDTO connectedUser = userService.getAuthenticatedUser();
+        log.info("deleting property for user {}", connectedUser.getEmail());
         State<UUID, String> deleteState = landlordService.delete(publicId, connectedUser);
 
         return switch (deleteState.getStatus()) {
@@ -158,7 +148,7 @@ public class LandlordResource {
     }
 
 
-    private String generateIdempotencyKey(SaveListingDTO dto) {
-        return UUID.randomUUID().toString();
-    }
+//    private String generateIdempotencyKey(SaveListingDTO dto) {
+//        return UUID.randomUUID().toString();
+//    }
 }

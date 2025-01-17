@@ -1,4 +1,4 @@
-package com.masqani.masqani.listing.application.dto;
+package com.masqani.masqani.listing.service.dto;
 
 
 import lombok.AllArgsConstructor;

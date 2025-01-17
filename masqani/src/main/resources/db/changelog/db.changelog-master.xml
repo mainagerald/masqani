@@ -198,6 +198,9 @@
             <column name="public_id"/>
         </createIndex>
     </changeSet>
+    <changeSet author="maina" id="16-temp-remove-idm-record">
+        <dropTable tableName="idempotency_record"/>
+    </changeSet>
 
 
 </databaseChangeLog>

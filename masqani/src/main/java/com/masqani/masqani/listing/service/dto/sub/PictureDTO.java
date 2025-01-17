@@ -1,8 +1,4 @@
-package com.masqani.masqani.listing.application.dto.sub;
-
-import jakarta.validation.constraints.NotNull;
-
-import java.util.Objects;
+package com.masqani.masqani.listing.service.dto.sub;
 
 //public record PictureDTO(
 //        @NotNull byte[] file,

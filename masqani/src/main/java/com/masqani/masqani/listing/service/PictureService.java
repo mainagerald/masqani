@@ -1,8 +1,7 @@
-package com.masqani.masqani.listing.application;
+package com.masqani.masqani.listing.service;
 
-import com.masqani.masqani.listing.application.dto.ImageUploadResponseDto;
-import com.masqani.masqani.listing.application.dto.ListingPictureDTO;
-import com.masqani.masqani.listing.application.dto.sub.PictureDTO;
+import com.masqani.masqani.listing.service.dto.ListingPictureDTO;
+import com.masqani.masqani.listing.service.dto.sub.PictureDTO;
 import com.masqani.masqani.listing.model.Listing;
 import com.masqani.masqani.listing.model.ListingPicture;
 import com.masqani.masqani.listing.mapper.ListingPictureMapper;
@@ -11,12 +10,10 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.multipart.MultipartFile;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
+
 @Service
 @Slf4j
 @RequiredArgsConstructor
@@ -60,6 +57,19 @@ public class PictureService {
     @Transactional(readOnly = true)
     public List<ListingPictureDTO> getListingPictures(Long listingId) {
         return listingPictureRepository.findByListingId(listingId)
+                .stream()
+                .map(picture -> new ListingPictureDTO(
+                        picture.getId(),
+                        picture.getFileUrl(),
+                        picture.getFileName(),
+                        picture.getFileContentType(),
+                        picture.isCover()))
+                .toList();
+    }
+
+    @Transactional(readOnly = true)
+    public List<ListingPictureDTO> getListingPicturesByListing(Listing listing) {
+        return listingPictureRepository.findByListing(listing)
                 .stream()
                 .map(picture -> new ListingPictureDTO(
                         picture.getId(),

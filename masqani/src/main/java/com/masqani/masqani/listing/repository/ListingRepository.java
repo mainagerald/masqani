@@ -15,11 +15,12 @@ import java.util.UUID;
 public interface ListingRepository extends JpaRepository<Listing, Long> {
     @Query("SELECT listing FROM Listing listing " +
             "LEFT JOIN FETCH listing.pictures picture " +
-            "WHERE picture.isCover = true AND listing.landlordPublicId = :landlordPublicId")
+            "WHERE picture.isCover = true AND listing.landlordPublicId = :landlordPublicId ORDER BY listing.createdAt DESC")
     List<Listing> findAllByLandlordPublicIdFetchCoverPicture(UUID landlordPublicId);
 
     @Query("SELECT listing from Listing listing where listing.landlordPublicId = :landlordPublicId")
     List<Listing> findAllByLandlordPublicId(UUID landlordPublicId);
+
 
     @Query("SELECT l FROM Listing l LEFT JOIN FETCH l.pictures WHERE l.publicId = :publicId")
     Optional<Listing> findByPublicIdWithPictures(@Param("publicId") UUID publicId);

@@ -1,8 +1,8 @@
 package com.masqani.masqani.listing.mapper;
 
 
-import com.masqani.masqani.listing.application.dto.*;
-import com.masqani.masqani.listing.application.dto.vo.PriceVO;
+import com.masqani.masqani.listing.service.dto.*;
+import com.masqani.masqani.listing.service.dto.vo.PriceVO;
 import com.masqani.masqani.listing.model.Listing;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -29,7 +29,19 @@ public interface ListingMapper {
 
     CreatedListingDTO listingToCreatedListingDTO(Listing listing);
 
+    @Mapping(target = "landlord", ignore = true)
+    @Mapping(target = "description.title.value", source = "title")
+    @Mapping(target = "description.description.value", source = "description")
+    @Mapping(target = "infos.bedrooms.value", source = "bedrooms")
+    @Mapping(target = "infos.baths.value", source = "bathrooms")
+    @Mapping(target = "category", source = "propertyCategory")
+    @Mapping(target = "price.value", source = "price")
+    @Mapping(target = "createdAt", source = "createdAt")  // Add this line
+    DisplayListingDTO listingToDisplayListingDTO(Listing listing);
+
     @Mapping(target = "cover", source = "pictures")
+    @Mapping(target="createdAt", source = "createdAt")
+    @Mapping(target="title", source = "title")
     List<DisplayCardListingDTO> listingToDisplayCardListingDTOs(List<Listing> listings);
 
     @Mapping(target = "cover", source = "pictures", qualifiedByName = "extract-cover")
@@ -39,14 +51,6 @@ public interface ListingMapper {
         return new PriceVO(price);
     }
 
-    @Mapping(target = "landlord", ignore = true)
-    @Mapping(target = "description.title.value", source = "title")
-    @Mapping(target = "description.description.value", source = "description")
-    @Mapping(target = "infos.bedrooms.value", source = "bedrooms")
-    @Mapping(target = "infos.baths.value", source = "bathrooms")
-    @Mapping(target = "category", source = "propertyCategory")
-    @Mapping(target = "price.value", source = "price")
-    DisplayListingDTO listingToDisplayListingDTO(Listing listing);
 
     @Mapping(target = "listingPublicId", source = "publicId")
     ListingCreateBookingDTO mapListingToListingCreateBookingDTO(Listing listing);

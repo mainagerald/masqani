@@ -1,7 +1,7 @@
-package com.masqani.masqani.listing.application;
+package com.masqani.masqani.listing.service;
 
 import com.masqani.masqani.exceptions.StorageException;
-import com.masqani.masqani.listing.application.dto.ImageUploadResponseDto;
+import com.masqani.masqani.listing.service.dto.ImageUploadResponseDto;
 import com.masqani.masqani.util.config.ImageCompressor;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -9,19 +9,11 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.imageio.IIOImage;
-import javax.imageio.ImageIO;
-import javax.imageio.ImageWriteParam;
-import javax.imageio.ImageWriter;
-import javax.imageio.stream.ImageOutputStream;
-import java.awt.image.BufferedImage;
-import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import software.amazon.awssdk.core.sync.RequestBody;
 import software.amazon.awssdk.services.s3.S3Client;
 import software.amazon.awssdk.services.s3.model.*;
 
-import java.util.Iterator;
 import java.util.UUID;
 
 @Service
@@ -131,10 +123,10 @@ public class AwsStorageService {
 
     public void deleteFile(String fileName) {
         try {
-            String folderPath = IMAGES_FOLDER + "/" + fileName;
+//            String folderPath = IMAGES_FOLDER + "/" + fileName;
             DeleteObjectRequest deleteObjectRequest = DeleteObjectRequest.builder()
                     .bucket(bucketName)
-                    .key(folderPath)
+                    .key(fileName)
                     .build();
 
             s3Client.deleteObject(deleteObjectRequest);
