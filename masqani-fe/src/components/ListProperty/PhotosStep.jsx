@@ -1,4 +1,5 @@
 import { useState, useCallback, useEffect } from 'react';
+import { BiTrash } from 'react-icons/bi';
 
 export const PhotosStep = ({ onFilesChange, initialFiles = [] }) => {
   const [dragActive, setDragActive] = useState(false);
@@ -134,22 +135,10 @@ export const PhotosStep = ({ onFilesChange, initialFiles = [] }) => {
               <button
                 type="button"
                 onClick={() => removeFile(index)}
-                className="absolute top-2 right-2 p-1 bg-white rounded-full shadow-lg opacity-0 group-hover:opacity-100 transition-opacity"
+                className="absolute top-2 right-2 p-1 bg-white rounded-3xl shadow-lg"
                 aria-label="Remove image"
               >
-                <svg 
-                  className="w-4 h-4 text-gray-600"
-                  fill="none" 
-                  stroke="currentColor" 
-                  viewBox="0 0 24 24"
-                >
-                  <path 
-                    strokeLinecap="round" 
-                    strokeLinejoin="round" 
-                    strokeWidth={2} 
-                    d="M6 18L18 6M6 6l12 12"
-                  />
-                </svg>
+                <BiTrash/>
               </button>
             </div>
           ))}

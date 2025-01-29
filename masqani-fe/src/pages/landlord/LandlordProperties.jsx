@@ -53,7 +53,8 @@ const MyProperties = () => {
     console.log("handle edit clicked");
     
   }
-  function handleListingView(){
+  function handleListingView(e){
+    e.stopPropagation();
     console.log("handle view clicked");
     
   }
@@ -110,8 +111,8 @@ const MyProperties = () => {
                     {property.propertyCategory}
                   </div>
                 </div>
-                <div className="p-4">
-                  <div className="flex mb-3 flex-col">
+                <div className="p-4 ">
+                  <div className="flex mb-3 flex-col hover:cursor-pointer hover:scale-95 ease-in-out transition-all duration-150" onClick={handleListingView}>
                     <>
                     <div className="flex flex-row items-start">
                     {getIconComponent(property.propertyCategory)}
@@ -123,7 +124,7 @@ const MyProperties = () => {
                   </div>
                   <div className="flex justify-between items-center">
                     <p className="text-2xl font-bold text-black">
-                      ${property.price.value.toLocaleString()}
+                      Ksh {property.price.value.toLocaleString()}
                     </p>
                     <>
                       <div className="space-x-2">
