@@ -1,4 +1,4 @@
-package com.masqani.masqani.listing.service.dto;
+package com.masqani.masqani.listing.model.dto;
 
 public record CreatedListingDTO(String publicId) {
 }

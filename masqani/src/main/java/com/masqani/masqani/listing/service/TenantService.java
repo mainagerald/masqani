@@ -2,10 +2,10 @@ package com.masqani.masqani.listing.service;
 
 
 import com.masqani.masqani.booking.application.BookingService;
-import com.masqani.masqani.listing.service.dto.DisplayCardListingDTO;
-import com.masqani.masqani.listing.service.dto.DisplayListingDTO;
-import com.masqani.masqani.listing.service.dto.SearchDTO;
-import com.masqani.masqani.listing.service.dto.sub.LandlordListingDTO;
+import com.masqani.masqani.listing.model.dto.DisplayCardListingDTO;
+import com.masqani.masqani.listing.model.dto.DisplayListingDTO;
+import com.masqani.masqani.listing.model.dto.SearchDTO;
+import com.masqani.masqani.listing.model.dto.sub.LandlordListingDTO;
 import com.masqani.masqani.listing.model.enums.PropertyCategory;
 import com.masqani.masqani.listing.model.Listing;
 import com.masqani.masqani.listing.mapper.ListingMapper;

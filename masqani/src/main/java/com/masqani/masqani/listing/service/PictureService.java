@@ -1,7 +1,7 @@
 package com.masqani.masqani.listing.service;
 
-import com.masqani.masqani.listing.service.dto.ListingPictureDTO;
-import com.masqani.masqani.listing.service.dto.sub.PictureDTO;
+import com.masqani.masqani.listing.model.dto.ListingPictureDTO;
+import com.masqani.masqani.listing.model.dto.sub.PictureDTO;
 import com.masqani.masqani.listing.model.Listing;
 import com.masqani.masqani.listing.model.ListingPicture;
 import com.masqani.masqani.listing.mapper.ListingPictureMapper;

@@ -1,7 +1,7 @@
 package com.masqani.masqani.listing.service;
 
 import com.masqani.masqani.exceptions.StorageException;
-import com.masqani.masqani.listing.service.dto.ImageUploadResponseDto;
+import com.masqani.masqani.listing.model.dto.ImageUploadResponseDto;
 import com.masqani.masqani.util.config.ImageCompressor;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -10,6 +10,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+
+import software.amazon.awssdk.core.ResponseBytes;
 import software.amazon.awssdk.core.sync.RequestBody;
 import software.amazon.awssdk.services.s3.S3Client;
 import software.amazon.awssdk.services.s3.model.*;
@@ -148,6 +150,21 @@ public class AwsStorageService {
             return true;
         } catch (NoSuchKeyException e) {
             return false;
+        }
+    }
+
+    public byte[] getFile(String fileName) {
+        try {
+            GetObjectRequest getObjectRequest = GetObjectRequest.builder()
+                    .bucket(bucketName)
+                    .key(fileName)
+                    .build();
+
+            ResponseBytes<GetObjectResponse> objectBytes = s3Client.getObjectAsBytes(getObjectRequest);
+            return objectBytes.asByteArray();
+        } catch (S3Exception e) {
+            log.error("Error getting file from S3", e);
+            throw new StorageException("Failed to get file from S3", e);
         }
     }
 

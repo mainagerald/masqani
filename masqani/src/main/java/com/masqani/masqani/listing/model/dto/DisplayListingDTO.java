@@ -1,10 +1,10 @@
-package com.masqani.masqani.listing.service.dto;
+package com.masqani.masqani.listing.model.dto;
 
-import com.masqani.masqani.listing.service.dto.sub.DescriptionDTO;
-import com.masqani.masqani.listing.service.dto.sub.LandlordListingDTO;
-import com.masqani.masqani.listing.service.dto.sub.ListingInfoDTO;
-import com.masqani.masqani.listing.service.dto.sub.PictureDTO;
-import com.masqani.masqani.listing.service.dto.vo.PriceVO;
+import com.masqani.masqani.listing.model.dto.sub.DescriptionDTO;
+import com.masqani.masqani.listing.model.dto.sub.LandlordListingDTO;
+import com.masqani.masqani.listing.model.dto.sub.ListingInfoDTO;
+import com.masqani.masqani.listing.model.dto.sub.PictureDTO;
+import com.masqani.masqani.listing.model.dto.vo.PriceVO;
 import com.masqani.masqani.listing.model.enums.PropertyCategory;
 import lombok.Getter;
 import lombok.Setter;

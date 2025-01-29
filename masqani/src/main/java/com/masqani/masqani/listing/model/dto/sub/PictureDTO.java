@@ -1,4 +1,4 @@
-package com.masqani.masqani.listing.service.dto.sub;
+package com.masqani.masqani.listing.model.dto.sub;
 
 //public record PictureDTO(
 //        @NotNull byte[] file,

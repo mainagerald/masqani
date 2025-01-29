@@ -1,8 +1,8 @@
 package com.masqani.masqani.booking.application.dto;
 
 
-import com.masqani.masqani.listing.service.dto.sub.PictureDTO;
-import com.masqani.masqani.listing.service.dto.vo.PriceVO;
+import com.masqani.masqani.listing.model.dto.sub.PictureDTO;
+import com.masqani.masqani.listing.model.dto.vo.PriceVO;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;

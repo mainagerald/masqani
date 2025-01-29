@@ -1,8 +1,8 @@
 package com.masqani.masqani.listing.service;
 
 import com.masqani.masqani.exceptions.StorageException;
-import com.masqani.masqani.listing.service.dto.*;
-import com.masqani.masqani.listing.service.dto.sub.PictureDTO;
+import com.masqani.masqani.listing.model.dto.*;
+import com.masqani.masqani.listing.model.dto.sub.PictureDTO;
 import com.masqani.masqani.listing.model.Listing;
 import com.masqani.masqani.listing.mapper.ListingMapper;
 import com.masqani.masqani.listing.repository.IdmKeyRepository;

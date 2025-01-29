@@ -1,7 +1,7 @@
-package com.masqani.masqani.listing.service.dto;
+package com.masqani.masqani.listing.model.dto;
 
-import com.masqani.masqani.listing.service.dto.sub.PictureDTO;
-import com.masqani.masqani.listing.service.dto.vo.PriceVO;
+import com.masqani.masqani.listing.model.dto.sub.PictureDTO;
+import com.masqani.masqani.listing.model.dto.vo.PriceVO;
 import com.masqani.masqani.listing.model.enums.PropertyCategory;
 
 import java.time.Instant;

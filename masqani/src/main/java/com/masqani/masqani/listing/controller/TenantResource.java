@@ -2,9 +2,9 @@ package com.masqani.masqani.listing.controller;
 
 
 import com.masqani.masqani.listing.service.TenantService;
-import com.masqani.masqani.listing.service.dto.DisplayCardListingDTO;
-import com.masqani.masqani.listing.service.dto.DisplayListingDTO;
-import com.masqani.masqani.listing.service.dto.SearchDTO;
+import com.masqani.masqani.listing.model.dto.DisplayCardListingDTO;
+import com.masqani.masqani.listing.model.dto.DisplayListingDTO;
+import com.masqani.masqani.listing.model.dto.SearchDTO;
 import com.masqani.masqani.listing.model.enums.PropertyCategory;
 import com.masqani.masqani.util.shared.State;
 import com.masqani.masqani.util.shared.StatusNotification;

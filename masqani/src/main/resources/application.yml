@@ -39,6 +39,11 @@ spring:
     change-log: db/changelog/db.changelog-master.xml
     default-schema: masqani2
     enabled: true
+  cache:
+    type: redis
+  redis:
+    host: localhost
+    port: 6379
   security:
     oauth2:
       client:
@@ -68,6 +73,7 @@ spring:
     restart:
       enabled: false
 
+
 hazelcast:
   network:
     join:
@@ -93,13 +99,16 @@ cloud:
   aws:
     credentials:
       access-key: ${AWS-ACCESS-KEY}
-      secret-key: ${AWS-SECRET-KEY}
+      secret-key: aws-secret
+#      secret-key: ${AWS-SECRET-KEY} #same as name below
     region: eu-north-1
     s3:
       bucket:
-        name: ${S3-BUCKET-FILE-STORAGE}
+        name: aws-s3
+#        name: ${S3-BUCKET-FILE-STORAGE} #comment out to reduce calls and add cache for get requests
         url-prefix: ${S3-URL-PREFIX}
 
+#TODO: SWITCH TO BACK-BLAZE S3 IF POSSIBLE
 
 #backblaze config
 #b2:

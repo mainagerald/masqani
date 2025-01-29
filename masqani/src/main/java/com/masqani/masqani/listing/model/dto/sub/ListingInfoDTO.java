@@ -1,8 +1,8 @@
-package com.masqani.masqani.listing.service.dto.sub;
+package com.masqani.masqani.listing.model.dto.sub;
 
 
-import com.masqani.masqani.listing.service.dto.vo.BathsVO;
-import com.masqani.masqani.listing.service.dto.vo.BedroomsVO;
+import com.masqani.masqani.listing.model.dto.vo.BathsVO;
+import com.masqani.masqani.listing.model.dto.vo.BedroomsVO;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 

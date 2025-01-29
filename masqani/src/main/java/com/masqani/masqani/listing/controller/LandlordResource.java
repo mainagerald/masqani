@@ -5,10 +5,10 @@ import com.masqani.masqani.exceptions.StorageException;
 import com.masqani.masqani.listing.service.AwsStorageService;
 import com.masqani.masqani.user.dto.ReadUserDTO;
 import com.masqani.masqani.listing.service.LandlordService;
-import com.masqani.masqani.listing.service.dto.CreatedListingDTO;
-import com.masqani.masqani.listing.service.dto.DisplayCardListingDTO;
-import com.masqani.masqani.listing.service.dto.SaveListingDTO;
-import com.masqani.masqani.listing.service.dto.sub.PictureDTO;
+import com.masqani.masqani.listing.model.dto.CreatedListingDTO;
+import com.masqani.masqani.listing.model.dto.DisplayCardListingDTO;
+import com.masqani.masqani.listing.model.dto.SaveListingDTO;
+import com.masqani.masqani.listing.model.dto.sub.PictureDTO;
 
 import com.masqani.masqani.user.exceptions.UnauthorizedException;
 import com.masqani.masqani.user.service.UserService;
