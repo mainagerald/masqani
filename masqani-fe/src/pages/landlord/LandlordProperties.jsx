@@ -7,13 +7,16 @@ import { CgEye } from "react-icons/cg";
 import Spinner from "../../components/Spinner";
 import PropertyCategories from "../../service/model/PropertyCategory";
 import { SlLocationPin } from "react-icons/sl";
+import { useNavigate } from "react-router-dom";
+import PropertyDetails from "@/components/PropertyDetails";
 
 
 const MyProperties = () => {
 
   const [properties, setProperties] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [icon, setIcon]=useState(null);
+  const [selectedProperty, setSelectedProperty] = useState(null);
+  const navigate = useNavigate();
 
   async function fetchProperties() {
     setIsLoading(true);
@@ -29,34 +32,49 @@ const MyProperties = () => {
     }
   }
 
+  const handleCloseModal=()=>{
+    setSelectedProperty(null);
+  }
   async function handleListingDelete(publicId){
     console.log("handle delete clicked");
-    setIsLoading(true);    
-    try {
-      const response = await deleteLandlordProperty(publicId)
-      console.log("response from delete action", response);
-      if(response.status==200){
-        setProperties(properties=>
-          properties.filter((prop)=> prop.publicId!=publicId)
-        );
-      }
+    // setIsLoading(true);    
+    // try {
+    //   const response = await deleteLandlordProperty(publicId)
+    //   console.log("response from delete action", response);
+    //   if(response.status==200){
+    //     setProperties(properties=>
+    //       properties.filter((prop)=> prop.publicId!=publicId)
+    //     );
+    //   }
       
-    } catch (error) {
-      console.error('Error executing delete property')
-      toast.error("Property deletion failed")
-    }finally{
-      setIsLoading(false);
-    }
+    // } catch (error) {
+    //   console.error('Error executing delete property')
+    //   toast.error("Property deletion failed")
+    // }finally{
+    //   setIsLoading(false);
+    // }
     
   }
-  function handleListingEdit(){
-    console.log("handle edit clicked");
-    
-  }
-  function handleListingView(e){
+
+  function handlePageListingView(e, publicId){
     e.stopPropagation();
+    if(!publicId)return;
+    console.log("handle page view clicked with pub id", publicId);
+    navigate(`/rental-property/${publicId}`)
+  }
+
+  function handleListingEdit(publicId){
+    if(!publicId)return;
+    console.log("handle edit clicked with public id", publicId);
+    navigate(`/properties/edit/${publicId}`);    
+  }
+
+  function handleListingView(e, property){
+    e.stopPropagation();
+    if(!property)return;
     console.log("handle view clicked");
-    
+    setSelectedProperty(property);
+    console.log("selected prop---", selectedProperty);
   }
 
   const getIconComponent = (category) => {
@@ -68,6 +86,7 @@ const MyProperties = () => {
   useEffect(() => {
     fetchProperties();
   }, [])
+
 
   if ((!properties || properties.length === 0) &&!isLoading) {
     
@@ -98,13 +117,14 @@ const MyProperties = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {properties.map((property) => (
               <div
+              onClick={(e)=>handlePageListingView(e, property.publicId)}
                 key={property.publicId}
-                className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300"
+                className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transform hover:cursor-pointer transition-all duration-300"
               >
                 <div className="relative">
                   <img
                     src={property.cover.fileUrl}
-                    alt={property.cover.fileName}
+                    alt={'listing-image.jpeg'}
                     className="w-full h-5/6 object-cover hover:scale-105 transition-transform duration-300"
                   />
                   <div className="absolute top-4 right-4 from-gray-500 bg-gradient-to-br to-gray-950 text-white px-3 py-1 rounded-full text-sm font-medium">
@@ -130,13 +150,13 @@ const MyProperties = () => {
                       <div className="space-x-2">
                         <button 
                         type="button"
-                        onClick={handleListingView}
+                        onClick={(e)=>handleListingView(e, property)}
                         className="bg-white hover:bg-gray-200 text-white px-2 py-2 rounded-lg transition-colors duration-300">
                           <CgEye className="text-black" />
                         </button>
                         <button 
                         type="button"
-                        onClick={handleListingEdit}
+                        onClick={()=>handleListingEdit(property.publicId)}
                         className="bg-white hover:bg-gray-200 text-white px-2 py-2 rounded-lg transition-colors duration-300">
                           <BiEditAlt className="text-black" />
                         </button>
@@ -153,6 +173,15 @@ const MyProperties = () => {
           </div>
         </div>
       </div>
+      {selectedProperty && (
+        <PropertyDetails
+          prop={selectedProperty}
+          isOpen={!!selectedProperty}
+          onClose={handleCloseModal}
+          onEdit={() => handleListingEdit(selectedProperty.publicId)}
+        />
+      )}
+
       {isLoading && <Spinner/>}
     </div>
   );

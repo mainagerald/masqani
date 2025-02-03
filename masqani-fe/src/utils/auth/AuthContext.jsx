@@ -1,9 +1,7 @@
-/* eslint-disable react/prop-types */
 import React, { createContext, useState, useContext, ReactNode, useEffect } from 'react';
 import axiosInstance from '../http/AxiosInstance';
 import { environment } from '../../service/environment/environment';
 import { jwtDecode } from 'jwt-decode';
-import { Snackbar, Alert } from '@mui/material';
 import { replace, useNavigate } from 'react-router-dom';
 
 
@@ -71,7 +69,13 @@ export const AuthProvider = ({ children }) => {
   };
 
   const oauthLogin = (accessToken, refreshToken) => {
+
+    console.log("oauth login trigger");
+    
     const decodedToken = jwtDecode(accessToken);
+
+    console.log("decoded oauth token", decodedToken);
+    
 
     localStorage.setItem('accessToken', accessToken);
     localStorage.setItem('refreshToken', refreshToken);

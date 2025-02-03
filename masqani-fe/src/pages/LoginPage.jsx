@@ -64,6 +64,7 @@ const LoginPage = () => {
             }, 1000)
         } catch (error) {
             setError('Login failed. Please check your credentials.');
+            toast.error('Login failed. Please check your credentials.');
             console.error("Login error:", error);
         }
     };
