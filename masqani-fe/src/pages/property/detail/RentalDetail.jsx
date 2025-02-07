@@ -8,9 +8,12 @@ import h3 from '../../../assets/house-gallery/house3.jpg';
 import h4 from '../../../assets/house-gallery/house4.jpg';
 
 import ImageGallery from '@/components/ImageGallery';
+import MiniLocator from '../../../components/MiniLocator';
 import PropertyCategories from '@/service/model/PropertyCategory';
 import { FaCar } from 'react-icons/fa';
-import { PiCarFill, PiCarLight, PiPersonSimpleWalkBold, PiPersonSimpleWalkLight, PiVisorThin } from 'react-icons/pi';
+import { PiBathtubLight, PiBed, PiBedLight, PiCarFill, PiCarLight, PiPersonSimpleWalkBold, PiPersonSimpleWalkLight, PiVisorThin } from 'react-icons/pi';
+import { BiBed } from 'react-icons/bi';
+import { LuBed } from 'react-icons/lu';
 
 const RentalDetail = () => {
 
@@ -70,6 +73,10 @@ const RentalDetail = () => {
     ],
     "price": {
       "value": 90000
+    },
+    "coordinates": {
+      "latitude": 1.2921,
+      "longitude": 36.8219
     }
   }
 
@@ -105,14 +112,15 @@ const RentalDetail = () => {
           </div>
           {/* location handler with map*/}
           <div className="relative max-w-full md:w-5/12 h-[65vh] lg:h-[65vh] rounded-lg m-2">
-            <div className='w-full h-1/2 p-0 bg-blue-400 rounded-md'>
+            <div className='w-full h-1/2 p-0 bg-blue-400 rounded-md z-0'>
+              <MiniLocator coordinates={prpty.coordinates} />
             </div>
             <div className='flex-col items-center h-1/2'>
               <section className='h-1/2 justify-start items-center flex'>
-              <button className='border-black border rounded-2xl p-2 ml-4 mr-4 flex-row flex items-center gap-2'><PiCarFill className='w-5 h-5'/>Check commute</button>
+                <button className='border-black border rounded-2xl p-2 ml-4 mr-4 flex-row flex items-center gap-2'><PiCarFill className='w-5 h-5' />Check commute</button>
               </section>
               <section className=' h-1/2 justify-start items-center flex'>
-              <button className='p-2 ml-4 mr-4 border text-white bg-black border-black rounded-2xl'>Request Visit</button>
+                <button className='p-2 ml-4 mr-4 border text-white bg-black border-black rounded-2xl'>Request Visit</button>
               </section>
             </div>
           </div>
@@ -127,6 +135,21 @@ const RentalDetail = () => {
             <p className='font-bold text-xl'>KES</p>
             <p className='text-4xl font-bold'>{formatCurrency(prpty.price.value)}</p>
           </section>
+          {/* infos */}
+          <section className='mt-4 flex flex-row gap-10'>
+            <div><p className='text-sm font-light'>{prpty.infos.baths.value > 1 ? `Bath` : `Baths`}</p>
+              <div className='flex flex-row items-center gap-2 p-2 text-3xl font-bold'>
+                <PiBathtubLight className='h-10 w-10' /> {prpty.infos.baths.value}
+              </div></div>
+            <div><p className='text-sm font-light'>{prpty.infos.bedrooms.value > 1 ? `Bedroom` : `Bedrooms`}</p>
+              <div className='flex flex-row items-center gap-2 p-2 text-3xl font-bold'>
+                <PiBedLight className='h-10 w-10' /> {prpty.infos.bedrooms.value}
+              </div></div>
+          </section>
+          {/* description */}
+          <div className='w-1/2'>
+            <p className='p-4'>{prpty.description.value}</p>
+          </div>
         </div>
       </div>
     </div>
