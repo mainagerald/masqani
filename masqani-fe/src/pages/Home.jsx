@@ -4,6 +4,8 @@ import { LuBuilding, LuCreditCard, LuHouse, LuUsers } from 'react-icons/lu';
 import { Link, NavLink } from 'react-router-dom';
 import PropertyCard from '../components/PropertyCard'
 import { PiArrowRight, PiArrowRightDuotone, PiArrowRightThin } from 'react-icons/pi';
+import ImageGallery from '@/components/ImageGallery';
+
 
 const FeatureCard = ({ icon, title, description }) => (
   <div className="bg-neutral-100 p-6 rounded-xl transition-all duration-300">
@@ -99,6 +101,10 @@ const Home = () => {
           </div>
         </div>
       </div>
+      
+      {/* <div className='p-3'>
+            <ImageGallery/>
+      </div> */}
 
       <div className="px-4 sm:px-6 lg:px-8">
         <h3 className="text-2xl font-semibold text-neutral-800 mb-4">Properties for Rent Near You</h3>
