@@ -10,7 +10,7 @@ L.Icon.Default.mergeOptions({
   shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png',
 });
 
-// eslint-disable-next-line react/prop-types
+
 const MapLocationPicker = ({ onLocationSelect }) => {
   const [map, setMap] = useState(null);
   const [marker, setMarker] = useState(null);

@@ -2,19 +2,22 @@ import { getPropertyByPublicId } from '@/service/api/landlordPropertyApi';
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 
-import h1 from '../../../assets/house-gallery/house1.jpg'; 
-import h2 from '../../../assets/house-gallery/house2.jpg'; 
-import h3 from '../../../assets/house-gallery/house3.jpg'; 
+import h1 from '../../../assets/house-gallery/house1.jpg';
+import h2 from '../../../assets/house-gallery/house2.jpg';
+import h3 from '../../../assets/house-gallery/house3.jpg';
 import h4 from '../../../assets/house-gallery/house4.jpg';
 
 import ImageGallery from '@/components/ImageGallery';
+import PropertyCategories from '@/service/model/PropertyCategory';
+import { FaCar } from 'react-icons/fa';
+import { PiCarFill, PiCarLight, PiPersonSimpleWalkBold, PiPersonSimpleWalkLight, PiVisorThin } from 'react-icons/pi';
 
 const RentalDetail = () => {
 
   const { publicId } = useParams();
   const [property, setProperty] = useState(null);
 
-  const prpty={
+  const prpty = {
     "category": "STUDIOS",
     "createdAt": 1738136077,
     "description": {
@@ -83,11 +86,47 @@ const RentalDetail = () => {
     }
   }
 
+  const getIconComponent = (category) => {
+    const categoryData = PropertyCategories.find(prop => prop.id === category);
+    const IconComponent = categoryData?.icon || FiHome;
+    return <IconComponent className="w-5 h-5 text-black mr-2" />;
+  };
+
+  function formatCurrency(number) {
+    return number.toLocaleString("en-US");
+  }
+
   return (
-    <div className="h-screen bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-12 h-screen bg-blue-400">
-        <div className='w-2/3 p-0 h-72 bg-amber-400'>
-          <ImageGallery images={prpty.pictures.map((picture)=>picture.fileUrl)} length={prpty.pictures.length}/>
+    <div className="min-h-screen bg-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-12">
+        <div className='flex-row flex gap-3'>
+          <div className="relative max-w-full md:w-7/12 h-[65vh] lg:h-[65vh] rounded-lg">
+            <ImageGallery images={prpty.pictures.map((picture) => picture.fileUrl)} length={prpty.pictures.length} />
+          </div>
+          {/* location handler with map*/}
+          <div className="relative max-w-full md:w-5/12 h-[65vh] lg:h-[65vh] rounded-lg m-2">
+            <div className='w-full h-1/2 p-0 bg-blue-400 rounded-md'>
+            </div>
+            <div className='flex-col items-center h-1/2'>
+              <section className='h-1/2 justify-start items-center flex'>
+              <button className='border-black border rounded-2xl p-2 ml-4 mr-4 flex-row flex items-center gap-2'><PiCarFill className='w-5 h-5'/>Check commute</button>
+              </section>
+              <section className=' h-1/2 justify-start items-center flex'>
+              <button className='p-2 ml-4 mr-4 border text-white bg-black border-black rounded-2xl'>Request Visit</button>
+              </section>
+            </div>
+          </div>
+        </div>
+        {/* the rest */}
+        <div className='p-2 mt-4 flex flex-row gap-1'>
+          {getIconComponent(prpty.category)}
+          <p className='text-sm font-semibold'>{prpty.title.value}</p>
+        </div>
+        <div>
+          <section className='flex flex-row gap-1 items-baseline'>
+            <p className='font-bold text-xl'>KES</p>
+            <p className='text-4xl font-bold'>{formatCurrency(prpty.price.value)}</p>
+          </section>
         </div>
       </div>
     </div>
