@@ -29,7 +29,8 @@ const MiniLocator = ({ coordinates, zoom = 10, className = '' }) => {
   }
 
   return (
-    <div className={`w-full h-full rounded-md overflow-hidden ${className}`}>
+    <div className={`w-full h-5/6
+     rounded-md overflow-hidden ${className}`}>
       <MapContainer
         center={[latitude, longitude]}
         zoom={zoom}

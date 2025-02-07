@@ -112,14 +112,15 @@ const RentalDetail = () => {
           </div>
           {/* location handler with map*/}
           <div className="relative max-w-full md:w-5/12 h-[65vh] lg:h-[65vh] rounded-lg m-2">
-            <div className='w-full h-1/2 p-0 bg-blue-400 rounded-md z-0'>
-              <MiniLocator coordinates={prpty.coordinates} />
+            <div className='w-full h-1/2 p-0 rounded-md z-0'>
+              <MiniLocator coordinates={prpty.coordinates} className=''/>
+              <p className='border border-gray-500 rounded-xl p-1 m-1'>Location goes here</p>
             </div>
             <div className='flex-col items-center h-1/2'>
               <section className='h-1/2 justify-start items-center flex'>
-                <button className='border-black border rounded-2xl p-2 ml-4 mr-4 flex-row flex items-center gap-2'><PiCarFill className='w-5 h-5' />Check commute</button>
+                <button className='border-black border-2 rounded-2xl p-2 ml-4 mr-4 flex-row flex items-center gap-2 underline'><PiCarFill className='w-5 h-5' />Check commute</button>
               </section>
-              <section className=' h-1/2 justify-start items-center flex'>
+              <section className=' h-1/2 justify-start items-center flex mt-0'>
                 <button className='p-2 ml-4 mr-4 border text-white bg-black border-black rounded-2xl'>Request Visit</button>
               </section>
             </div>
