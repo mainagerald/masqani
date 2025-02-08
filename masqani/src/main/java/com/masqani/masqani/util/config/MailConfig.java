@@ -1,4 +1,4 @@
-package com.masqani.masqani.user.config;
+package com.masqani.masqani.util.config;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
