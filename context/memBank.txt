@@ -1,0 +1,91 @@
+# memBank.txt
+This file will track recommendations, design decisions, and changes made during the development of the property listing and landlord-tenant portal platform for the Kenyan market. All key discussion points and agreed actions will be logged here for future reference.
+
+## 2025-04-21
+- Updated priorities per user:
+  1. Property listing CRUD functionality (create, read, update, delete) is the immediate focus.
+  2. Users should be able to view all listings and use advanced filters (price, location, size, type, parking, pets, elevators, etc.).
+  3. Map/radius-based search (OSM) is a future enhancement.
+  4. Dashboard, tenancy requests, onboarding, and other portal features will follow after CRUD and filters are solid.
+- All planning and structured notes will now be maintained in the context folder.
+- Initial project analysis and clarification questions documented.
+- User clarified roles: Application Admin, Landlord, Tenant (no agents for now).
+- Key listing attributes: price, location, size, type, parking, pets, elevators, etc.
+- Filters: price, location, size, type (priority), plus parking, pets, elevators. Map/radius-based search with OSM map display.
+- Video tours/virtual walkthroughs: future, non-priority.
+- Payments: bank cards and M-Pesa supported; reminders via SMS/email; downloadable/auto-generated invoices/receipts.
+- Maintenance: tenants upload photos/videos; status tracking for requests.
+- Lease management: leases as documents; renewals/move-outs require landlord approval.
+- Dashboards: landlords see collections, debts, upcoming payments, tenants/leases, requests; tenants see next payment, history, maintenance status.
+- Notifications: SMS/email initially, push (Flutter) later; reminders for lease expiry, payments, maintenance.
+- Open registration for all users. No extra payment providers or property verification APIs for now.
+- No dashboard implementation exists yet; will design and scaffold both backend and frontend dashboards for landlords and tenants.
+- Dashboards will show: (Landlord) collections, debts, payments, tenants/leases, maintenance requests; (Tenant) next payment, payment history, maintenance status.
+- Plan: define backend endpoints for dashboard data, secure by role; scaffold frontend dashboard with role-based rendering, UI sections, and data fetching.
+- Technical breakdown for dashboard APIs:
+  - User model uses Role enum and Spring Security for role-based access.
+  - Landlord dashboard API: GET /api/dashboard/landlord (collections, debts, payments, tenants/leases, maintenance requests).
+  - Tenant dashboard API: GET /api/dashboard/tenant (next payment, payment history, maintenance status).
+  - Each endpoint to use @PreAuthorize for role security and fetch authenticated user.
+  - Plan to create DTOs for dashboard data, new controller (DashboardController), and service layer for aggregation.
+  - No code changes to be made yet—only note-taking and planning in progress as per user instruction.
+- Frontend dashboard planning:
+  - Dashboard.jsx will handle both landlord and tenant dashboards with role-based rendering.
+  - Landlord dashboard sections: collections summary, debts/upcoming payments, active tenants/leases, maintenance requests.
+  - Tenant dashboard sections: next payment due, payment history, maintenance status.
+  - UI to fetch data from backend dashboard APIs, display loading/error/empty states.
+  - Plan to create reusable components for each dashboard section for maintainability.
+  - No code changes to be made yet—only note-taking and planning in progress as per user instruction.
+- Dashboard API and client (frontend) design outline:
+
+  [API Data Contracts]
+  - Landlord Dashboard API response (GET /api/dashboard/landlord):
+    {
+      collectionsSummary: { totalAllTime: number, totalThisMonth: number, trend: 'up'|'down'|'neutral' },
+      debts: [ { tenantName, property, amount, dueDate } ],
+      upcomingPayments: [ { tenantName, property, amount, dueDate } ],
+      activeTenantsLeases: [ { tenantName, property, leaseStart, leaseEnd } ],
+      maintenanceRequests: [ { property, type, status, submittedAt } ]
+    }
+
+  - Tenant Dashboard API response (GET /api/dashboard/tenant):
+    {
+      nextPaymentDue: { amount, dueDate, property },
+      paymentHistory: [ { date, amount, receiptUrl } ],
+      maintenanceStatus: [ { property, type, status, submittedAt } ]
+    }
+
+  [Frontend Client Design]
+  - Dashboard.jsx: detects user role, fetches dashboard data, renders correct dashboard view.
+  - Components for landlord:
+    - CollectionsSummary.jsx
+    - DebtsUpcomingPayments.jsx
+    - ActiveTenantsLeases.jsx
+    - MaintenanceRequests.jsx
+  - Components for tenant:
+    - NextPaymentDue.jsx
+    - PaymentHistory.jsx
+    - MaintenanceRequests.jsx (shared)
+  - Each component receives its data as props and handles its own loading/error/empty state if needed.
+  - Data fetched on mount via dashboard API, with centralized error/loading handling in Dashboard.jsx.
+  - All design and contract notes tracked in memBank.txt—no code changes yet, just structured planning.
+- Sample API payloads for landlord and tenant dashboards drafted.
+- UI/UX enhancements: clear headings, summary cards, tables/lists, color/status badges, pay/download buttons, empty and error/loading states, responsive layout.
+- Backend data aggregation plan:
+  - Service layer to aggregate data from payments, leases, listings, maintenance, and users.
+  - For landlords: aggregate collections, debts, upcoming payments, active leases/tenants, maintenance requests scoped to properties owned.
+  - For tenants: next payment due, payment history, maintenance requests scoped to tenant’s leases.
+  - Handle edge cases: partial payments, multiple properties/leases per user, maintenance escalation.
+- Frontend data-fetching flow:
+  - On Dashboard.jsx mount, detect user role and call appropriate dashboard API.
+  - Centralized loading/error handling in Dashboard.jsx.
+  - Pass API data as props to section components (which handle their own empty states).
+  - Use context or hooks for authentication and role detection.
+- Error & edge case handling:
+  - Backend: clear error codes/messages for unauthorized access, no data found (empty arrays/objects), partial data (with warning), tenants with multiple leases/properties, landlords with no listings, maintenance in various states, partial/failed payments.
+  - Frontend: loading spinner, no data messages, error messages, visual cues for partial data, retry on error, responsive rendering.
+- MVP dashboard implementation plan:
+  - Backend: DTOs and controller endpoints for /api/dashboard/landlord and /api/dashboard/tenant, service aggregation for payments/leases/maintenance, secure endpoints by role.
+  - Frontend: scaffold Dashboard.jsx, implement section components with props for data/loading/error/empty, integrate with backend, responsive layout, minimal styling.
+- Iterative approach: plan to build MVP, then refine and extend as needed based on feedback and evolving requirements.
+- Next: Stand by for user go-ahead to start coding or further refine requirements as we iterate.

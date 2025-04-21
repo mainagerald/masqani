@@ -1,0 +1,12 @@
+# brd.txt
+This file will track business requirements and goals for the property listing and landlord-tenant portal platform. It will be updated as we refine the vision and features.
+
+## 2025-04-21
+- Platform inspired by realtor.com and redfin.com, tailored for the Kenyan market.
+- User roles: Application Admin, Landlord, Tenant. No agents for now.
+- Core features: property listing, advanced search/filtering (price, location, size, type, parking, pets, elevators, map/radius), landlord-tenant portal for payments (bank cards, M-Pesa), maintenance, lease management (with landlord approval), reminders, dashboards.
+- Video/virtual tours: future, non-priority.
+- Notifications: SMS/email initially, push (Flutter) later.
+- Open registration for all users. No extra payment or property verification integrations for now.
+- Priorities: Advanced filters and optimized queries, dashboards for landlords/tenants (to be implemented from scratch), payment and maintenance flows.
+- Next: Analyze current backend/frontend for implementation plan.

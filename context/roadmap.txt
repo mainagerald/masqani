@@ -1,0 +1,38 @@
+# Roadmap: Spring-First Automation & Agentic Extension Points
+
+## 1. Immediate Focus: Spring-First Automation
+- Use Spring Boot for all core business logic, CRUD, and simple automations.
+- Implement notifications, reminders, and scheduled tasks using Spring’s built-in tools:
+  - @Scheduled for periodic jobs (e.g., rent reminders, lease expiry checks)
+  - Spring Events for decoupled, event-driven actions (e.g., after payment, after maintenance request)
+  - @Async for background processing
+- Use Java/Spring services for:
+  - Payment tracking and status updates
+  - Maintenance request routing (simple rule-based)
+  - User onboarding and registration flows
+  - Generating and sending notifications (email/SMS via integrations)
+
+## 2. Where to Add Agentic Patterns Later (Extension Points)
+- If you need more advanced automation (AI/ML, LLMs, smart recommendations, or complex workflow orchestration):
+  - Introduce Python microservices for:
+    - LLM-powered chat or support
+    - Smart property recommendations
+    - Automated document analysis (leases, receipts)
+    - Intelligent maintenance routing or escalation
+  - Use REST APIs or message queues (RabbitMQ/Kafka) for integration between Spring and Python agents.
+- Document event/message contracts for smooth cross-language communication.
+
+## 3. Migration/Refactor Triggers
+- Move to agentic/microservice model if:
+  - Business logic becomes too complex for simple Spring services
+  - You need to scale automation/AI independently
+  - You want to leverage Python’s AI/ML ecosystem
+
+## 4. Review Points
+- Periodically review automation needs as platform grows
+- Only add agentic/AI microservices when business value is clear
+- Keep all architectural decisions and extension points documented in this roadmap
+
+---
+
+This roadmap is designed for rapid, maintainable growth—starting simple, but ready for advanced automation and agentic workflows as your needs evolve.

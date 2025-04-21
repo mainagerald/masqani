@@ -1,0 +1,17 @@
+# crd.txt
+This file will contain technical/code requirements, API endpoints, data models, and architectural decisions as we progress with the project. It will be updated iteratively as features are specified and implemented.
+
+## 2025-04-21
+- User roles: Application Admin, Landlord, Tenant. Role-based access control required.
+- Listings: Model must support price, location, size, type, parking, pets, elevators, images (videos in future).
+- Filters: API endpoints for price, location, size, type, parking, pets, elevators; support for map/radius-based queries (OSM integration).
+- Payments: Integrate with M-Pesa and bank cards; reminders via SMS/email; invoice/receipt generation and download endpoints.
+- Maintenance: Endpoints for request creation (with media upload), status tracking.
+- Lease management: Document upload, renewal/move-out logic with landlord approval.
+- Dashboards: 
+  - Backend: Endpoints to provide landlord dashboard data (collections, debts, payments, tenants/leases, maintenance requests) and tenant dashboard data (next payment, payment history, maintenance status). Secure endpoints by user role.
+  - Frontend: Scaffold Dashboard.jsx for both user types with role-based rendering and UI for each metric/action. Fetch data from backend endpoints.
+- Notifications: SMS/email, later push (Flutter); event-based triggers for reminders.
+- Open registration endpoints for all roles.
+- No extra payment or verification integrations for now.
+- Next: Review codebase for existing models, endpoints, and frontend logic to identify extension points.

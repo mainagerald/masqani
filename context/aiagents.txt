@@ -1,0 +1,133 @@
+# AI Agents Implementation Plan
+
+This file outlines the vision, tools, and architectural plan for introducing agentic (AI-driven and automated) workflows into the Masqani property platform.
+
+## 1. Potential Agentic Tools & Use Cases
+
+### a. Notification/Reminder Agent
+- Sends automated rent reminders, lease expiry alerts, maintenance status updates via SMS/email/push.
+- Can escalate issues (e.g., overdue rent, unresolved maintenance).
+
+### b. Payment Reconciliation Agent
+- Automatically tracks incoming payments (M-Pesa, card), updates payment status, and notifies relevant parties.
+
+### c. Maintenance Routing Agent
+- Routes new maintenance requests to the correct landlord or service provider.
+- Follows up and escalates if not resolved in a set time.
+
+### d. Recommendation Agent
+- Suggests properties to tenants based on their activity/history.
+- Notifies landlords of market trends or high-demand features.
+
+### e. Data Quality Agent
+- Validates data entries, flags duplicates, and auto-corrects inconsistencies.
+
+---
+
+## 2. Implementation Plan & Architecture
+
+### Option 1: In-Spring (Monolith/Modular)
+- Implement agents as Spring @Service beans, scheduled tasks, or event listeners.
+- Use Spring's scheduling, messaging (e.g., Spring Events, RabbitMQ), and async features.
+- Pros: Simple, integrated, easy to maintain for small to medium scale.
+- Cons: Less flexibility for advanced AI/ML (Python), harder to scale independently.
+
+### Option 2: Microservice (Polyglot, e.g., Python AI Agents)
+- Implement agents as independent microservices (e.g., FastAPI, Flask, or LangChain in Python).
+- Communicate via REST, gRPC, or messaging (RabbitMQ/Kafka).
+- Pros: Leverage Python AI/ML ecosystem (NLP, LLMs, advanced analytics), scale agents independently.
+- Cons: More complex deployment, requires inter-service communication and monitoring.
+
+### Option 3: Hybrid
+- Start with simple agents in Spring for core automation.
+- For advanced AI (recommendations, NLP, LLM-driven chat), spin up Python-based agent microservices as needed.
+- Use message queues or REST APIs for integration.
+
+---
+
+## 3. Recommendation for Masqani
+- Begin with Spring-based agents for notifications, payment tracking, and basic automation.
+- As you grow, add Python microservices for AI/ML-heavy tasks (recommendations, NLP, LLMs).
+- Use message queues (RabbitMQ/Kafka) for decoupled, scalable communication between services.
+- Document agent APIs and event contracts for smooth integration.
+
+---
+
+## 5. Sample Agentic Workflows (Python)
+
+### A. LangGraph-Based Workflow (for Multi-Step, LLM-Driven Agents)
+#### Use Case: Automated Maintenance Request Routing & Escalation
+
+- **Tools:** [LangGraph](https://github.com/langchain-ai/langgraph), LangChain, FastAPI
+- **Workflow:**
+  1. Receive new maintenance request event (from Spring or message queue).
+  2. Use LLM (via LangGraph) to classify request (e.g., plumbing, electrical, urgent, routine).
+  3. Route to correct landlord/service provider.
+  4. If unresolved after X hours, escalate (send reminders, notify admin, etc.).
+  5. Log all actions and update status via API or message queue.
+
+```python
+# Pseudocode for a LangGraph agent
+from langgraph.graph import StateGraph
+from langchain.llms import OpenAI
+from langchain.tools import Tool
+
+# Define tools for routing, escalation, and notification
+def route_request(request): ...
+def escalate_request(request): ...
+def notify_user(user, message): ...
+
+llm = OpenAI()
+
+graph = StateGraph()
+graph.add_node('classify', llm)
+graph.add_node('route', route_request)
+graph.add_node('escalate', escalate_request)
+graph.add_node('notify', notify_user)
+
+graph.add_edge('classify', 'route')
+graph.add_edge('route', 'notify')
+graph.add_conditional_edge('route', 'escalate', condition=lambda req: req['status'] == 'unresolved')
+# ...
+```
+
+### B. Pydantic-Based Workflow (for Data Validation & Simple Agents)
+#### Use Case: Payment Event Validation & Notification
+
+- **Tools:** [Pydantic](https://docs.pydantic.dev/), FastAPI or Celery
+- **Workflow:**
+  1. Receive payment event (webhook, message queue, or REST call).
+  2. Validate payment data with Pydantic models.
+  3. If valid, update payment status and notify landlord/tenant.
+  4. If invalid, log error and alert admin.
+
+```python
+from pydantic import BaseModel, ValidationError
+
+class PaymentEvent(BaseModel):
+    tenant_id: int
+    property_id: int
+    amount: float
+    method: str
+    timestamp: str
+
+# Example agent logic
+def handle_payment_event(event_data):
+    try:
+        event = PaymentEvent(**event_data)
+        # Update DB, notify parties, etc.
+        notify_user(event.tenant_id, f"Payment of {event.amount} received.")
+    except ValidationError as e:
+        log_error(e)
+        notify_admin(f"Payment event error: {e}")
+```
+
+### C. Integration Plan
+- Spring (core app) sends events (maintenance, payment, etc.) to Python agent microservices via REST or message queue.
+- Agents process events, take actions, and update system state via APIs or events.
+- Use LangGraph for complex, multi-step, or LLM-driven workflows; use Pydantic for robust data validation and simple automations.
+
+---
+
+All architectural and implementation decisions will be tracked here for future reference and iteration.
+
