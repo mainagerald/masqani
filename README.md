@@ -1,6 +1,6 @@
 # Project Overview
 
-A comprehensive property management and listing platform tailored for the Kenyan market. Inspired by industry leaders like Realtor.com and Redfin.com, MasQani aims to streamline the rental and property management experience for landlords, tenants, and administrators.
+A comprehensive property management and listing platform tailored for the Kenyan market. It aims to streamline the rental and property management experience for landlords, tenants, and administrators.
 
 ## Features
 
