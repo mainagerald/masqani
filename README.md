@@ -92,16 +92,4 @@ masqani/
    ```
    The frontend application will be available at `http://localhost:5173`.
 
-## Roadmap
 
-- [x] Core Property Listing & Search
-- [x] User Role Management (Admin, Landlord, Tenant)
-- [ ] **Priority:** Advanced filters and optimized queries.
-- [ ] **Priority:** Comprehensive Dashboards for Landlords/Tenants.
-- [ ] **Priority:** Complete Payment & Maintenance flows.
-- [ ] Push Notifications (Mobile).
-- [ ] Video/Virtual Tours.
-
-## Documentation
-
-Refer to the `context/` directory for detailed business requirements and project context.
